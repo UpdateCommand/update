@@ -1,0 +1,6 @@
+# Cabal for Haskell
+if command -v cabal >/dev/null 2>&1; then
+  if [[ `whoami` != "root" ]]; then
+    cabal update
+  fi
+fi

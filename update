@@ -24,5 +24,6 @@ update-apm
 update-gem
 update-pip
 update-npm
+update-cabal
 update-motion
 update-repos
