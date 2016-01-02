@@ -20,6 +20,7 @@ set -euf -o pipefail
 update-apt
 update-osx
 update-brew
+update-oh-my-zsh
 update-apm
 update-gem
 update-pip
