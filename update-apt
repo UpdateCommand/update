@@ -1,13 +1,33 @@
 # Apt package manager for Debian Linux, Ubuntu Linux, etc.
 #
+# If you want the system to force saying yes, use this setting:
+#
+#     sudo apt-get --yes --force-yes ...
+#
+# If you want the update to be quieter, use the -q option:
+#
+#     sudo apt-get -q ...
+#
+# If you want the system to automatically use default answers 
+# whenever an interactive prompt appears, use this setting:
+#
+#     sudo DEBIAN_FRONTEND=noninteractive apt-get ...
+#
+# If you want to combine all of the above:
+#
+#     sudo DEBIAN_FRONTEND=noninteractive apt-get -q --yes --force-yes ...
+#
+# Guide to perform an unattended installation of a Debian package:
+# http://www.microhowto.info/howto/perform_an_unattended_installation_of_a_debian_package.html
+#
 if command -v apt-get >/dev/null 2>&1; then
-  sudo apt-get --yes autoclean
-  sudo apt-get --yes --purge autoremove 
-  sudo apt-get --yes update
-  sudo apt-get --yes install update-manager
-  sudo apt-get --yes install update-manager-core 
-  sudo apt-get --yes upgrade -f --fix-missing --install-recommends
-  sudo apt-get --yes dist-upgrade
-  sudo apt-get --yes autoclean
-  sudo apt-get --yes --purge autoremove
+  sudo apt-get -q --yes autoclean
+  sudo apt-get -q --yes --purge autoremove 
+  sudo apt-get -q --yes update
+  sudo apt-get -q --yes install update-manager
+  sudo apt-get -q --yes install update-manager-core 
+  sudo apt-get -q --yes upgrade -f --fix-missing --install-recommends
+  sudo apt-get -q --yes dist-upgrade
+  sudo apt-get -q --yes autoclean
+  sudo apt-get -q --yes --purge autoremove
 fi
