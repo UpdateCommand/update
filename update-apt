@@ -3,7 +3,12 @@ if command -v apt-get >/dev/null 2>&1; then
   sudo apt-get autoclean
   sudo apt-get --purge autoremove
   sudo apt-get update
+  sudo apt-get install update-manager-core
   sudo apt-get upgrade -y -f --fix-missing --install-recommends
   sudo apt-get autoclean
   sudo apt-get --purge autoremove
+  sudo apt-get dist-upgrade
+  if command -v do-release-upgrade >/dev/null 2>&1; then
+    sudo do-release-upgrade
+  fi
 fi
