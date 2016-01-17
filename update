@@ -1,7 +1,5 @@
-#!/bin/zsh
-set -euf -o pipefail
-
-##
+#!/bin/sh
+#
 # Run update commands for everything we use on all platforms.
 #
 # Heuristics:
@@ -12,12 +10,15 @@ set -euf -o pipefail
 #
 # More to come. We welcome patches, pull requests, and ideas.
 #
-# Author: Joel Parker Henderson (joel@joelparkerhenderson.com)
+# Version: 2.4
+# Created: 2015-06-01
+# Updated: 2016-01-17
 # License: GPL
-# Updated: 2015-06-01
+# Contact: Joel Parker Henderson (joel@joelparkerhenderson.com)
 ##
-
+set -euf
 update-apt
+update-ubuntu-release
 update-osx
 update-brew
 update-oh-my-zsh

@@ -1,0 +1,56 @@
+# Upgrade an Ubuntu operating system by running do-release-upgrade.
+#
+# ## How to choose upgrades
+#
+# You may want to edit the file /etc/update-manager/release-upgrades,
+# where you can set the release upgrade strategy: lts, normal, or never.
+# You need root privileges to edit this file.
+#
+#   * Prompt=lts means do upgrades that are long term support (LTS).
+#   * Prompt=normal means do upgrades to any newer release.
+#   * Prompt=never means never do release upgrades
+#
+# ## Suggestion when using SSH and iptable
+#
+# If you are running `do-release-upgrade` on some kinds of systems,
+# you may see a prompt about opening an additional SSH port on 1022,
+# and advising you to open the port by using the `iptables` such as:
+#
+#     iptables -I INPUT -p tcp --dport 1022 -j ACCEPT
+#
+# If you see this, then it's wise and safe to cancel the upgrade,
+# then run the `iptables` command, then retry the upgrade process.
+#
+# ## Troubleshooting "Error authenticating some packages"
+#
+# If you an error message about "Error authenticating some packages",
+# then you must fix the problem and then retry the update and upgrade.
+#
+# Many web forums advise disabling authentication, which is a bad idea.
+# We advise against any `unauth.cfg` file because it disables security.
+#
+# Our solution is to remove all the unauthenticated packages, 
+# then do the upgrade, then do a fresh install of the packages.
+#
+# ## Troubleshooting an upgrade from 14.04 to 15.04 or higher.
+#
+# Upgrading from 14.04 to 15.04 directly is not supported. 
+# You'd have to do 14.04 -> 14.10 -> 15.04, which will not work,
+# because 14.10 has reached End Of Life.
+#
+# 15.04 will reach EOL is January 2016, which makes upgrading unworthy.
+#
+# We recommend staying on 14.04, and upgrading to 16.04 when it's ready,
+# which is in summer 2016.
+#
+# If you do choose to try upgrading from 14.04 to 15.04 or higher,
+# heads up that there may be major bugs, especially in systemd,
+# and the bugs may cause any reboot to fail and be unrecoverable.
+#
+# Forum posts say to run this after the upgrade:
+#
+#     sudo apt-get install systemd-sysv
+# 
+if command -v do-release-upgrade >/dev/null 2>&1; then
+  sudo do-release-upgrade
+fi
