@@ -1,15 +1,13 @@
 # Apt package manager for Debian Linux, Ubuntu Linux, etc.
 #
 if command -v apt-get >/dev/null 2>&1; then
-  sudo apt-get autoclean
-  sudo apt-get --purge autoremove 
-  sudo apt-get update
-  sudo apt-get install update-manager -y
-  sudo apt-get install update-manager-core -y
-  sudo apt-get upgrade -y -f --fix-missing --install-recommends
-  sudo apt-get autoclean
-  sudo apt-get --purge autoremove
-  sudo apt-get dist-upgrade
-  sudo apt-get autoclean
-  sudo apt-get --purge autoremove
+  sudo apt-get --yes autoclean
+  sudo apt-get --yes --purge autoremove 
+  sudo apt-get --yes update
+  sudo apt-get --yes install update-manager
+  sudo apt-get --yes install update-manager-core 
+  sudo apt-get --yes upgrade -f --fix-missing --install-recommends
+  sudo apt-get --yes dist-upgrade
+  sudo apt-get --yes autoclean
+  sudo apt-get --yes --purge autoremove
 fi
