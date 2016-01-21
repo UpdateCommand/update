@@ -2,17 +2,27 @@
 #
 # Run update commands for everything we use on all platforms.
 #
-# Heuristics:
+# Heuristics for ordering:
 #
 #   1. Update OS and packages, such as `apt`, `softwareupdate`, `brew`, etc.
-#   2. Update language application packages: `gem`, `pip`, `npm`, `motion`, etc.
+#
+#   2. Update language packages: `gem`, `pip`, `npm`, `motion`, etc.
+#
 #   3. Update our local git repositories: `/opt`, `~/git`, etc.
 #
-# More to come. We welcome patches, pull requests, and ideas.
+# Guidance:
 #
-# Version: 2.4
+#   * Each script should be testing that it has what it needs to run.
+#     This includes testing for any platform-specific needs.
+#
+#   * Each script should try to clean before running and after running.
+#     This helps create disk space, and helps maintain dependencies.
+#
+# We welcome patches, pull requests, and ideas.
+#
+# Version: 2.5
 # Created: 2015-06-01
-# Updated: 2016-01-17
+# Updated: 2016-01-20
 # License: GPL
 # Contact: Joel Parker Henderson (joel@joelparkerhenderson.com)
 ##

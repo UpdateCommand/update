@@ -1,9 +1,10 @@
 # Homebrew for OSX
 if command -v brew >/dev/null 2>&1; then
   if [[ `whoami` != "root" ]]; then
+    brew cleanup
     brew update
     brew upgrade
-    brew cleanup
     brew prune
+    brew cleanup
   fi
 fi

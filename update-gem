@@ -1,5 +1,7 @@
 # gem: Ruby package manager
 if command -v gem >/dev/null 2>&1; then
+  gem cleanup
   gem update --system
   gem update
+  gem cleanup
 fi
