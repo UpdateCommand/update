@@ -1,0 +1,9 @@
+# Carthage: iOS dependency manager
+if [ -e ./Cartfile ] ; then
+  if [ ! -d ./Carthage ] || [ "$carthage_bootstrap" = "true" ] ; then
+    echo "Checking out and build the project dependencies with carthage bootstrap..."
+    carthage bootstrap --platform ios
+  else
+    echo "Carthage bootstrap is skipped since Carthage directory exists and no environment variable carthage_bootstrap is not set to true"
+  fi
+fi
