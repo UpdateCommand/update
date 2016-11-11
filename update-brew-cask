@@ -1,4 +1,6 @@
 # Homebrew Cask for OSX
+# Thanks to http://stackoverflow.com/questions/31968664/upgrade-all-the-casks-installed-via-homebrew-cask
+
 if command -v brew >/dev/null 2>&1; then
   brew cask update
   brew cask cleanup

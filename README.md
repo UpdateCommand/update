@@ -1,7 +1,7 @@
-# SixArm.com » Unix » <br> Update scripts for sysops
+# Update command scripts
 
-This repo has Unix update scripts to help a sysop update various
-operating systems, package managers, language modules, et. al.
+This project has Unix update scripts for many tools,
+systems, package managers, language modules, et. al.
 
  * `update`: run all the udpate scripts.
  * `update-apm`: update Atom Package Manager - for the GitHub Atom editor.
@@ -18,8 +18,7 @@ operating systems, package managers, language modules, et. al.
  * `update-repos`: update Git repositories - customize this for your system.
  * `update-ubuntu-release`: update Ubuntu release - for major Linux system upgrades.
 
-
-## Run  hourly
+## To run hourly
 
 To run the update command daily, you can use the `crontab` command.
 
