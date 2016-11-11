@@ -18,7 +18,7 @@ systems, package managers, language modules, et. al.
  * `update-repos`: update Git repositories - customize this for your system.
  * `update-ubuntu-release`: update Ubuntu release - for major Linux system upgrades.
 
-## To run hourly
+## To run daily
 
 To run the update command daily, you can use the `crontab` command.
 
@@ -30,13 +30,11 @@ Edit the `~/.crontab` file.
 
 Add a line that runs the `nice` command and use the full path to the `update` command:
 
-    @hourly /usr/bin/nice /foo/bar/update
+    @daily /usr/bin/nice /foo/bar/update
 
 Then install the file:
 
     crontab ~/.crontab
-2015-08-09
-
 
 ## Tracking
 
@@ -46,4 +44,3 @@ Then install the file:
   * Updated: 2016-11-11
   * License: GPL
   * Contact: Joel Parker Henderson (joel@joelparkerhenderson.com)
-
