@@ -1,0 +1,17 @@
+# Homebrew Cask for OSX
+if command -v brew >/dev/null 2>&1; then
+  brew cask update
+  brew cask cleanup
+  prefix=$(brew --prefix)
+  casks=( $(brew cask list) )
+  for cask in ${casks[@]}
+  do
+    version=$(brew cask info $cask | sed -n "s/$cask:\ \(.*\)/\1/p")
+    installed=$(find "$prefix/Caskroom/$cask" -type d -maxdepth 1 -maxdepth 1 -name "$version")
+    if [[ -z $installed ]]; then
+      (set -x; brew cask uninstall $cask --force;)
+      (set -x; brew cask install $cask --force;)
+    fi
+  done
+  brew cask cleanup
+fi
