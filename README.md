@@ -15,6 +15,7 @@ systems, package managers, language modules, et. al.
  * `update-npm`: update Node Package Manager.
  * `update-macos`: update the macOS Mac operating system - very large downloads.
  * `update-pip`: update Python PIP.
+ * `update-pod`: update a user's default Cocoapods Podfile.
  * `update-repos`: update Git repositories - customize this for your system.
  * `update-swift`: update macOS Swift language - this merely prints advice.
  * `update-ubuntu-release`: update Ubuntu release - for major Linux system upgrades.
@@ -37,11 +38,20 @@ Then install the file:
 
     crontab ~/.crontab
 
+
+## Configuration files
+
+This tool looks for these files:
+
+    ~/.config/pod/Podfile
+
+
+
 ## Tracking
 
   * Package: UpdateCommand
-  * Version: 4.1.0
+  * Version: 4.2.0
   * Created: 2005-07-05
-  * Updated: 2016-11-11
+  * Updated: 2016-12-29
   * License: GPL
   * Contact: Joel Parker Henderson (joel@joelparkerhenderson.com)
