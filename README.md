@@ -9,13 +9,14 @@ systems, package managers, language modules, et. al.
  * `update-brew`: update Homebrew packages - for macOS.
  * `update-brew-cask`: update Homebrew Cask packages - for macOS apps.
  * `update-cabal`: update Haskell Cabal pacakages.
- * `update-carthage`: udpate Xcode Carthage pacakges - for macOS. 
+ * `update-carthage`: udpate Xcode Carthage pacakges - for macOS.
  * `update-gem`: update Ruby gems.
  * `update-motion`: update Ruby Motion - needs a valid paid license.
  * `update-npm`: update Node Package Manager.
  * `update-macos`: update the macOS Mac operating system - very large downloads.
  * `update-pip`: update Python PIP.
  * `update-repos`: update Git repositories - customize this for your system.
+ * `update-swift`: update macOS Swift language - this merely prints advice.
  * `update-ubuntu-release`: update Ubuntu release - for major Linux system upgrades.
 
 ## To run daily

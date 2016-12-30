@@ -1,0 +1,18 @@
+# Swift progrsmming language
+
+expect_version="3.0.2"
+
+parse_semver(){
+  echo $(echo "$1" | sed -n 's/.* \([0-9\.]\+\).*/\1/p')
+}
+
+swift_version(){
+  echo $(parse_semver "$(xcrun swift -version | head -1)")
+}
+
+if command -v xcrun >/dev/null 2>&1; then
+  actual_version=$(swift_version)
+  if [ "$expect_version" != "$actual_version" ]; then
+    echo "Update Swift: expect:$expect_version, actual:$actual_version"
+  fi
+fi
