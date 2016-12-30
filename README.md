@@ -41,10 +41,13 @@ Then install the file:
 
 ## Configuration files
 
-This tool looks for these files:
+This tool will also use any of these configuration files:
 
-    ~/.config/pod/Podfile
+    ~/.config/Brewfile/Brewfile
+    ~/.config/Gemfile/Gemfile
+    ~/.config/Podfile/Podfile
 
+The config directory uses `XDG_CONFIG_HOME` which is the POSIX standard environment variable
 
 
 ## Tracking

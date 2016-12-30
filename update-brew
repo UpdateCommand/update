@@ -4,6 +4,15 @@ if command -v brew >/dev/null 2>&1; then
     brew cleanup
     brew update
     brew upgrade
+
+    # Brewfile
+    name="Brewfile"
+    dir="${XDG_CONFIG_HOME:-$HOME/.config/$name}"
+    if [ -r "$dir" && -r "$dir/$name" ]; then
+      $(cd "$dir"; brew bundle install; cd -)
+    fi
+
+    # Finally
     brew prune
     brew cleanup
   fi
