@@ -32,10 +32,14 @@ update-ubuntu-release
 update-osx
 update-brew
 update-brew-cask
+update-brewfile
 update-oh-my-zsh
 update-apm
 update-gem
+update-gemfile
 update-pip
+update-pod
+update-podfile
 update-npm
 update-cabal
 update-motion

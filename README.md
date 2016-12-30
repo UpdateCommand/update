@@ -7,15 +7,18 @@ systems, package managers, language modules, et. al.
  * `update-apm`: update Atom Package Manager - for the GitHub Atom editor.
  * `update-apt`: update apt-get - for Debian, Ubuntu, etc.
  * `update-brew`: update Homebrew packages - for macOS.
+ * `update-brewfile`: update brew packages for macOS by using a Brewfile
  * `update-brew-cask`: update Homebrew Cask packages - for macOS apps.
  * `update-cabal`: update Haskell Cabal pacakages.
  * `update-carthage`: udpate Xcode Carthage pacakges - for macOS.
  * `update-gem`: update Ruby gems.
+ * `update-gemfile`: update gem packages for Ruby by using a Gemfile
  * `update-motion`: update Ruby Motion - needs a valid paid license.
  * `update-npm`: update Node Package Manager.
  * `update-macos`: update the macOS Mac operating system - very large downloads.
  * `update-pip`: update Python PIP.
- * `update-pod`: update a user's default Cocoapods Podfile.
+ * `update-pod`: update Cocoapods for macOS
+ * `update-podfile`: update Cocoapods packages for macOS by using a Podfile
  * `update-repos`: update Git repositories - customize this for your system.
  * `update-swift`: update macOS Swift language - this merely prints advice.
  * `update-ubuntu-release`: update Ubuntu release - for major Linux system upgrades.

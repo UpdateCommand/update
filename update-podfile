@@ -1,0 +1,8 @@
+# Podfile by using the `pod` package manager
+name="Podfile"
+if command -v pod >/dev/null 2>&1; then
+  dir="${XDG_CONFIG_HOME:-$HOME/.config/$name}"
+  if [ -r "$dir" && -r "$dir/$name]; then
+    pod update --project-directory="$dir"
+  fi
+fi

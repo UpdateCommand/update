@@ -3,13 +3,5 @@ if command -v gem >/dev/null 2>&1; then
   gem cleanup
   gem update --system
   gem update
-
-  # Gemfile
-  name="Gemfile"
-  dir="${XDG_CONFIG_HOME:-$HOME/.config/$name}"
-  if [ -r "$dir" && -r "$dir/$name" ]; then
-    $(cd "$dir"; bundle install; cd -)
-  fi
-
   gem cleanup
 fi
