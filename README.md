@@ -12,10 +12,11 @@ systems, package managers, language modules, et. al.
  * `update-cabal`: update Haskell Cabal pacakages.
  * `update-carthage`: udpate Xcode Carthage pacakges - for macOS.
  * `update-gem`: update Ruby gems.
- * `update-gemfile`: update gem packages for Ruby by using a Gemfile
+ * `update-gemfile`: update gem packages for Ruby by using a Gemfile.
+ * `update-mas`: update mas packages by using the Mac App Store.
  * `update-motion`: update Ruby Motion - needs a valid paid license.
  * `update-npm`: update Node Package Manager.
- * `update-macos`: update the macOS Mac operating system - very large downloads.
+ * `update-macos`: update the macOS Mac operating system - large downloads.
  * `update-pip`: update Python PIP.
  * `update-pod`: update Cocoapods for macOS
  * `update-podfile`: update Cocoapods packages for macOS by using a Podfile

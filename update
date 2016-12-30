@@ -37,6 +37,7 @@ update-oh-my-zsh
 update-apm
 update-gem
 update-gemfile
+update-mas
 update-pip
 update-pod
 update-podfile
