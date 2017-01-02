@@ -1,6 +1,9 @@
 # Brew for macOS
 if command -v brew >/dev/null 2>&1; then
   if [[ `whoami` != "root" ]]; then
+    if [[ `brew --version` == "Homebrew 0.9.9 (git revision 06fe3; last commit 2016-08-10)" ]]; then
+      cd "$(brew --repo)" && git fetch && git reset --hard origin/master && brew update
+    fi
     brew cleanup
     brew update
     brew upgrade
