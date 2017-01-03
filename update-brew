@@ -1,6 +1,18 @@
 # Brew for macOS
+#
+# Caution: major macOS upgrades result in /usr/local ownership reverted
+# to root:wheel. We have improved the situation already, but there's one
+# last migration you need to do which requires writing permission of /usr/local.
+#
+#     sudo chown "$(whoami)" /usr/local
+#     cd /usr/local
+#     git fetch
+#     git reset --hard origin/master
+#     brew update --force
+#
 if command -v brew >/dev/null 2>&1; then
   if [[ `whoami` != "root" ]]; then
+    # Fix broken version
     if [[ `brew --version` == "Homebrew 0.9.9 (git revision 06fe3; last commit 2016-08-10)" ]]; then
       cd "$(brew --repo)" && git fetch && git reset --hard origin/master && brew update
     fi

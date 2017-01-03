@@ -51,14 +51,14 @@ This tool will also use any of these configuration files:
     ~/.config/Gemfile/Gemfile
     ~/.config/Podfile/Podfile
 
-The config directory uses `XDG_CONFIG_HOME` which is the POSIX standard environment variable
+The config directory uses the `XDG_CONFIG_HOME` environment variable, which is a POSIX standard environment variable. The default is `$HOME/.config`.
 
 
 ## Tracking
 
   * Package: UpdateCommand
-  * Version: 4.2.0
+  * Version: 4.2.1
   * Created: 2005-07-05
-  * Updated: 2016-12-29
+  * Updated: 2017-01-02
   * License: GPL
   * Contact: Joel Parker Henderson (joel@joelparkerhenderson.com)
