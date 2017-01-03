@@ -41,6 +41,7 @@ update-brew-cask
 update-brewfile
 update-mas
 update-oh-my-zsh
+update-yum
 
 # Update tool packages
 update-apm
