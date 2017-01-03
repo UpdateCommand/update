@@ -4,11 +4,13 @@
 #
 # Heuristics for ordering:
 #
-#   1. Update OS and packages, such as `apt`, `softwareupdate`, `brew`, etc.
+#   1. Update OS e.g. Ubuntu `do-release-upgrade`, macOS `softwareupdate`.
 #
-#   2. Update language packages: `gem`, `pip`, `npm`, `motion`, etc.
+#   2. Update system packages e.g. Ubuntu `apt`, macOS `brew`.
 #
-#   3. Update our local git repositories: `/opt`, `~/git`, etc.
+#   3. Update tool packages: e.g. Node `npm`, Python`pip`.
+#
+#   4. Update repositories: `/opt`, `~/git`, etc.
 #
 # Guidance:
 #
@@ -27,21 +29,29 @@
 # Contact: Joel Parker Henderson (joel@joelparkerhenderson.com)
 ##
 set -euf
-update-apt
+
+## Update operating system
 update-ubuntu-release
-update-osx
+update-macos
+
+## Update system packages
+update-apt
 update-brew
 update-brew-cask
 update-brewfile
+update-mas
 update-oh-my-zsh
+
+# Update tool packages
 update-apm
 update-gem
 update-gemfile
-update-mas
 update-pip
 update-pod
 update-podfile
 update-npm
 update-cabal
 update-motion
+
+# Update repositories
 update-repos
