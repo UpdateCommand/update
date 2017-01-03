@@ -24,6 +24,24 @@ systems, package managers, language modules, et. al.
  * `update-swift`: update macOS Swift language - this merely prints advice.
  * `update-ubuntu-release`: update Ubuntu release - for major Linux system upgrades.
 
+## Examples
+
+Examples of the commands that these update scripts use:
+
+    apm upgrade
+    apt-get update && apt-get upgrade
+    brew update && brew upgrade
+    cabal update
+    carthage update
+    gem update
+    softwareupdate --install --all
+    mas upgrade
+    motion update
+    npm update
+    upgrade_oh_my_zsh
+    do-release-upgrade
+    yum update
+
 ## To run daily
 
 To run the update command daily, you can use the `crontab` command.
