@@ -10,6 +10,7 @@ systems, package managers, language modules, et. al.
  * `update-brewfile`: update brew packages for macOS by using a Brewfile
  * `update-brew-cask`: update Homebrew Cask packages - for macOS apps.
  * `update-cabal`: update Haskell Cabal pacakages.
+ * `update-cargo`: update Rust cargo package manager.
  * `update-carthage`: udpate Xcode Carthage pacakges - for macOS.
  * `update-gem`: update Ruby gems.
  * `update-gemfile`: update gem packages for Ruby by using a Gemfile.
@@ -21,6 +22,7 @@ systems, package managers, language modules, et. al.
  * `update-pod`: update Cocoapods for macOS
  * `update-podfile`: update Cocoapods packages for macOS by using a Podfile
  * `update-repos`: update Git repositories - customize this for your system.
+ * `update-rust`: update Rust programming language tooling.
  * `update-swift`: update macOS Swift language - this merely prints advice.
  * `update-ubuntu-release`: update Ubuntu release - for major Linux system upgrades.
 
@@ -32,6 +34,7 @@ Examples of the commands that these update scripts use:
     apt-get update && apt-get upgrade
     brew update && brew upgrade
     cabal update
+    cargo install-update -a
     carthage update
     gem update
     softwareupdate --install --all
@@ -39,6 +42,7 @@ Examples of the commands that these update scripts use:
     motion update
     npm update
     upgrade_oh_my_zsh
+    rustup update stable
     do-release-upgrade
     yum update
 
@@ -75,8 +79,8 @@ The config directory uses the `XDG_CONFIG_HOME` environment variable, which is a
 ## Tracking
 
   * Package: UpdateCommand
-  * Version: 4.2.1
+  * Version: 4.3.0
   * Created: 2005-07-05
-  * Updated: 2017-01-02
+  * Updated: 2017-03-02
   * License: GPL
   * Contact: Joel Parker Henderson (joel@joelparkerhenderson.com)
