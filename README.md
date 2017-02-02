@@ -11,6 +11,7 @@ systems, package managers, language modules, et. al.
  * `update-brew-cask`: update Homebrew Cask packages - for macOS apps.
  * `update-cabal`: update Haskell Cabal pacakages.
  * `update-cargo`: update Rust cargo package manager.
+ * `update-cargo-toml`: update Rust cargo package manager Cargo.toml file.
  * `update-carthage`: udpate Xcode Carthage pacakges - for macOS.
  * `update-gem`: update Ruby gems.
  * `update-gemfile`: update gem packages for Ruby by using a Gemfile.

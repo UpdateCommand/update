@@ -5,6 +5,7 @@
 #     cargo install cargo-update
 #
 if command -v cargo >/dev/null 2>&1; then
+cargo update
   if cargo --help | grep -q '^ \+update \+'; then
     cargo install-update -a
   fi

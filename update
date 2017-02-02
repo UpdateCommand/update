@@ -46,6 +46,7 @@ update-yum
 # Update tool packages
 update-apm
 update-cargo
+update-cargo-toml
 update-gem
 update-gemfile
 update-pip
