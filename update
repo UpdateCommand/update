@@ -54,7 +54,7 @@ update-podfile
 update-npm
 update-cabal
 update-motion
-update-rust
+update-rustup
 
 # Update repositories
 update-repos
