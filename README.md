@@ -23,7 +23,7 @@ systems, package managers, language modules, et. al.
  * `update-pod`: update Cocoapods for macOS
  * `update-podfile`: update Cocoapods packages for macOS by using a Podfile
  * `update-repos`: update Git repositories - customize this for your system.
- * `update-rust`: update Rust programming language tooling.
+ * `update-rustup`: update Rust programming language tooling.
  * `update-swift`: update macOS Swift language - this merely prints advice.
  * `update-ubuntu-release`: update Ubuntu release - for major Linux system upgrades.
 
