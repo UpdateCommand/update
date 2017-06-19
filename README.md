@@ -80,8 +80,8 @@ The config directory uses the `XDG_CONFIG_HOME` environment variable, which is a
 ## Tracking
 
   * Package: UpdateCommand
-  * Version: 4.3.0
+  * Version: 4.3.2
   * Created: 2005-07-05
-  * Updated: 2017-03-02
+  * Updated: 2017-06-19
   * License: GPL
   * Contact: Joel Parker Henderson (joel@joelparkerhenderson.com)
