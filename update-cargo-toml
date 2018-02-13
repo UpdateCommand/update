@@ -1,0 +1,7 @@
+# Update Cargo.lock file in the current directory
+if command -v cargo >/dev/null 2>&1; then
+  name="Cargo.toml"
+  if [ -r "$name" ]; then
+    cargo update
+  fi
+fi

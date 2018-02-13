@@ -31,30 +31,30 @@
 set -euf
 
 ## Update operating system
-update-ubuntu-release
-update-macos
+update-ubuntu-release || :
+update-macos || :
 
 ## Update system packages
-update-apt
-update-brew
-update-brew-cask
-update-brewfile
-update-mas
-update-oh-my-zsh
-update-yum
+update-apt || :
+update-brew || :
+update-brew-cask || :
+update-brewfile || :
+update-mas || :
+update-oh-my-zsh || :
+update-yum || :
 
 # Update tool packages
-update-apm
-update-cargo
-update-gem
-update-gemfile
-update-pip
-update-pod
-update-podfile
-update-npm
-update-cabal
-update-motion
-update-rustup
+update-apm || :
+update-cargo || :
+update-gem || :
+update-gemfile || :
+update-pip || :
+update-pod || :
+update-podfile || :
+update-npm || :
+update-cabal || :
+update-motion || :
+update-rustup || :
 
 # Update repositories
-update-repos
+update-repos || :
