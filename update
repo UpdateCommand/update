@@ -6,11 +6,13 @@
 #
 #   1. Update OS e.g. Ubuntu `do-release-upgrade`, macOS `softwareupdate`.
 #
-#   2. Update system packages e.g. Ubuntu `apt`, macOS `brew`.
+#   2. Update system packages e.g. Debian `apt`, RedHat `yum`, macOS `brew`.
 #
-#   3. Update tool packages: e.g. Node `npm`, Python`pip`.
+#   3. Update langauges e.g. Rust.
 #
-#   4. Update repositories: `/opt`, `~/git`, etc.
+#   4. Update tool packages: e.g. Node `npm`, Python`pip`, Ruby `gem`.
+#
+#   5. Update repositories: `/opt`, `~/git`, etc.
 #
 # Guidance:
 #
@@ -22,9 +24,9 @@
 #
 # We welcome patches, pull requests, and ideas.
 #
-# Version: 4.3.2
+# Version: 4.3.3
 # Created: 2015-06-01
-# Updated: 2017-06-19
+# Updated: 2018-03-01
 # License: GPL
 # Contact: Joel Parker Henderson (joel@joelparkerhenderson.com)
 ##
@@ -43,6 +45,9 @@ update-mas || :
 update-oh-my-zsh || :
 update-yum || :
 
+# Update languages
+update-rustup || :
+
 # Update tool packages
 update-apm || :
 update-cargo || :
@@ -54,7 +59,6 @@ update-podfile || :
 update-npm || :
 update-cabal || :
 update-motion || :
-update-rustup || :
 
 # Update repositories
 update-repos || :
