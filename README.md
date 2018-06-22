@@ -13,18 +13,17 @@ When you run `update` the command will run many software updates and upgrades:
 
 ## Install
 
-Clone the rep:
+Clone the repo to your own system:
 
-    $ git clone https://github.com/UpdateCommand/update.git
+    $ git clone https://github.com/UpdateCommand/update.git ~/update
 
-Add the commands to your path as you like:
+Add the `bin` directory to your own path:
 
     $ export PATH="$PATH:~/update/bin"
 
-Optionally copy the config directory to your own location:
+Copy the `config` directory to your own directory:
 
-    $ cd update
-    $ cp -R config/update ~/.config/update
+    $ cp -R ~/update/config/update ~/.config/update
 
 Run the script:
 
@@ -76,12 +75,12 @@ The command uses a config home directory and program subdirectory:
 
     ~/.config/update
 
-You can change the config home directory by setting the environment variable `XDG_CONFIG_HOME` which is POSIX standard. The default is `$HOME/.config/`.
+You can change the config home directory by setting the environment variable `XDG_CONFIG_HOME`. This is POSIX standard. The default is `$HOME/.config/`.
 
 
 ### Run your own scripts first and last
 
-You can configure your own scripts to run first (before the start of the update commands) or last (after the finish of the update commands).
+You can configure your own scripts to run first before the start of the update commands, or last after the finish of the update commands.
 
 Put your own scripts in these directories:
 
