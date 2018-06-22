@@ -1,5 +1,37 @@
 # Update command scripts
 
+Want to update your computer software? The update command is for you.
+
+When you run `update` the command will run many software updates and upgrades:
+
+  * macOS: `softwareupdate`, Homebrew `brew`, Mac App Store `mas`, etc.
+  * Linux: Ubuntu `apt`, RedHat `yum`, Arch `pacman`, Fedora `dnf`, etc.
+  * tooling: Node `npm`, Python `pip`, Rust `cargo`, Ruby `gem`, Atom `apm`, etc.
+
+
+## Install
+
+Clone the rep:
+
+    $ git clone https://github.com/UpdateCommand/update.git
+
+Add the commands to your path as you like:
+
+    $ export PATH="$PATH:~/update/bin"
+
+Run the script:
+
+    $ update
+
+Adjust the scripts as you like:
+
+  * You may freely add or remove any of the scripts.
+
+  * You may freely edit any of the scripts to match your security preferences.
+
+
+## What's included
+
 This project has Unix update scripts for many tools,
 systems, package managers, language modules, et. al.
 
@@ -29,27 +61,6 @@ systems, package managers, language modules, et. al.
  * `update-swift`: update macOS Swift language - this merely prints advice.
  * `update-ubuntu-release`: update Ubuntu release - for major Linux system upgrades.
 
-## Examples
-
-Examples of the commands that these update scripts use:
-
-    apm upgrade
-    apt-get update && apt-get upgrade
-    brew update && brew upgrade
-    cabal update
-    cargo install-update -a
-    carthage update
-    dnf upgrade
-    gem update
-    softwareupdate --install --all
-    mas upgrade
-    motion update
-    npm update
-    upgrade_oh_my_zsh
-    pacman -Syu
-    rustup update stable
-    do-release-upgrade
-    yum update
 
 ## To run daily
 
@@ -84,7 +95,7 @@ The config directory uses the `XDG_CONFIG_HOME` environment variable, which is a
 ## Tracking
 
   * Package: UpdateCommand
-  * Version: 4.4.0
+  * Version: 5.0.0
   * Created: 2005-07-05
   * Updated: 2018-06-22
   * License: GPL
