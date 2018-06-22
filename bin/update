@@ -144,7 +144,7 @@ if [ "$#" -eq 1 ]; then
 fi
 
 ## Run the user's own scripts
-exe "$(config_dir)/bin/first/"
+exe "$(config_home)/update/update-run-first"
 
 ## Update operating system
 update-ubuntu-release || :
@@ -185,4 +185,4 @@ update-git-pull || :
 update-repos || :
 
 ## Run the user's own scripts
-exe "$(config_dir)/bin/last/"
+exe "$(config_dir)/update-run-last"

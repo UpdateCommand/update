@@ -79,17 +79,13 @@ To use a different directory, set your system XDG_CONFIG_HOME.
 
 ### Run your own scripts first and last
 
-Do you want to add your own scripts that run first, before all the updates? 
+You can configure your own scripts to run first (before the start of the update commands) or last (after the finish of the update commands).
 
-Create this directory and put your scripts in it:
+Put your own scripts in these directories:
 
-    $ mkdir -p ~/.config/updatecommand/bin/first
+    ~/.config/update/update-run-first
 
-Do you want to add your own scripts that run last, after all the updates?
-
-Create this directory and put your scripts in it:
-
-    $ mkdir -p ~/.config/updatecommand/bin/last
+    ~/.config/update/update-run-last
 
 For advanced users:
 
@@ -151,7 +147,7 @@ The config directory uses the `XDG_CONFIG_HOME` environment variable, which is a
 ## Tracking
 
   * Package: UpdateCommand
-  * Version: 5.2.0
+  * Version: 5.3.0
   * Created: 2005-07-05
   * Updated: 2018-06-22
   * License: GPL
