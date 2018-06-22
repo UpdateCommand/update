@@ -1,11 +1,11 @@
 # git pull for typical directories
-if command -v git >/dev/null 2>&1; then
-  dir=$(config_home)"/update/update-git-pull"
+if command -v hg >/dev/null 2>&1; then
+  dir=$(config_home)"/update/update-hg-pull"
   if [ -d "$dir" ]; then
     for file in $(find "$dir" -type f); do
       for line in $(cat "$file"); do
         if [ -d "$line" ]; then
-          cd "$line" && git pull
+          cd "$line" && hg pull -u
         fi
       done
     done

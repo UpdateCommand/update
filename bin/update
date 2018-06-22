@@ -180,6 +180,7 @@ update-cabal || :
 update-motion || :
 
 # Update repositories
+update-hg-pull || :
 update-git-pull || :
 update-repos || :
 

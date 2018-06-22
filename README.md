@@ -7,6 +7,7 @@ When you run `update` the command will run many software updates and upgrades:
   * Linux: Ubuntu `apt`, RedHat `yum`, Arch `yay`, Fedora `dnf`, etc.
   * macOS: `softwareupdate`, Homebrew `brew`, Mac App Store `mas`, etc.
   * tooling: Node `npm`, Python `pip`, Rust `cargo`, Ruby `gem`, Atom `apm`, etc.
+  * source code management: `git pull`, `hg pull`, etc.
   * any of your own custom scripts, before and after everything else.
 
 
@@ -77,6 +78,7 @@ systems, package managers, language modules, et. al.
  * `update-cargo-toml`: update Rust cargo package manager Cargo.toml file.
  * `update-carthage`: udpate Xcode Carthage pacakges - for macOS.
  * `update-dnf`: update DNF - for Fedora Linux.
+ * `update-hg-pull`: update mercurial repositories.
  * `update-gem`: update Ruby gems.
  * `update-git-pull`: update git repositories.
  * `update-gemfile`: update gem packages for Ruby by using a Gemfile.
