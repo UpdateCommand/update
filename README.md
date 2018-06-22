@@ -13,6 +13,7 @@ systems, package managers, language modules, et. al.
  * `update-cargo`: update Rust cargo package manager.
  * `update-cargo-toml`: update Rust cargo package manager Cargo.toml file.
  * `update-carthage`: udpate Xcode Carthage pacakges - for macOS.
+ * `update-dnf`: update DNF - for Fedora Linux.
  * `update-gem`: update Ruby gems.
  * `update-gemfile`: update gem packages for Ruby by using a Gemfile.
  * `update-mas`: update mas packages by using the Mac App Store.
@@ -38,6 +39,7 @@ Examples of the commands that these update scripts use:
     cabal update
     cargo install-update -a
     carthage update
+    dnf upgrade
     gem update
     softwareupdate --install --all
     mas upgrade

@@ -43,6 +43,7 @@ update-apt || :
 update-brew || :
 update-brew-cask || :
 update-brewfile || :
+update-dnf || :
 update-mas || :
 update-pacman || :
 update-yum || :
