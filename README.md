@@ -4,8 +4,8 @@ Want to update your computer software? The update command is for you.
 
 When you run `update` the command will run many software updates and upgrades:
 
+  * Linux: Ubuntu `apt`, RedHat `yum`, Arch `yay`, Fedora `dnf`, etc.
   * macOS: `softwareupdate`, Homebrew `brew`, Mac App Store `mas`, etc.
-  * Linux: Ubuntu `apt`, RedHat `yum`, Arch `pacman`, Fedora `dnf`, etc.
   * tooling: Node `npm`, Python `pip`, Rust `cargo`, Ruby `gem`, Atom `apm`, etc.
   * any of your own custom scripts, before and after everything else.
 
@@ -27,17 +27,11 @@ Run the script:
 
 ## Configuration
 
-If you want to add your own scripts that run first, before all the updates, then create this directory and put your scripts in it:
+Create a config directory:
 
     $ mkdir -p ~/.config/updatecommand/bin/first
 
-If you want to add your own scripts that run last, after all the updates, then create this directory and put your scripts in it:
-
-    $ mkdir -p ~/.config/updatecommand/bin/last
-
-For advanced users:
-
-  * The config directory can be set by XDG_CONFIG_HOME.
+The config home is set by XDG_CONFIG_HOME.
 
 For intermediate users:
 
@@ -45,6 +39,26 @@ For intermediate users:
 
   * You may freely edit any of the scripts to match your security preferences.
 
+
+### Run your own scripts first and last
+
+Do you want to add your own scripts that run first, before all the updates? 
+
+Create this directory and put your scripts in it:
+
+    $ mkdir -p ~/.config/updatecommand/bin/first
+
+Do you want to add your own scripts that run last, after all the updates?
+
+Create this directory and put your scripts in it:
+
+    $ mkdir -p ~/.config/updatecommand/bin/last
+
+For advanced users:
+
+  * The program runs all user-executable files, and skips all non-user-executable files.
+
+  * You can use as many files and subdirectories as you like.
 
 
 ## What's included
@@ -77,6 +91,9 @@ systems, package managers, language modules, et. al.
  * `update-rustup`: update Rust programming language tooling.
  * `update-swift`: update macOS Swift language - this merely prints advice.
  * `update-ubuntu-release`: update Ubuntu release - for major Linux system upgrades.
+ * `update-yay`: update Yay package manager - for Arch Linux
+
+We welcome additions to these scripts.
 
 
 ## To run daily
@@ -112,7 +129,7 @@ The config directory uses the `XDG_CONFIG_HOME` environment variable, which is a
 ## Tracking
 
   * Package: UpdateCommand
-  * Version: 5.0.0
+  * Version: 5.1.0
   * Created: 2005-07-05
   * Updated: 2018-06-22
   * License: GPL

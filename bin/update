@@ -158,6 +158,7 @@ update-brewfile || :
 update-dnf || :
 update-mas || :
 update-pacman || :
+update-yay || :
 update-yum || :
 
 # Update shells
