@@ -98,13 +98,23 @@ For advanced users:
 
 You can configure the source code management directories to update.
 
-Git:
+Edit the files in these directories:
 
-    ~/.config/update/update-git-pull/directories.txt
+    ~/.config/update/update-git-pull/directories
 
-Mercurial:
+    ~/.config/update/update-hg-pull/directories
 
-    ~/.config/update/update-hg-pull/directories.txt
+For example edit the git pull directories default file:
+
+    ~/.config/update/update-git-pull/directories
+
+The default file currently has these:
+
+    ~/.config/fish/config.fish
+    ~/.emacs.d
+    ~/.oh-my-zsh
+    ~/.tmux
+    ~/.zshrc
 
 For advanced users:
 

@@ -1,5 +1,11 @@
+~/.config/bash
+~/.config/emacs
+~/.config/fish
+~/.config/tmux
+~/.config/vim
+~/.config/zsh
 ~/.emacs.d
-~/.zshrc
 ~/.oh-my-zsh
 ~/.tmux
-~/.config/fish/config.fish
+~/.vim.d
+~/.zshrc
