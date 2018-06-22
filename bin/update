@@ -180,6 +180,7 @@ update-cabal || :
 update-motion || :
 
 # Update repositories
+update-git-pull || :
 update-repos || :
 
 ## Run the user's own scripts

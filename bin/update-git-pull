@@ -1,0 +1,13 @@
+# git pull for typical directories
+if command -v git >/dev/null 2>&1; then
+  dir=$(config_home)"/update/update-git-pull"
+  if [ -d "$dir" ]; then
+    for file in $(find "$dir" -type f); do
+      for line in $(cat "$file"); do
+        if [ -d "$line/.git" ]; then
+          git -C "$line" pull
+        fi
+      done
+    done
+  fi
+fi

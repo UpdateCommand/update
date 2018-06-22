@@ -29,7 +29,7 @@ Run the script:
 
 Create a config directory:
 
-    $ mkdir -p ~/.config/updatecommand/bin/first
+    $ mkdir -p ~/.config/updatecommand
 
 The config home is set by XDG_CONFIG_HOME.
 
@@ -78,6 +78,7 @@ systems, package managers, language modules, et. al.
  * `update-carthage`: udpate Xcode Carthage pacakges - for macOS.
  * `update-dnf`: update DNF - for Fedora Linux.
  * `update-gem`: update Ruby gems.
+ * `update-git-pull`: update git repositories.
  * `update-gemfile`: update gem packages for Ruby by using a Gemfile.
  * `update-mas`: update mas packages by using the Mac App Store.
  * `update-motion`: update Ruby Motion - needs a valid paid license.
