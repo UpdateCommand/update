@@ -7,6 +7,7 @@ When you run `update` the command will run many software updates and upgrades:
   * macOS: `softwareupdate`, Homebrew `brew`, Mac App Store `mas`, etc.
   * Linux: Ubuntu `apt`, RedHat `yum`, Arch `pacman`, Fedora `dnf`, etc.
   * tooling: Node `npm`, Python `pip`, Rust `cargo`, Ruby `gem`, Atom `apm`, etc.
+  * any of your own custom scripts, before and after everything else.
 
 
 ## Install
@@ -23,11 +24,27 @@ Run the script:
 
     $ update
 
-Adjust the scripts as you like:
+
+## Configuration
+
+If you want to add your own scripts that run first, before all the updates, then create this directory and put your scripts in it:
+
+    $ mkdir -p ~/.config/updatecommand/bin/first
+
+If you want to add your own scripts that run last, after all the updates, then create this directory and put your scripts in it:
+
+    $ mkdir -p ~/.config/updatecommand/bin/last
+
+For advanced users:
+
+  * The config directory can be set by XDG_CONFIG_HOME.
+
+For intermediate users:
 
   * You may freely add or remove any of the scripts.
 
   * You may freely edit any of the scripts to match your security preferences.
+
 
 
 ## What's included
