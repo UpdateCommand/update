@@ -19,6 +19,7 @@ systems, package managers, language modules, et. al.
  * `update-motion`: update Ruby Motion - needs a valid paid license.
  * `update-npm`: update Node Package Manager.
  * `update-macos`: update the macOS Mac operating system - large downloads.
+ * `update-pacman`: update pacman - for Arch Linux.
  * `update-pip`: update Python PIP.
  * `update-pod`: update Cocoapods for macOS
  * `update-podfile`: update Cocoapods packages for macOS by using a Podfile
@@ -43,6 +44,7 @@ Examples of the commands that these update scripts use:
     motion update
     npm update
     upgrade_oh_my_zsh
+    pacman -Syu
     rustup update stable
     do-release-upgrade
     yum update
@@ -80,8 +82,8 @@ The config directory uses the `XDG_CONFIG_HOME` environment variable, which is a
 ## Tracking
 
   * Package: UpdateCommand
-  * Version: 4.3.2
+  * Version: 4.4.0
   * Created: 2005-07-05
-  * Updated: 2017-06-19
+  * Updated: 2018-06-22
   * License: GPL
   * Contact: Joel Parker Henderson (joel@joelparkerhenderson.com)

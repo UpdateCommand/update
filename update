@@ -8,11 +8,13 @@
 #
 #   2. Update system packages e.g. Debian `apt`, RedHat `yum`, macOS `brew`.
 #
-#   3. Update langauges e.g. Rust.
+#   3. Update shells e.g. Z Shell.
 #
-#   4. Update tool packages: e.g. Node `npm`, Python`pip`, Ruby `gem`.
+#   4. Update shells and langauges e.g. Z Shell, Rust.
 #
-#   5. Update repositories: `/opt`, `~/git`, etc.
+#   5. Update tool packages: e.g. Node `npm`, Python`pip`, Ruby `gem`.
+#
+#   6. Update repositories: `/opt`, `~/git`, etc.
 #
 # Guidance:
 #
@@ -42,8 +44,11 @@ update-brew || :
 update-brew-cask || :
 update-brewfile || :
 update-mas || :
-update-oh-my-zsh || :
+update-pacman || :
 update-yum || :
+
+# Update shells
+update-oh-my-zsh || :
 
 # Update languages
 update-rustup || :
