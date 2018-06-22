@@ -72,11 +72,11 @@ We welcome additions to these scripts.
 
 ## Configuration
 
-The command looks for a config directory a typical location such as:
+The command uses a config home directory and program subdirectory:
 
     ~/.config/update
 
-To use a different directory, set your system XDG_CONFIG_HOME.
+You can change the config home directory by setting the environment variable `XDG_CONFIG_HOME` which is POSIX standard. The default is `$HOME/.config/`.
 
 
 ### Run your own scripts first and last
@@ -86,7 +86,6 @@ You can configure your own scripts to run first (before the start of the update 
 Put your own scripts in these directories:
 
     ~/.config/update/update-run-first
-
     ~/.config/update/update-run-last
 
 For advanced users:
@@ -96,6 +95,15 @@ For advanced users:
   * The program runs the user-executable files, and skips the non-user-executable files.
 
 
+## Package manager files
+
+The program also reads these package manager files:
+
+    ~/.config/Brewfile/Brewfile
+    ~/.config/Gemfile/Gemfile
+    ~/.config/Podfile/Podfile
+
+
 ### Source code management directories
 
 You can configure the source code management directories to update.
@@ -103,7 +111,6 @@ You can configure the source code management directories to update.
 Edit the files in these directories:
 
     ~/.config/update/update-git-pull/directories
-
     ~/.config/update/update-hg-pull/directories
 
 For example edit the git pull directories default file:
@@ -131,7 +138,6 @@ For advanced users:
   * The program updates the existing directories, and skips the non-existing directories.
 
 
-
 ## To run daily
 
 To run the update command daily, you can use the `crontab` command.
@@ -149,17 +155,6 @@ Add a line that runs the `nice` command and use the full path to the `update` co
 Then install the file:
 
     crontab ~/.crontab
-
-
-## Configuration files
-
-This tool will also use any of these configuration files:
-
-    ~/.config/Brewfile/Brewfile
-    ~/.config/Gemfile/Gemfile
-    ~/.config/Podfile/Podfile
-
-The config directory uses the `XDG_CONFIG_HOME` environment variable, which is a POSIX standard environment variable. The default is `$HOME/.config`.
 
 
 ## Tracking
