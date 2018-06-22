@@ -110,10 +110,16 @@ For example edit the git pull directories default file:
 
 The default file currently has these:
 
-    ~/.config/fish/config.fish
+    ~/.config/bash
+    ~/.config/emacs
+    ~/.config/fish
+    ~/.config/tmux
+    ~/.config/vim
+    ~/.config/zsh
     ~/.emacs.d
     ~/.oh-my-zsh
     ~/.tmux
+    ~/.vim.d
     ~/.zshrc
 
 For advanced users:
