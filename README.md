@@ -61,6 +61,8 @@ systems, package managers, language modules, et. al.
  * [`update-podfile`](bin/update-podfile): update Cocoapods packages for macOS by using a Podfile
  * [`update-repos`](bin/update-repos): update Git repositories - customize this for your system.
  * [`update-rustup`](bin/update-rustup): update Rust programming language tooling.
+ * [`update-run-first`](bin/update-run-first): run custom scripts first, before other commands.
+ * [`update-run-last`](bin/update-run-last): run custom scripts last, after other commands.
  * [`update-swift`](bin/update-swift): update macOS Swift language - this merely prints advice.
  * [`update-ubuntu-release`](bin/update-ubuntu-release): update Ubuntu release - for major system upgrades.
  * [`update-yay`](bin/update-yay): update Yay package manager - for Arch Linux
