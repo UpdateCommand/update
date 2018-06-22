@@ -21,24 +21,60 @@ Add the commands to your path as you like:
 
     $ export PATH="$PATH:~/update/bin"
 
+Optionally copy the config directory to your own location:
+
+    $ cd update
+    $ cp -R config/update ~/.config/update
+
 Run the script:
 
     $ update
 
 
+## What's included
+
+This project has Unix update scripts for many tools,
+systems, package managers, language modules, et. al.
+
+ * [`update`](bin/update): run all the udpate scripts.
+ * [`update-apm`](bin/update-apm): update Atom Package Manager - for the GitHub Atom editor.
+ * [`update-apt`](bin/update-apt): update apt-get - for Debian, Ubuntu, etc.
+ * [`update-brew`](bin/update-brew): update Homebrew packages - for macOS.
+ * [`update-brewfile`](bin/update-brewfile): update brew packages for macOS by using a Brewfile
+ * [`update-brew-cask`](bin/update-brew-cask): update Homebrew Cask packages - for macOS apps.
+ * [`update-cabal`](bin/update-cabal): update Haskell Cabal pacakages.
+ * [`update-cargo`](bin/update-cargo): update Rust cargo package manager.
+ * [`update-cargo-toml`](bin/update-cargo-toml): update Rust cargo package manager Cargo.toml file.
+ * [`update-carthage`](bin/update-carthane): udpate Xcode Carthage pacakges - for macOS.
+ * [`update-dnf`](bin/update-dnf): update DNF - for Fedora Linux.
+ * [`update-hg-pull`](bin/update-hg-pull): update mercurial repositories.
+ * [`update-gem`](bin/update-gem): update Ruby gems.
+ * [`update-git-pull`](bin/update-git-pull): update git repositories.
+ * [`update-gemfile`](bin/update-gemfile): update gem packages for Ruby by using a Gemfile.
+ * [`update-mas`](bin/update-mas): update mas packages by using the Mac App Store.
+ * [`update-motion`](bin/update-motion): update Ruby Motion - needs a valid paid license.
+ * [`update-npm`](bin/update-npm): update Node Package Manager.
+ * [`update-macos`](bin/update-macos): update the macOS Mac operating system - large downloads.
+ * [`update-pacman`](bin/update-pacman): update pacman - for Arch Linux.
+ * [`update-pip`](bin/update-pip): update Python PIP.
+ * [`update-pod`](bin/update-pod): update Cocoapods for macOS
+ * [`update-podfile`](bin/update-podfile): update Cocoapods packages for macOS by using a Podfile
+ * [`update-repos`](bin/update-repos): update Git repositories - customize this for your system.
+ * [`update-rustup`](bin/update-rustup): update Rust programming language tooling.
+ * [`update-swift`](bin/update-swift): update macOS Swift language - this merely prints advice.
+ * [`update-ubuntu-release`](bin/update-ubuntu-release): update Ubuntu release - for major system upgrades.
+ * [`update-yay`](bin/update-yay): update Yay package manager - for Arch Linux
+
+We welcome additions to these scripts.
+
+
 ## Configuration
 
-Create a config directory:
+The command looks for a config directory a typical location such as:
 
-    $ mkdir -p ~/.config/updatecommand
+    ~/.config/update
 
-The config home is set by XDG_CONFIG_HOME.
-
-For intermediate users:
-
-  * You may freely add or remove any of the scripts.
-
-  * You may freely edit any of the scripts to match your security preferences.
+To use a different directory, set your system XDG_CONFIG_HOME.
 
 
 ### Run your own scripts first and last
@@ -57,46 +93,29 @@ Create this directory and put your scripts in it:
 
 For advanced users:
 
-  * The program runs all user-executable files, and skips all non-user-executable files.
+  * You can use as many files and subdirectories as you like.
+
+  * The program runs the user-executable files, and skips the non-user-executable files.
+
+
+### Source code management directories
+
+You can configure the source code management directories to update.
+
+Git:
+
+    ~/.config/update/update-git-pull/directories.txt
+
+Mercurial:
+
+    ~/.config/update/update-hg-pull/directories.txt
+
+For advanced users:
 
   * You can use as many files and subdirectories as you like.
 
+  * The program updates the existing directories, and skips the non-existing directories.
 
-## What's included
-
-This project has Unix update scripts for many tools,
-systems, package managers, language modules, et. al.
-
- * `update`: run all the udpate scripts.
- * `update-apm`: update Atom Package Manager - for the GitHub Atom editor.
- * `update-apt`: update apt-get - for Debian, Ubuntu, etc.
- * `update-brew`: update Homebrew packages - for macOS.
- * `update-brewfile`: update brew packages for macOS by using a Brewfile
- * `update-brew-cask`: update Homebrew Cask packages - for macOS apps.
- * `update-cabal`: update Haskell Cabal pacakages.
- * `update-cargo`: update Rust cargo package manager.
- * `update-cargo-toml`: update Rust cargo package manager Cargo.toml file.
- * `update-carthage`: udpate Xcode Carthage pacakges - for macOS.
- * `update-dnf`: update DNF - for Fedora Linux.
- * `update-hg-pull`: update mercurial repositories.
- * `update-gem`: update Ruby gems.
- * `update-git-pull`: update git repositories.
- * `update-gemfile`: update gem packages for Ruby by using a Gemfile.
- * `update-mas`: update mas packages by using the Mac App Store.
- * `update-motion`: update Ruby Motion - needs a valid paid license.
- * `update-npm`: update Node Package Manager.
- * `update-macos`: update the macOS Mac operating system - large downloads.
- * `update-pacman`: update pacman - for Arch Linux.
- * `update-pip`: update Python PIP.
- * `update-pod`: update Cocoapods for macOS
- * `update-podfile`: update Cocoapods packages for macOS by using a Podfile
- * `update-repos`: update Git repositories - customize this for your system.
- * `update-rustup`: update Rust programming language tooling.
- * `update-swift`: update macOS Swift language - this merely prints advice.
- * `update-ubuntu-release`: update Ubuntu release - for major Linux system upgrades.
- * `update-yay`: update Yay package manager - for Arch Linux
-
-We welcome additions to these scripts.
 
 
 ## To run daily
@@ -132,7 +151,7 @@ The config directory uses the `XDG_CONFIG_HOME` environment variable, which is a
 ## Tracking
 
   * Package: UpdateCommand
-  * Version: 5.1.0
+  * Version: 5.2.0
   * Created: 2005-07-05
   * Updated: 2018-06-22
   * License: GPL

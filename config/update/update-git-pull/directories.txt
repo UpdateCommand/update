@@ -1,0 +1,5 @@
+~/.emacs.d
+~/.zshrc
+~/.oh-my-zsh
+~/.tmux
+~/.config/fish/config.fish
