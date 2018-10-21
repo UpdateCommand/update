@@ -93,7 +93,7 @@ now() { date -u "+%Y-%m-%dT%H:%M:%S.%NZ" ; };
 sec() { date "+%s" ; };
 zid() { hexdump -n 16 -v -e '16/1 "%02x" "\n"' /dev/random ; };
 cmd() { command -v $1 >/dev/null 2>&1 ; };
-exe() { [ -d "$1" ] && find "$1" -type f \( -perm -u=x -o -perm -g=x -o -perm -o=x \) -exec test -x {}; \; -exec {} \; ; }
+exe() { [ -d "$1" ] && find "$1" -type f \( -perm -u=x -o -perm -g=x -o -perm -o=x \) -exec test -x {} \; -exec {} \; ; }
 
 ## Home helpers
 log_home() { out "${LOG_HOME:=$HOME/.log}" ; }; export -f log_home;
