@@ -159,8 +159,8 @@ Then install the file:
 ## Tracking
 
   * Package: UpdateCommand
-  * Version: 5.3.0
+  * Version: 5.4.0
   * Created: 2005-07-05
-  * Updated: 2018-06-22
+  * Updated: 2019-01-04T02:14:08Z
   * License: GPL
   * Contact: Joel Parker Henderson (joel@joelparkerhenderson.com)
