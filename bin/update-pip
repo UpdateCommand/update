@@ -1,11 +1,8 @@
 # pip: Python package installer
-if command -v pip >/dev/null 2>&1; then
-  pip install --upgrade pip
-  pip install --upgrade setuptools
-  pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U
-fi
-if command -v pip3 >/dev/null 2>&1; then
-  pip3 install --upgrade pip3
-  pip3 install --upgrade setuptools3
-  pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip3 install -U
-fi
+for pip in "pip" "pip2" "pip3"; do
+  if command -v "$pip" >/dev/null 2>&1; then
+    $pip install --upgrade $pip
+    $pip install --upgrade setuptools
+    $pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 $pip install -U
+  fi
+done
