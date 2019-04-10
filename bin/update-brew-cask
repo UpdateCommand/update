@@ -1,4 +1,4 @@
-# Homebrew Cask for OSX
+# Homebrew Cask for macOS
 
 if command -v brew >/dev/null 2>&1; then
   brew cask cleanup
