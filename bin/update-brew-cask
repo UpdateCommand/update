@@ -1,4 +1,18 @@
+##
 # Homebrew Cask for macOS
+#
+# We try to do the upgrade the official way.
+#
+# As of 2019-04-10, this way will stop as soon
+# as any cask upgrade fails; this does not do any
+# of the remaining casks are never upgraded.
+#
+# This is not ideal behavior because it means
+# brew gets "stuck" forever on any broken cask.
+#
+# We have a workaround in the file:
+# `update-brew-cask-outdated-greedy`.
+##
 
 if command -v brew >/dev/null 2>&1; then
   brew cask upgrade

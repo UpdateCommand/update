@@ -154,6 +154,7 @@ update-macos || :
 update-apt || :
 update-brew || :
 update-brew-cask || :
+update-brew-cask-outdated-greedy || :
 update-brewfile || :
 update-dnf || :
 update-mas || :

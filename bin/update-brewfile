@@ -1,14 +1,11 @@
 # Brewfile via the `brew` package manager
 if command -v brew >/dev/null 2>&1; then
   if [[ `whoami` != "root" ]]; then
-    name="Brewfile"
-    dir="${XDG_CONFIG_HOME:-$HOME/.config}/$name"
-    if [ -r "$dir" -a -r "$dir/$name" ]; then
-      brew cleanup
+    dir="${XDG_CONFIG_HOME:-$HOME/.config}/brew"
+    if [ -r "$dir" -a -r "$dir/Brewfile" ]; then
+      ( cd "$dir"; brew bundle install )
       brew update
       brew upgrade
-      ( cd "$dir"; brew bundle install )
-      brew prune
       brew cleanup
     fi
   fi
