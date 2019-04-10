@@ -1,12 +1,7 @@
 # Gemfile by using the `gem` package manager
 if command -v gem >/dev/null 2>&1; then
-  name="Gemfile"
-  dir="${XDG_CONFIG_HOME:-$HOME/.config}/$name"
-  if [ -r "$dir" -a -r "$dir/$name" ]; then
-    gem cleanup
-    gem update --system
-    gem update
+  dir="${XDG_CONFIG_HOME:-$HOME/.config}/gem"
+  if [ -r "$dir" -a -r "$dir/Gemfile" ]; then
     (cd "$dir"; bundle install )
-    gem cleanup
   fi
 fi
