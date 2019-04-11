@@ -1,0 +1,17 @@
+##
+# Homebrew Cask for macOS
+#
+# Try to do the upgrade the ad hoc way.
+#
+# As of 2019-04-10, this way is the best known simple
+# way to figure out which casks are outdated then upgrade
+# each one, one by one, and continuing even if any cask fails.
+##
+
+if command -v brew >/dev/null 2>&1; then
+  brew cask outdated |
+  while read x; do
+    brew cask reinstall --force "$x"
+  done
+  brew cask cleanup
+fi

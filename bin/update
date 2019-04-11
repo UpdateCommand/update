@@ -60,17 +60,17 @@ Heuristics for ordering:
 
   1. Run all user scripts in <config>/run/start
 
-  2. Update OS e.g. Ubuntu `do-release-upgrade`, macOS `softwareupdate`.
+  2. Update OS e.g. Ubuntu \`do-release-upgrade\`, macOS \`softwareupdate\`.
 
-  3. Update system packages e.g. Debian `apt`, RedHat `yum`, macOS `brew`.
+  3. Update system packages e.g. Debian \`apt\`, RedHat \`yum\`, macOS \`brew\`.
 
   4. Update shells e.g. Z Shell.
 
   5. Update languages e.g. Rust.
 
-  6. Update tool packages: e.g. Node `npm`, Python`pip`, Ruby `gem`.
+  6. Update tool packages: e.g. Node \`npm\`, Python \`pip\`, Ruby \`gem\`.
 
-  7. Update repositories: `/opt`, `~/git`, etc.
+  7. Update repositories: \`/opt\`, \`~/git\`, etc.
 
   2. Run all user scripts in ~/.config/updatecommand/run/finish
 
@@ -154,6 +154,7 @@ update-macos || :
 update-apt || :
 update-brew || :
 update-brew-cask || :
+update-brew-cask-outdated || :
 update-brew-cask-outdated-greedy || :
 update-brewfile || :
 update-dnf || :
