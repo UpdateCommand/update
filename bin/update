@@ -5,7 +5,7 @@ set -euf
 
 program_command="update"
 program_version="5.5.0"
-program_updated="2019-04-11T17:59:00Z""
+program_updated="2019-04-11T17:59:00Z"
 program_license="GPL"
 program_contact="Joel Parker Henderson (joel@joelparkerhenderson.com)"
 
