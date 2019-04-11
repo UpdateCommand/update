@@ -4,8 +4,8 @@ set -euf
 ## Program Tracking
 
 program_command="update"
-program_version="5.4.0"
-program_updated="2019-01-04T02:14:08Z"
+program_version="5.5.0"
+program_updated="2019-04-11T17:59:00Z""
 program_license="GPL"
 program_contact="Joel Parker Henderson (joel@joelparkerhenderson.com)"
 
@@ -144,7 +144,9 @@ if [ "$#" -eq 1 ]; then
 fi
 
 ## Run the user's own scripts
-exe "$(config_home)/update/update-run-first"
+if [ -r "$(config_home)/update/update-run-last" ]; then
+   exe "$(config_home)/update/update-run-first"
+fi
 
 ## Update operating system
 update-ubuntu-release || :
@@ -188,4 +190,6 @@ update-git-pull || :
 update-repos || :
 
 ## Run the user's own scripts
-exe "$(config_dir)/update-run-last"
+if [ -r "$(config_home)/update/update-run-last" ]; then
+   exe "$(config_dir)/update-run-last"
+fi
