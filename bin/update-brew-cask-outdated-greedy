@@ -16,9 +16,11 @@
 ##
 
 if command -v brew >/dev/null 2>&1; then
-  brew cask outdated --greedy |
-  while read x; do
-    brew cask reinstall --force "$x"
-  done
-  brew cask cleanup
+  if [[ `whoami` != "root" ]]; then
+    brew cask outdated --greedy |
+    while read x; do
+      brew cask reinstall --force "$x"
+    done
+    brew cask cleanup
+  fi
 fi
