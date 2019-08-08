@@ -4,8 +4,8 @@ set -euf
 ## Program Tracking
 
 program_command="update"
-program_version="5.5.0"
-program_updated="2019-04-11T17:59:00Z"
+program_version="6.0.0"
+program_updated="2019-08-08T23:22:46Z"
 program_license="GPL"
 program_contact="Joel Parker Henderson (joel@joelparkerhenderson.com)"
 
@@ -93,7 +93,8 @@ now() { date -u "+%Y-%m-%dT%H:%M:%S.%NZ" ; };
 sec() { date "+%s" ; };
 zid() { hexdump -n 16 -v -e '16/1 "%02x" "\n"' /dev/random ; };
 cmd() { command -v $1 >/dev/null 2>&1 ; };
-exe() { [ -d "$1" ] && find "$1" -type f \( -perm -u=x -o -perm -g=x -o -perm -o=x \) -exec test -x {} \; -exec {} \; ; }
+dot_all() { find "${1:-}" -type f \( -perm -u=x -o -perm -g=x -o -perm -o=x \) -exec test -x {} \; -exec . {} \; ; }
+run_all() { find "${1:-}" -type f \( -perm -u=x -o -perm -g=x -o -perm -o=x \) -exec test -x {} \; -exec {} \; ; }
 
 ## Home helpers
 log_home() { out "${LOG_HOME:=$HOME/.log}" ; }; export -f log_home;
@@ -144,9 +145,7 @@ if [ "$#" -eq 1 ]; then
 fi
 
 ## Run the user's own scripts
-if [ -r "$(config_home)/update/update-run-last" ]; then
-   exe "$(config_home)/update/update-run-first"
-fi
+x="$(config_home)/update/update-first" && [ -d "$x" ] && dot_all "$x"
 
 ## Update operating system
 update-ubuntu-release || :
@@ -190,6 +189,4 @@ update-git-pull || :
 update-repos || :
 
 ## Run the user's own scripts
-if [ -r "$(config_home)/update/update-run-last" ]; then
-   exe "$(config_dir)/update-run-last"
-fi
+x="$(config_home)/update/update-last" && [ -d "$x" ] && dot_all "$x"
