@@ -13,11 +13,16 @@
 # Some typical examples of these are IntelliJ, WebStorm, RubyMine.
 # We use the `--greedy` flag because we prefer doing all updates
 # via brew rather than relying on each app's auto-update process.
+#
+# Note that we exclude any cask that says "(latest)", because this
+# indicates that the brew thinks the version is already the latest.
 ##
 
 if command -v brew >/dev/null 2>&1; then
   if [[ `whoami` != "root" ]]; then
-    brew cask outdated --greedy |
+    brew cask outdated --greedy --verbose |
+    grep -v '(latest)' |
+    awk '{print $1}' |
     while read x; do
       brew cask reinstall --force "$x"
     done
