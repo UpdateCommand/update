@@ -17,6 +17,6 @@ if command -v brew >/dev/null 2>&1; then
     while read x; do
       brew cask reinstall --force "$x"
     done
-    brew cask cleanup
+    brew cleanup
   fi
 fi
