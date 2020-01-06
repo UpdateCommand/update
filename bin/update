@@ -97,12 +97,12 @@ dot_all() { find "${1:-}" -type f \( -perm -u=x -o -perm -g=x -o -perm -o=x \) -
 run_all() { find "${1:-}" -type f \( -perm -u=x -o -perm -g=x -o -perm -o=x \) -exec test -x {} \; -exec {} \; ; }
 
 ## Home helpers
-log_home() { out "${LOG_HOME:=$HOME/.log}" ; }; export -f log_home;
-data_home() { out "${XDG_DATA_HOME:=$HOME/.local/share}" ; }; export -f data_home;
-cache_home() { out "${XDG_CACHE_HOME:=$HOME/.cache}" ; }; export -f cache_home;
-config_home() { out "${XDG_CONFIG_HOME:-$HOME/.config}" ; }; export -f config_home;
-runtime_home() { out "${XDG_RUNTIME_HOME:=$HOME/.runtime}" ; }; export -f runtime_home;
-temp_home() { out $(mktemp -d -t "${1:-$(zid)}"); }; export -f temp_home;
+log_home() { out "${LOG_HOME:=$HOME/.log}" ; };
+data_home() { out "${XDG_DATA_HOME:=$HOME/.local/share}" ; };
+cache_home() { out "${XDG_CACHE_HOME:=$HOME/.cache}" ; };
+config_home() { out "${XDG_CONFIG_HOME:-$HOME/.config}" ; };
+runtime_home() { out "${XDG_RUNTIME_HOME:=$HOME/.runtime}" ; };
+temp_home() { out $(mktemp -d -t "${1:-$(zid)}"); };
 
 ## Directory helpers
 log_dir() { out $(log_home) "/$program_command" ; };
