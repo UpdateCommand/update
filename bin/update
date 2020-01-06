@@ -4,8 +4,8 @@ set -euf
 ## Program Tracking
 
 program_command="update"
-program_version="6.0.0"
-program_updated="2019-08-08T23:22:46Z"
+program_version="6.0.1"
+program_updated="2020-01-06T18:23:14Z"
 program_license="GPL"
 program_contact="Joel Parker Henderson (joel@joelparkerhenderson.com)"
 
@@ -110,7 +110,7 @@ data_dir() { out $(data_home) "/$program_command" ; };
 cache_dir() { out $(cache_home) "/$program_command" ; };
 config_dir() { out $(config_home) "/$program_command" ; };
 runtime_dir() { out $(runtime_home) "/$program_command" ; };
-temp_dir() { out $(temp_home "$program_command"); };
+temp_dir() { out $(temp_home) "/$program_command" ; };
 
 ## Options
 if [ "$#" -eq 1 ]; then
@@ -148,45 +148,45 @@ fi
 x="$(config_home)/update/update-first" && [ -d "$x" ] && dot_all "$x"
 
 ## Update operating system
-update-ubuntu-release || :
-update-macos || :
+. update-ubuntu-release || :
+. update-macos || :
 
 ## Update system packages
-update-apt || :
-update-brew || :
-update-brew-cask || :
-update-brew-cask-outdated || :
-update-brew-cask-outdated-greedy || :
-update-brewfile || :
-update-dnf || :
-update-mas || :
-update-pacman || :
-update-pkg || :
-update-yay || :
-update-yum || :
+. update-apt || :
+. update-brew || :
+. update-brew-cask || :
+. update-brew-cask-outdated || :
+. update-brew-cask-outdated-greedy || :
+. update-brewfile || :
+. update-dnf || :
+. update-mas || :
+. update-pacman || :
+. update-pkg || :
+. update-yay || :
+. update-yum || :
 
 # Update shells
-update-oh-my-zsh || :
+. update-oh-my-zsh || :
 
 # Update languages
-update-rustup || :
+. update-rustup || :
 
 # Update tool packages
-update-apm || :
-update-cargo || :
-update-gem || :
-update-gemfile || :
-update-pip || :
-update-pod || :
-update-podfile || :
-update-npm || :
-update-cabal || :
-update-motion || :
+. update-apm || :
+. update-cargo || :
+. update-gem || :
+. update-gemfile || :
+. update-pip || :
+. update-pod || :
+. update-podfile || :
+. update-npm || :
+. update-cabal || :
+. update-motion || :
 
 # Update repositories
-update-hg-pull || :
-update-git-pull || :
-update-repos || :
+. update-hg-pull || :
+. update-git-pull || :
+. update-repos || :
 
 ## Run the user's own scripts
 x="$(config_home)/update/update-last" && [ -d "$x" ] && dot_all "$x"
