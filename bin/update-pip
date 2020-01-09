@@ -1,5 +1,5 @@
 # pip: Python package installer
-for pip in "pip" "pip2" "pip3"; do
+for pip in "pip" "pip3"; do
   if command -v "$pip" >/dev/null 2>&1; then
     $pip install --upgrade $pip
     $pip install --upgrade setuptools
