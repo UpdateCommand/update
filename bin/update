@@ -176,6 +176,7 @@ x="$(config_home)/update/update-first" && [ -d "$x" ] && dot_all "$x"
 . update-cargo || :
 . update-gem || :
 . update-gemfile || :
+. update-mix || :
 . update-pip || :
 . update-pod || :
 . update-podfile || :
