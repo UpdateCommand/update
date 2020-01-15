@@ -1,8 +1,9 @@
 # pip: Python package installer
 for pip in "pip" "pip3"; do
   if command -v "$pip" >/dev/null 2>&1; then
+    $pip install --upgrade pip
     $pip install --upgrade $pip
     $pip install --upgrade setuptools
-    $pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 $pip install -U
+    $pip freeze --local | sed -n 's/==.*//p' | xargs -n1 $pip install --upgrade
   fi
 done
