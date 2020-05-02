@@ -51,6 +51,10 @@
 #
 #     sudo apt-get install systemd-sysv
 # 
+# We return true, no matter what, because the do-release-upgrade
+# command returns 1 if there's no upgrade needed, which would quit.
+# TODO: handle this so it continues if there's no upgrade needed.
+#
 if command -v do-release-upgrade >/dev/null 2>&1; then
-  sudo do-release-upgrade
+  sudo do-release-upgrade || true
 fi
