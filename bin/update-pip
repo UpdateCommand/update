@@ -4,6 +4,6 @@ for pip in "pip" "pip3"; do
     $pip install --upgrade pip
     $pip install --upgrade $pip
     $pip install --upgrade setuptools
-    $pip freeze --local | sed -n 's/==.*//p' | xargs -n1 $pip install --upgrade
+    $pip freeze --local | sed -n 's/==.*//p' | xargs -n1 -I{} $pip install --upgrade "{}"
   fi
 done
