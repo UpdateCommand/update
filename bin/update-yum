@@ -1,7 +1,7 @@
-# Yum package manager for RedHat Linux, CentOS Linux, etc.
+# Yum package manager for RedHat Linux, Fedora Linux, CentOS Linux, etc.
 #
 if command -v yum >/dev/null 2>&1; then
-  sudo yum --assumeyes clean
-  sudo yum --assumeyes --obsolete update
-  sudo yum --assumeyes clean
+  sudo yum --assume yes clean
+  sudo yum --assume yes --obsolete update
+  sudo yum --assume yes clean
 fi
