@@ -1,5 +1,7 @@
 # DNF package manager for Fedora Linux.
 #
 if command -v dnf >/dev/null 2>&1; then
+  sudo dnf autoremove
   sudo dnf upgrade
+  sudo dnf autoremove
 fi
