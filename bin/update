@@ -4,8 +4,8 @@ set -euf
 ## Program Tracking
 
 program_command="update"
-program_version="6.0.1"
-program_updated="2020-01-06T18:23:14Z"
+program_version="6.1.0"
+program_updated="2020-06-18T00:17:58Z"
 program_license="GPL"
 program_contact="Joel Parker Henderson (joel@joelparkerhenderson.com)"
 
@@ -188,6 +188,9 @@ x="$(config_home)/update/update-first" && [ -d "$x" ] && dot_all "$x"
 . update-hg-pull || :
 . update-git-pull || :
 . update-repos || :
+
+# Update projects
+. update-rustup-cargo-test-build-release || :
 
 ## Run the user's own scripts
 x="$(config_home)/update/update-last" && [ -d "$x" ] && dot_all "$x"

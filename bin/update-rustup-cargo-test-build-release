@@ -1,0 +1,5 @@
+update-rustup
+update-cargo
+if command -v cargo >/dev/null 2>&1; then
+  test -e Cargo.toml && cargo test && cargo build --release
+fi

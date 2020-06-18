@@ -60,6 +60,7 @@ systems, package managers, language modules, et. al.
  * [`update-podfile`](bin/update-podfile): update Cocoapods packages for macOS by using a Podfile
  * [`update-repos`](bin/update-repos): update Git repositories - customize this for your system.
  * [`update-rustup`](bin/update-rustup): update Rust programming language tooling.
+ * [`update-rustup-cargo-test-build-release`](bin/update-rustup-rustup-cargo-test-build-release): update Rust project for release.
  * [`update-run-first`](bin/update-run-first): run custom scripts first, before other commands.
  * [`update-run-last`](bin/update-run-last): run custom scripts last, after other commands.
  * [`update-swift`](bin/update-swift): update macOS Swift language - this merely prints advice.
@@ -159,8 +160,8 @@ Then install the file:
 ## Tracking
 
   * Package: UpdateCommand
-  * Version: 5.4.0
+  * Version: 6.1.0
   * Created: 2005-07-05
-  * Updated: 2019-01-04T02:14:08Z
+  * Updated: 2020-06-18T00:17:58Z
   * License: GPL
   * Contact: Joel Parker Henderson (joel@joelparkerhenderson.com)
