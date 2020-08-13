@@ -1,0 +1,5 @@
+# asdf-vm: manage multiple runtime versions with a single CLI tool
+if command -v asdf >/dev/null 2>&1; then
+  asdf update
+  asdf plugin update --all
+fi

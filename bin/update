@@ -4,7 +4,7 @@ set -euf
 ## Program Tracking
 
 program_command="update"
-program_version="6.1.0"
+program_version="6.2.0"
 program_updated="2020-06-18T00:17:58Z"
 program_license="GPL"
 program_contact="Joel Parker Henderson (joel@joelparkerhenderson.com)"
@@ -165,14 +165,15 @@ x="$(config_home)/update/update-first" && [ -d "$x" ] && dot_all "$x"
 . update-yay || :
 . update-yum || :
 
-# Update shells
+# Update system shells
 . update-oh-my-zsh || :
 
-# Update languages
+# Update system languages
 . update-rustup || :
 
 # Update tool packages
 . update-apm || :
+. update-asdf || :
 . update-cargo || :
 . update-gem || :
 . update-gemfile || :
