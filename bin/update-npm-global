@@ -1,0 +1,14 @@
+# NPM: Node Package Manager
+if command -v npm >/dev/null 2>&1; then
+  npm install -g npm
+  npm update -g
+  # Via local
+  npm install npm
+  npm update
+  # Via manager
+  if command -v n >/dev/null 2>&1; then
+    n stable
+    npm update -g
+    npm update
+  fi
+fi

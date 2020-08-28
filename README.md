@@ -53,7 +53,9 @@ systems, package managers, language modules, et. al.
  * [`update-gemfile`](bin/update-gemfile): update gem packages for Ruby by using a Gemfile.
  * [`update-mas`](bin/update-mas): update mas packages by using the Mac App Store.
  * [`update-motion`](bin/update-motion): update Ruby Motion - needs a valid paid license.
- * [`update-npm`](bin/update-npm): update Node Package Manager.
+ * [`update-npm-global`](bin/update-npm-global): update Node Package Manager via global settings.
+ * [`update-npm-local`](bin/update-npm-global): update Node Package Manager via local settings.
+ * [`update-npm-n-stable`](bin/update-npm-global): update Node Package Manager via `n` environment manager.
  * [`update-macos`](bin/update-macos): update the macOS Mac operating system - large downloads.
  * [`update-pacman`](bin/update-pacman): update pacman - for Arch Linux.
  * [`update-pip`](bin/update-pip): update Python PIP.
