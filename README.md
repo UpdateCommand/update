@@ -38,6 +38,7 @@ systems, package managers, language modules, et. al.
  * [`update`](bin/update): run all the udpate scripts.
  * [`update-apm`](bin/update-apm): update Atom Package Manager - for the GitHub Atom editor.
  * [`update-apt`](bin/update-apt): update apt-get - for Debian, Ubuntu, etc.
+ * [`update-asdf`](bin/update-apm): update asdf - for managing multiple runtimes and languages.
  * [`update-brew`](bin/update-brew): update Homebrew packages - for macOS.
  * [`update-brewfile`](bin/update-brewfile): update brew packages for macOS by using a Brewfile
  * [`update-brew-cask`](bin/update-brew-cask): update Homebrew Cask packages - for macOS apps.
