@@ -12,8 +12,40 @@
 #
 if command -v brew >/dev/null 2>&1; then
   if [[ `whoami` != "root" ]]; then
+    # Step 1: Update the brew knowledgebase
     brew update
+
+    # Step 2: Upgrade all the normal applications (i.e. not casks).
     brew upgrade
+
+    # Step 3: Upgrade all the cask applications.
+    brew upgrade --cask
+
+    # Step 4: as of 2019-04-10, this way is the best known simple
+    # way to figure out which casks are stil outdated, then upgrade
+    # each one, one by one, and continuing even if any cask fails.
+    brew outdated --cask |
+    while read x; do
+      brew reinstall --force "$x"
+    done
+
+    # Step 5: as of 2019-04-10, this way is the best known simple
+    # way to figure out which casks are outdated then upgrade,
+    # including using the `--greedy` flag, which means we update
+    # an app even when brew knows that the app does auto-updates.
+    # We use the `--greedy` flag because we prefer doing all updates
+    # via brew rather than relying on each app's auto-update process.
+    # Some typical examples of these apps are Firefox and IntelliJ.
+    # We exclude any cask that says "(latest)", because this
+    # indicates that the brew thinks the version is already the latest.
+    brew outdated --cask --greedy --verbose |
+    grep -v '(latest)' |
+    awk '{print $1}' |
+    while read x; do
+      brew reinstall --force "$x"
+    done
+
+    # Step 6: cleanup
     brew cleanup
   fi
 fi
