@@ -154,9 +154,6 @@ x="$(config_home)/update/update-first" && [ -d "$x" ] && dot_all "$x"
 ## Update system packages
 . update-apt || :
 . update-brew || :
-. update-brew-cask || :
-. update-brew-cask-outdated || :
-. update-brew-cask-outdated-greedy || :
 . update-brewfile || :
 . update-dnf || :
 . update-mas || :
