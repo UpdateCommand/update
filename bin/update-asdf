@@ -1,5 +1,17 @@
 # asdf-vm: manage multiple runtime versions with a single CLI tool
 if command -v asdf >/dev/null 2>&1; then
-  asdf update
+  # asdf has multiple ways that may be able to do updates,
+  # and has internal logic to test the ways, and deny some ways.
+  #
+  # For example if asdf is installed on macOS via brew via a `brew`
+  # dedicated user, and then later the user tries to run `asdf update`, 
+  # then asdf prints `Update command disabled. Please use the package 
+  # manager that you used to install asdf to upgrade asdf.`
+  #
+  # Our workaround is to test whether the ASDF_DIR is set.
+  # TODO: research if there's a better way to do this.
+  if [ -n "${ASDF_DIR+1}" ]; then
+    asdf update
+  fi
   asdf plugin update --all
 fi
