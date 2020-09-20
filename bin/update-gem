@@ -1,9 +1,12 @@
 # gem: Ruby package manager
 if command -v gem >/dev/null 2>&1; then
-  gem cleanup
-  gem install rubygems-update
-  update_rubygems
-  gem update --system
-  yes | gem update
-  gem cleanup
+  dir=$(gem environment | sed -n 's/ * - INSTALLATION DIRECTORY: //p')
+  if [ -w "$dir" ]; then
+    gem cleanup
+    gem install rubygems-update
+    update_rubygems
+    gem update --system
+    yes | gem update
+    gem cleanup
+  fi
 fi
