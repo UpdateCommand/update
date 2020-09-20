@@ -26,7 +26,7 @@ if command -v brew >/dev/null 2>&1; then
     # each one, one by one, and continuing even if any cask fails.
     brew outdated --cask |
     while read x; do
-      brew reinstall --force "$x"
+      brew reinstall --force "homebrew/cask/$x"
     done
 
     # Step 5: as of 2019-04-10, this way is the best known simple
@@ -42,7 +42,7 @@ if command -v brew >/dev/null 2>&1; then
     grep -v '(latest)' |
     awk '{print $1}' |
     while read x; do
-      brew reinstall --force "$x"
+      brew reinstall --force "homebrew/cask/$x"
     done
 
     # Step 6: cleanup
