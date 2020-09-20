@@ -187,7 +187,6 @@ x="$(config_home)/update/update-first" && [ -d "$x" ] && dot_all "$x"
 # Update repositories
 . update-hg-pull || :
 . update-git-pull || :
-. update-git-repos || :
 
 # Update projects
 . update-rustup-cargo-test-build-release || :

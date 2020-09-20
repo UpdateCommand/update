@@ -6,7 +6,9 @@ if command -v git >/dev/null 2>&1; then
       for line in $(cat "$config_file"); do
         if [ -d "$config_line" ]; then
           if [ -w "$config_line" ]; then
-            cd "$config_line" && git pull
+            cd "$config_line"
+            git pull
+            git submodule update --init --recursive
           else
             err "err update-git-pull config_dir:$config_dir config_file:$config_file config_line:$config_line"
           fi
