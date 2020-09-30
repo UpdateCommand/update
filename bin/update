@@ -161,6 +161,7 @@ x="$(config_home)/update/update-first" && [ -d "$x" ] && dot_all "$x"
 . update-pkg || :
 . update-yay || :
 . update-yum || :
+. update-zypper || :
 
 # Update system shells
 . update-oh-my-zsh || :
