@@ -160,6 +160,7 @@ x="$(config_home)/update/update-first" && [ -d "$x" ] && dot_all "$x"
 . update-mas || :
 . update-pacman || :
 . update-pkg || :
+. update-pkg-add || :
 . update-yay || :
 . update-yum || :
 . update-zypper || :
