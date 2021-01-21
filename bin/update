@@ -4,10 +4,10 @@ set -euf
 ## Program Tracking
 
 program_command="update"
-program_version="6.2.0"
-program_updated="2020-06-18T00:17:58Z"
-program_license="GPL"
-program_contact="Joel Parker Henderson (joel@joelparkerhenderson.com)"
+program_version="6.3.0"
+program_updated="2021-01-21T07:23:03Z"
+program_license="GPL-2.0-only"
+program_contact="Joel Parker Henderson (https://joelparkerhenderson.com)"
 
 ## Help Function
 
@@ -156,6 +156,7 @@ x="$(config_home)/update/update-first" && [ -d "$x" ] && dot_all "$x"
 . update-brew || :
 . update-brewfile || :
 . update-dnf || :
+. update-freebsd || :
 . update-mas || :
 . update-pacman || :
 . update-pkg || :

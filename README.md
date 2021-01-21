@@ -164,8 +164,8 @@ Then install the file:
 ## Tracking
 
   * Package: UpdateCommand
-  * Version: 6.1.1
+  * Version: 6.3.0
   * Created: 2005-07-05
-  * Updated: 2020-09-20T11:36:20Z
-  * License: GPL
-  * Contact: Joel Parker Henderson (joel@joelparkerhenderson.com)
+  * Updated: 2021-01-21T07:23:03Z
+  * License: GPL-2.0-only
+  * Contact: Joel Parker Henderson (https://joelparkerhenderson.com)

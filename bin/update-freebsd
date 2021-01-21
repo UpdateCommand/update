@@ -1,0 +1,5 @@
+# freebsd-update: FreeBSD system 
+if command -v freebsd-update >/dev/null 2>&1; then
+	freebsd-update fetch
+    freebsd-update install
+fi
