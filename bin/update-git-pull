@@ -5,11 +5,12 @@ if command -v git >/dev/null 2>&1; then
     for config_file in $(find "$config_dir" -type f); do
       for repo_path in $(cat "$config_file" | grep -v "^#"); do
         if [ -d "$repo_path" -a -w "$repo_path" ]; then
-          cd "$config_line"
+          out "update-git-pull repo_path:$repo_path"
+          cd "$repo_path"
           git pull
           git submodule update --init --recursive
         else
-          err "err update-git-pull config_dir:$config_dir config_file:$config_file config_line:$config_line"
+          err "err update-git-pull config_dir:$config_dir config_file:$config_file repo_path:$repo_path"
         fi
       done
     done
