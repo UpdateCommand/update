@@ -1,8 +1,30 @@
 # Brew for macOS
 #
+# Update Homebrew package manager for Apple macOS.
+#
+# This update process has extra handling that in practice
+# tends to fix trouble before it gets too far out of hand.
+#
+# Our general approach is to first try to update via item-by-item,
+# then second to try to update via the typical Homebrew command.
+#
+#
+# ## Troubleshooting unreadable
+#
+# If you get an error like this:
+#
+#     Error: Cask 'foo' is unreadable …
+#
+# Then try deleting the cask like this:
+#
+#     $ rm /usr/local/Caskroom/foo
+#
+#
+# ## Troubleshooting ownership
+#
 # Caution: major macOS upgrades result in /usr/local ownership reverted
 # to root:wheel. We have improved the situation already, but there's one
-# last migration you need to do which requires writing permission of /usr/local.
+# migration you need to do which requires writing permission of /usr/local.
 #
 #     sudo chown "$(whoami)" /usr/local
 #     cd /usr/local
@@ -13,8 +35,9 @@
 if command -v brew >/dev/null 2>&1; then
   if [[ `whoami` != "root" ]]; then
 
-    # Update the brew repos
-    for repo in "$(brew --repo)" "$(brew --repo homebrew/cask)"; do
+    # Update the brew taps one by one via git
+    for tap in $(brew tap); do
+      repo=$(brew --repo "$tap")
       pushd "$repo"
       git clean -dfx
       git reset --hard origin/master
@@ -22,10 +45,10 @@ if command -v brew >/dev/null 2>&1; then
       popd
     done
 
-    # Update the brew knowledgebase
+    # Update the brew knowledgebase via the typical command.
     brew update
 
-    # As of 2019-04-10, these loops below is the best known simple
+    # As of 2019-04-10, these loops below are the best known simple
     # way to figure out which items are stil outdated, then upgrade
     # each one, one by one, and continuing even if any item fails.
 
