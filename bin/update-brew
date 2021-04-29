@@ -12,32 +12,33 @@
 #
 if command -v brew >/dev/null 2>&1; then
   if [[ `whoami` != "root" ]]; then
-    # Step 1: Update the brew knowledgebase
+
+    # Update the brew repos
+    for repo in "$(brew --repo)" "$(brew --repo homebrew/cask)"; do
+      pushd "$repo"
+      git clean -dfx
+      git reset --hard origin/master
+      git pull origin master
+      popd
+    done
+
+    # Update the brew knowledgebase
     brew update
 
-    # Step 2: Upgrade all the normal applications (i.e. not casks).
-    brew upgrade
+    # As of 2019-04-10, these loops below is the best known simple
+    # way to figure out which items are stil outdated, then upgrade
+    # each one, one by one, and continuing even if any item fails.
 
-    # Step 3: Upgrade all the cask applications.
-    brew upgrade --cask
+    brew outdated | 
+    while read x; do
+      brew reinstall --force "homebrew/$x"
+    done
 
-    # Step 4: as of 2019-04-10, this way is the best known simple
-    # way to figure out which casks are stil outdated, then upgrade
-    # each one, one by one, and continuing even if any cask fails.
-    brew outdated --cask |
+    brew outdated --cask | 
     while read x; do
       brew reinstall --force "homebrew/cask/$x"
     done
 
-    # Step 5: as of 2019-04-10, this way is the best known simple
-    # way to figure out which casks are outdated then upgrade,
-    # including using the `--greedy` flag, which means we update
-    # an app even when brew knows that the app does auto-updates.
-    # We use the `--greedy` flag because we prefer doing all updates
-    # via brew rather than relying on each app's auto-update process.
-    # Some typical examples of these apps are Firefox and IntelliJ.
-    # We exclude any cask that says "(latest)", because this
-    # indicates that the brew thinks the version is already the latest.
     brew outdated --cask --greedy --verbose |
     grep -v '(latest)' |
     awk '{print $1}' |
@@ -45,7 +46,19 @@ if command -v brew >/dev/null 2>&1; then
       brew reinstall --force "homebrew/cask/$x"
     done
 
-    # Step 6: cleanup
+    # Upgrade all the normal applications.
+    brew upgrade
+
+    # Upgrade all the normal applications, plus use greedy flag.
+    brew upgrade --greedy
+
+    # Upgrade all the cask applications.
+    brew upgrade --cask
+
+    # Upgrade all the cask applications, plus use greedy flag.
+    brew upgrade --cask --greedy
+
+    # Cleanup
     brew cleanup
   fi
 fi
