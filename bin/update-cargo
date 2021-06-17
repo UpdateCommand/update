@@ -1,14 +1,19 @@
 # Rust cargo package manager
 #
-# To use this, first install the cargo-update command:
-#
-#     cargo install cargo-update
-#
 if command -v cargo >/dev/null 2>&1; then
   if cargo check>/dev/null 2>&1; then 
     cargo update
-    if cargo --help | grep -q '^ \+update \+'; then
-      cargo install-update -a
-    fi
   fi
+  # Update installed crates via `cargo-update` crate,
+  # which adds the `install-update` command to cargo.
+  if cargo --help | grep -q '^ \+update \+'; then
+    cargo install-update -a
+  fi
+  # Update installed crates via default cargo tooling,
+  # which works even if `cargo-update` is not available.
+  cargo install --list | 
+  awk '/^\w/ { print $1 }' | 
+  while read x; do 
+    cargo install "$x"
+  done
 fi
