@@ -35,17 +35,17 @@ Run the script:
 This project has Unix update scripts for many tools,
 systems, package managers, language modules, et. al.
 
- * [`update`](bin/update): run all the udpate scripts.
+ * [`update`](bin/update): run all the update scripts.
  * [`update-apm`](bin/update-apm): update Atom Package Manager - for the GitHub Atom editor.
  * [`update-apt`](bin/update-apt): update apt-get - for Debian, Ubuntu, etc.
  * [`update-asdf`](bin/update-apm): update asdf - for managing multiple runtimes and languages.
  * [`update-brew`](bin/update-brew): update Homebrew packages - for macOS.
- * [`update-brewfile`](bin/update-brewfile): update brew packages for macOS by using a Brewfile
+ * [`update-brewfile`](bin/update-brewfile): update brew packages for macOS by using a Brewfile.
  * [`update-brew-cask`](bin/update-brew-cask): update Homebrew Cask packages - for macOS apps.
- * [`update-cabal`](bin/update-cabal): update Haskell Cabal pacakages.
+ * [`update-cabal`](bin/update-cabal): update Haskell Cabal packages.
  * [`update-cargo`](bin/update-cargo): update Rust cargo package manager.
  * [`update-cargo-toml`](bin/update-cargo-toml): update Rust cargo package manager Cargo.toml file.
- * [`update-carthage`](bin/update-carthane): udpate Xcode Carthage pacakges - for macOS.
+ * [`update-carthage`](bin/update-carthane): update Xcode Carthage packages - for macOS.
  * [`update-dnf`](bin/update-dnf): update DNF - for Fedora Linux.
  * [`update-hg-pull`](bin/update-hg-pull): update mercurial repositories.
  * [`update-gem`](bin/update-gem): update Ruby gems.
@@ -59,8 +59,8 @@ systems, package managers, language modules, et. al.
  * [`update-macos`](bin/update-macos): update the macOS Mac operating system - large downloads.
  * [`update-pacman`](bin/update-pacman): update pacman - for Arch Linux.
  * [`update-pip`](bin/update-pip): update Python PIP.
- * [`update-pod`](bin/update-pod): update Cocoapods for macOS
- * [`update-podfile`](bin/update-podfile): update Cocoapods packages for macOS by using a Podfile
+ * [`update-pod`](bin/update-pod): update Cocoapods for macOS.
+ * [`update-podfile`](bin/update-podfile): update Cocoapods packages for macOS by using a Podfile.
  * [`update-repos`](bin/update-repos): update Git repositories - customize this for your system.
  * [`update-rustup`](bin/update-rustup): update Rust programming language tooling.
  * [`update-rustup-cargo-test-build-release`](bin/update-rustup-rustup-cargo-test-build-release): update Rust project for release.
@@ -68,8 +68,8 @@ systems, package managers, language modules, et. al.
  * [`update-run-last`](bin/update-run-last): run custom scripts last, after other commands.
  * [`update-swift`](bin/update-swift): update macOS Swift language - this merely prints advice.
  * [`update-ubuntu-release`](bin/update-ubuntu-release): update Ubuntu release - for major system upgrades.
- * [`update-yay`](bin/update-yay): update Yay package manager - for Arch Linux
- * [`update-zypper`](bin/update-zypper): update Zypper package manager - for openSUSE
+ * [`update-yay`](bin/update-yay): update Yay package manager - for Arch Linux.
+ * [`update-zypper`](bin/update-zypper): update Zypper package manager - for openSUSE.
 
 We welcome additions to these scripts.
 
