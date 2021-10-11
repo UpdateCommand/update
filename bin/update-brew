@@ -35,6 +35,9 @@
 if command -v brew >/dev/null 2>&1; then
   if [[ `whoami` != "root" ]]; then
 
+    # Cleanup in order to make space and mitigate stale formulas
+    brew cleanup
+
     # Update the brew taps one by one via git
     for tap in $(brew tap); do
       repo=$(brew --repo "$tap")
