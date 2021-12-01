@@ -74,17 +74,19 @@ if command -v brew >/dev/null 2>&1; then
 
     # Upgrade all the normal applications.
     brew upgrade
+    brew cleanup
 
     # Upgrade all the normal applications, plus use greedy flag.
     brew upgrade --greedy
+    brew cleanup
 
     # Upgrade all the cask applications.
     brew upgrade --cask
+    brew cleanup
 
     # Upgrade all the cask applications, plus use greedy flag.
     brew upgrade --cask --greedy
-
-    # Cleanup
     brew cleanup
+
   fi
 fi
