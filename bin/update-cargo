@@ -1,19 +1,21 @@
 # Rust cargo package manager
 #
 if command -v cargo >/dev/null 2>&1; then
-  if cargo check>/dev/null 2>&1; then 
-    cargo update
-  fi
-  # Update installed crates via `cargo-update` crate,
-  # which adds the `install-update` command to cargo.
-  if cargo --help | grep -q '^ \+update \+'; then
-    cargo install-update -a
-  fi
-  # Update installed crates via default cargo tooling,
-  # which works even if `cargo-update` is not available.
-  cargo install --list | 
-  awk '/^\w/ { print $1 }' | 
-  while read x; do 
-    cargo install "$x"
-  done
+    if command -v cargo-install-update >/dev/null 2>&1; then
+        cargo install-update -a
+    else
+        # Update installed crates via default cargo tooling,
+        # which works even if `cargo-install-update` is not available.
+        cargo install --list | 
+        awk '/^\w/ { print $1 }' | 
+        while read x; do 
+            cargo install "$x"
+        done
+    fi
+    # Is this command running inside a cargo project?
+    if cargo check>/dev/null 2>&1; then 
+        cargo update
+        cargo build
+        cargo test --no-run
+    fi
 fi

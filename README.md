@@ -44,7 +44,6 @@ systems, package managers, language modules, et. al.
  * [`update-brew-cask`](bin/update-brew-cask): update Homebrew Cask packages - for macOS apps.
  * [`update-cabal`](bin/update-cabal): update Haskell Cabal pacakages.
  * [`update-cargo`](bin/update-cargo): update Rust cargo package manager.
- * [`update-cargo-toml`](bin/update-cargo-toml): update Rust cargo package manager Cargo.toml file.
  * [`update-carthage`](bin/update-carthane): udpate Xcode Carthage pacakges - for macOS.
  * [`update-dnf`](bin/update-dnf): update DNF - for Fedora Linux.
  * [`update-hg-pull`](bin/update-hg-pull): update mercurial repositories.
