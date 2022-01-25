@@ -1,5 +1,8 @@
+#!/bin/sh
+set -euf
+
 # Yay package manager for Arch Linux.
 #
 if command -v yay >/dev/null 2>&1; then
-  sudo yay -Syu
+    sudo yay -Syu
 fi

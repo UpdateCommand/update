@@ -1,13 +1,16 @@
-# git pull for typical directories
+#!/bin/sh
+set -euf
+
+# Mercurial pull for typical directories
 if command -v hg >/dev/null 2>&1; then
-  dir=$(config_home)"/update/update-hg-pull"
-  if [ -d "$dir" ]; then
-    for file in $(find "$dir" -type f); do
-      for line in $(cat "$file"); do
-        if [ -d "$line" ]; then
-          cd "$line" && hg pull -u
-        fi
-      done
-    done
-  fi
+    dir=$(config_home)"/update/update-hg-pull"
+    if [ -d "$dir" ]; then
+        for file in $(find "$dir" -type f); do
+        for line in $(cat "$file"); do
+            if [ -d "$line" ]; then
+            cd "$line" && hg pull -u
+            fi
+        done
+        done
+    fi
 fi

@@ -1,4 +1,7 @@
+#!/bin/sh
+set -euf
+
 # macOS Software Update
 if command -v softwareupdate >/dev/null 2>&1; then
-  softwareupdate --install --all
+    softwareupdate --install --all
 fi

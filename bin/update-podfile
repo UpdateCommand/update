@@ -1,8 +1,11 @@
+#!/bin/sh
+set -euf
+
 # Podfile by using the `pod` package manager
 name="Podfile"
 if command -v pod >/dev/null 2>&1; then
-  dir="${XDG_CONFIG_HOME:-$HOME/.config}/$name"
-  if [ -r "$dir" -a -r "$dir/$name"]; then
-    ( cd "$dir"; pod update )
-  fi
+    dir="${XDG_CONFIG_HOME:-$HOME/.config}/$name"
+    if [ -r "$dir" -a -r "$dir/$name"]; then
+        ( cd "$dir"; pod update )
+    fi
 fi

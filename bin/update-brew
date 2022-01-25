@@ -1,3 +1,6 @@
+#!/bin/sh
+set -euf
+
 # Brew for macOS
 #
 # Update Homebrew package manager for Apple macOS.
@@ -33,60 +36,60 @@
 #     brew update --force
 #
 if command -v brew >/dev/null 2>&1; then
-  if [[ `whoami` != "root" ]]; then
+    if [[ `whoami` != "root" ]]; then
 
-    # Cleanup in order to make space and mitigate stale formulas
-    brew cleanup
+        # Cleanup in order to make space and mitigate stale formulas
+        brew cleanup
 
-    # Update the brew taps one by one via git
-    for tap in $(brew tap); do
-      repo=$(brew --repo "$tap")
-      pushd "$repo"
-      git clean -dfx
-      git reset --hard origin/master
-      git pull origin master
-      popd
-    done
+        # Update the brew taps one by one via git
+        for tap in $(brew tap); do
+        repo=$(brew --repo "$tap")
+        pushd "$repo"
+        git clean -dfx
+        git reset --hard origin/master
+        git pull origin master
+        popd
+        done
 
-    # Update the brew knowledgebase via the typical command.
-    brew update
+        # Update the brew knowledgebase via the typical command.
+        brew update
 
-    # As of 2019-04-10, these loops below are the best known simple
-    # way to figure out which items are stil outdated, then upgrade
-    # each one, one by one, and continuing even if any item fails.
+        # As of 2019-04-10, these loops below are the best known simple
+        # way to figure out which items are stil outdated, then upgrade
+        # each one, one by one, and continuing even if any item fails.
 
-    brew outdated | 
-    while read x; do
-      brew reinstall --force "homebrew/$x"
-    done
+        brew outdated | 
+        while read x; do
+        brew reinstall --force "homebrew/$x"
+        done
 
-    brew outdated --cask | 
-    while read x; do
-      brew reinstall --force "homebrew/cask/$x"
-    done
+        brew outdated --cask | 
+        while read x; do
+        brew reinstall --force "homebrew/cask/$x"
+        done
 
-    brew outdated --cask --greedy --verbose |
-    grep -v '(latest)' |
-    awk '{print $1}' |
-    while read x; do
-      brew reinstall --force "homebrew/cask/$x"
-    done
+        brew outdated --cask --greedy --verbose |
+        grep -v '(latest)' |
+        awk '{print $1}' |
+        while read x; do
+        brew reinstall --force "homebrew/cask/$x"
+        done
 
-    # Upgrade all the normal applications.
-    brew upgrade
-    brew cleanup
+        # Upgrade all the normal applications.
+        brew upgrade
+        brew cleanup
 
-    # Upgrade all the normal applications, plus use greedy flag.
-    brew upgrade --greedy
-    brew cleanup
+        # Upgrade all the normal applications, plus use greedy flag.
+        brew upgrade --greedy
+        brew cleanup
 
-    # Upgrade all the cask applications.
-    brew upgrade --cask
-    brew cleanup
+        # Upgrade all the cask applications.
+        brew upgrade --cask
+        brew cleanup
 
-    # Upgrade all the cask applications, plus use greedy flag.
-    brew upgrade --cask --greedy
-    brew cleanup
+        # Upgrade all the cask applications, plus use greedy flag.
+        brew upgrade --cask --greedy
+        brew cleanup
 
-  fi
+    fi
 fi

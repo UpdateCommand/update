@@ -1,3 +1,6 @@
+#!/bin/sh
+set -euf
+
 # Apt package manager for Debian Linux, Ubuntu Linux, etc.
 #
 # If you want the system to force saying yes, use this setting:
@@ -51,14 +54,14 @@
 #   package conflict.
 #
 if command -v apt-get >/dev/null 2>&1; then
-  sudo apt-get --quiet --yes autoclean
-  sudo apt-get --quiet --yes --purge autoremove
-  sudo apt-get --quiet --yes update
-  sudo apt-get --quiet --yes install update-manager
-  sudo apt-get --quiet --yes install update-manager-core
-  sudo apt-get --quiet --yes upgrade --fix-broken --fix-missing
-  sudo apt-get --quiet --yes dist-upgrade --fix-broken --fix-missing
-  sudo apt-get --quiet --yes full-upgrade --fix-broken --fix-missing
-  sudo apt-get --quiet --yes autoclean
-  sudo apt-get --quiet --yes --purge autoremove
+    sudo apt-get --quiet --yes autoclean
+    sudo apt-get --quiet --yes --purge autoremove
+    sudo apt-get --quiet --yes update
+    sudo apt-get --quiet --yes install update-manager
+    sudo apt-get --quiet --yes install update-manager-core
+    sudo apt-get --quiet --yes upgrade --fix-broken --fix-missing
+    sudo apt-get --quiet --yes dist-upgrade --fix-broken --fix-missing
+    sudo apt-get --quiet --yes full-upgrade --fix-broken --fix-missing
+    sudo apt-get --quiet --yes autoclean
+    sudo apt-get --quiet --yes --purge autoremove
 fi

@@ -1,3 +1,6 @@
+#!/bin/sh
+set -euf
+
 # pip: Python package installer
 for python in "python" "python3"; do
   if command -v "$python" >/dev/null 2>&1; then    

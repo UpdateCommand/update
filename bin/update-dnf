@@ -1,7 +1,9 @@
+#!/bin/sh
+set -euf
+
 # DNF package manager for Fedora Linux.
-#
 if command -v dnf >/dev/null 2>&1; then
-  sudo dnf --assumeyes autoremove
-  sudo dnf --assumeyes upgrade
-  sudo dnf --assumeyes autoremove
+    sudo dnf --assumeyes autoremove
+    sudo dnf --assumeyes upgrade
+    sudo dnf --assumeyes autoremove
 fi

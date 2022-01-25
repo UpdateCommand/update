@@ -1,5 +1,8 @@
+#!/bin/sh
+set -euf
+
 # Mix for Elixir
 if command -v mix >/dev/null 2>&1; then
-  mix local.hex --force
-  mix local.rebar --force
+    mix local.hex --force
+    mix local.rebar --force
 fi
