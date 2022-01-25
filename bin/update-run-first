@@ -1,4 +1,4 @@
 #!/bin/sh
 set -euf
 
-exe $(config_home)"/update/update-run-first"
+exe "$(config_home)""/update/update-run-first"
