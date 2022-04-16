@@ -186,6 +186,7 @@ x="$(config_home)/update/update-first" && [ -d "$x" ] && dot_all "$x"
 . update-npm-n-stable || :
 . update-cabal || :
 . update-motion || :
+. update-yarn || :
 
 # Update repositories
 . update-hg-pull || :

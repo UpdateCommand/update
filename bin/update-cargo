@@ -15,6 +15,7 @@ if command -v cargo >/dev/null 2>&1; then
         done
     fi
     # Is this command running inside a cargo project?
+    # If yes, update the project and its binaries.
     if cargo check>/dev/null 2>&1; then 
         cargo update
         cargo build

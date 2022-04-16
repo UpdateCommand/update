@@ -68,6 +68,7 @@ systems, package managers, language modules, et. al.
  * [`update-swift`](bin/update-swift): update macOS Swift language - this merely prints advice.
  * [`update-ubuntu-release`](bin/update-ubuntu-release): update Ubuntu release - for major system upgrades.
  * [`update-yay`](bin/update-yay): update Yay package manager - for Arch Linux
+ * [`update-yarn`](bin/update-yarn): update Yarn JavaScript packages - for yarn upgrade.
  * [`update-zypper`](bin/update-zypper): update Zypper package manager - for openSUSE
 
 We welcome additions to these scripts.
