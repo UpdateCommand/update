@@ -1,0 +1,8 @@
+#!/bin/sh
+set -euf
+
+# Firefox update for Debian-based systems.
+if command -v firefox >/dev/null 2>&1; then
+	sudo apt-get update
+     sudo apt-get install firefox
+fi
