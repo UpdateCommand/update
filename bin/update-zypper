@@ -3,5 +3,5 @@ set -euf
 
 # Zypper package manager for openSUSE
 if command -v zypper >/dev/null 2>&1; then
-    sudo zypper up
+    $UPDATE zypper up
 fi

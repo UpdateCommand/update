@@ -6,7 +6,7 @@ if command -v brew >/dev/null 2>&1; then
     if [ "$(whoami)" != "root" ]; then
         dir="${XDG_CONFIG_HOME:-$HOME/.config}/brew"
         if [ -r "$dir" ] && [ -r "$dir/Brewfile" ]; then
-        ( cd "$dir"; brew bundle install )
+            ( cd "$dir"; $UPDATE brew bundle install )
         fi
     fi
 fi

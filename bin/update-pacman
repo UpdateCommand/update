@@ -13,11 +13,11 @@ set -euf
 #
 if command -v pacman >/dev/null 2>&1; then
     # Update the package databases for each of the repositories on your system.
-    sudo pacman --sync --refresh
+    $UPDATE pacman --sync --refresh
     # Update the local database of PGP keys used by the package maintainers. 
     # This step is optional, but may prevent problems later on with the upgrade if the database has not been updated for some time.
-    sudo pacman --sync --needed archlinux-keyring
+    $UPDATE pacman --sync --needed archlinux-keyring
     # Upgrade the system packages. 
     # Be sure to note the upgraded packages and any output that requires your attention during the upgrade process.
-    sudo pacman --sync --sysupgrade
+    $UPDATE pacman --sync --sysupgrade
 fi

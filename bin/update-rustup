@@ -3,5 +3,5 @@ set -euf
 
 # Rust programming language update tool
 if command -v rustup >/dev/null 2>&1; then
-    rustup update
+    $UPDATE rustup update
 fi

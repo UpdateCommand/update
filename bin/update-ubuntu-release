@@ -59,5 +59,5 @@ set -euf
 # TODO: handle this so it continues if there's no upgrade needed.
 #
 if command -v do-release-upgrade >/dev/null 2>&1; then
-    sudo do-release-upgrade || true
+    $UPDATE do-release-upgrade || true
 fi

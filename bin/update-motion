@@ -3,6 +3,5 @@ set -euf
 
 # RubyMotion: requires up-to-date license
 if command -v motion >/dev/null 2>&1; then
-    echo "update-motion ..."
-    motion update
+    $UPDATE motion update
 fi

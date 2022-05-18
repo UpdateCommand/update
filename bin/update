@@ -56,6 +56,13 @@ We welcome patches, pull requests, and ideas.
       print the program contact information for the maintainer
 
 
+## Environment Variables
+
+  * UPDATE:
+      use this prefix before every major terminal command,
+      such as "sudo" or "nice" or "sudo nice".
+
+
 Heuristics for ordering:
 
   1. Run all user scripts in <config>/run/start

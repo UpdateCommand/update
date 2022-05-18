@@ -3,6 +3,6 @@ set -euf
 
 # Mix for Elixir
 if command -v mix >/dev/null 2>&1; then
-    mix local.hex --force
-    mix local.rebar --force
+    $UPDATE mix local.hex --force
+    $UPDATE mix local.rebar --force
 fi

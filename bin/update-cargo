@@ -4,22 +4,22 @@ set -euf
 # Rust cargo package manager
 if command -v cargo >/dev/null 2>&1; then
     if command -v cargo-install-update >/dev/null 2>&1; then
-        cargo install-update -a
+        $UPDATE cargo install-update -a
     else
         # Update installed crates via default cargo tooling,
         # which works even if `cargo-install-update` is not available.
         cargo install --list | 
         awk '/^\w/ { print $1 }' | 
         while read x; do 
-            cargo install "$x"
+            $UPDATE cargo install "$x"
         done
     fi
     # Is this command running inside a cargo project?
     # If yes, update the project and its binaries.
     if cargo check>/dev/null 2>&1; then 
-        cargo update --aggressive
-        cargo check --all-targets
-        cargo build --all-targets
-        cargo test --all-targets --no-run
+        $UPDATE cargo update --aggressive
+        $UPDATE cargo check --all-targets
+        $UPDATE cargo build --all-targets
+        $UPDATE cargo test --all-targets --no-run
     fi
 fi

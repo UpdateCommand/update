@@ -3,5 +3,5 @@ set -euf
 
 # APM: Atom Package Manager
 if command -v apm >/dev/null 2>&1; then
-    apm upgrade --no-confirm
+    $UPDATE apm upgrade --no-confirm
 fi

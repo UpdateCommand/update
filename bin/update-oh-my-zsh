@@ -3,5 +3,5 @@ set -euf
 
 # Oh My Zsh
 if command -v upgrade_oh_my_zsh >/dev/null 2>&1; then
-    upgrade_oh_my_zsh
+    $UPDATE upgrade_oh_my_zsh
 fi

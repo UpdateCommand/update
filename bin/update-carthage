@@ -4,7 +4,6 @@ set -euf
 # Carthage: iOS dependency manager
 if command -v carthage >/dev/null 2>&1; then
     if [ -e ./Cartfile ] ; then
-        echo "update-carthage ..."
-        carthage update
+        $UPDATE carthage update
     fi
 fi

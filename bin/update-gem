@@ -5,11 +5,11 @@ set -euf
 if command -v gem >/dev/null 2>&1; then
     dir=$(gem environment | sed -n 's/ * - INSTALLATION DIRECTORY: //p')
     if [ -w "$dir" ]; then
-        gem cleanup
-        gem install rubygems-update
-        update_rubygems
-        gem update --system
-        yes | gem update
-        gem cleanup
+        $UPDATE gem cleanup
+        $UPDATE gem install rubygems-update
+        $UPDATE update_rubygems
+        $UPDATE gem update --system
+        $UPDATE yes | $UPDATE gem update
+        $UPDATE gem cleanup
     fi
 fi

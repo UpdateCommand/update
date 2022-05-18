@@ -3,15 +3,15 @@ set -euf
 
 # NPM: Node Package Manager
 if command -v npm >/dev/null 2>&1; then
-    npm install -g npm
-    npm update -g
+    $UPDATE npm install -g npm
+    $UPDATE npm update -g
     # Via local
-    npm install npm
-    npm update
+    $UPDATE npm install npm
+    $UPDATE npm update
     # Via manager
     if command -v n >/dev/null 2>&1; then
-        n stable
-        npm update -g
-        npm update
+        $UPDATE n stable
+        $UPDATE npm update -g
+        $UPDATE npm update
     fi
 fi

@@ -3,5 +3,5 @@ set -euf
 
 # pkg package manager for FreeBSD
 if command -v pkg >/dev/null 2>&1; then
-  sudo pkg update
+  $UPDATE pkg update
 fi

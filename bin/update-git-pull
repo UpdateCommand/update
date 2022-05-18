@@ -10,9 +10,9 @@ if command -v git >/dev/null 2>&1; then
                 if [ -d "$repo_path" ] && [ -w "$repo_path" ]; then
                     out "update-git-pull repo_path:$repo_path"
                     cd "$repo_path"
-                    git pull
-                    git submodule update --init --recursive
-                    else
+                    $UPDATE git pull
+                    $UPDATE git submodule update --init --recursive
+                else
                     err "err update-git-pull config_dir:$config_dir config_file:$config_file repo_path:$repo_path"
                 fi
             done

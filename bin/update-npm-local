@@ -3,11 +3,11 @@ set -euf
 
 # NPM: Node Package Manager
 if command -v npm >/dev/null 2>&1; then
-    npm install npm
-    npm update
-    npm audit fix
+    $UPDATE npm install npm
+    $UPDATE npm update
+    $UPDATE npm audit fix
 fi
 
 if npm list npm-check-updates >/dev/null 2>&1; then
-    npm exec npm-check-updates --upgrade
+    $UPDATE npm exec npm-check-updates --upgrade
 fi

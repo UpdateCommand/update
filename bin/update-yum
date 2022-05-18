@@ -3,7 +3,7 @@ set -euf
 
 # Yum package manager for RedHat Linux, Fedora Linux, CentOS Linux, etc.
 if command -v yum >/dev/null 2>&1; then
-    sudo yum --assumeyes clean
-    sudo yum --assumeyes --obsolete update
-    sudo yum --assumeyes clean
+    $UPDATE yum --assumeyes clean
+    $UPDATE yum --assumeyes --obsolete update
+    $UPDATE yum --assumeyes clean
 fi
