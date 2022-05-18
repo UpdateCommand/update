@@ -7,7 +7,7 @@ if command -v git >/dev/null 2>&1; then
     if [ -d "$config_dir" ]; then
         for config_file in $(find "$config_dir" -type f); do
             for repo_path in $(cat "$config_file" | grep -v "^#"); do
-                if [ -d "$repo_path" -a -w "$repo_path" ]; then
+                if [ -d "$repo_path" ] && [ -w "$repo_path" ]; then
                     out "update-git-pull repo_path:$repo_path"
                     cd "$repo_path"
                     git pull
