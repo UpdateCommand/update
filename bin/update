@@ -119,22 +119,22 @@ if [ "$#" -eq 1 ]; then
       help; exit 0
       ;;
     -v|--version)
-      out $program_version; exit 0
+      out "$program_version"; exit 0
       ;;
     --program-command)
-      out $program_command; exit 0
+      out "$program_command"; exit 0
       ;;
     --program-version)
-      out $program_version; exit 0
+      out "$program_version"; exit 0
       ;;
     --program-updated)
-      out $program_version; exit 0
+      out "$program_version"; exit 0
       ;;
     --program-license)
-      out $program_license; exit 0
+      out "$program_license"; exit 0
       ;;
     --program-contact)
-      out $program_contact; exit 0
+      out "$program_contact"; exit 0
       ;;
     --*=*)
       key="${1#--}"; key="${key%%=*}";
