@@ -1,0 +1,8 @@
+#!/bin/sh
+set -euf
+${UPDATE:=}
+
+# PNPM: Performant Node Package Manager
+if command -v pnpm >/dev/null 2>&1; then
+    $UPDATE pnpm update --global
+fi

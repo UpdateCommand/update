@@ -192,6 +192,8 @@ x="$(config_home)/update/update-first" && [ -d "$x" ] && dot_all "$x"
 . update-npm-global || :
 . update-npm-local || :
 . update-npm-n-stable || :
+. update-pnpm-global || :
+. update-pnpm-local || :
 . update-cabal || :
 . update-motion || :
 . update-yarn || :
