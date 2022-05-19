@@ -1,5 +1,6 @@
 #!/bin/sh
 set -euf
+${UPDATE:=}
 
 # Podfile by using the `pod` package manager
 name="Podfile"

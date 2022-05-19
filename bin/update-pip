@@ -1,5 +1,6 @@
 #!/bin/sh
 set -euf
+${UPDATE:=}
 
 # pip: Python package installer
 for python in "python" "python3"; do

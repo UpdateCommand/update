@@ -1,5 +1,6 @@
 #!/bin/sh
 set -euf
+${UPDATE:=}
 
 # mas: Mac App Store command line interface
 if command -v mas >/dev/null 2>&1; then

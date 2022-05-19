@@ -1,5 +1,6 @@
 #!/bin/sh
 set -euf
+${UPDATE:=}
 
 # Mix for Elixir
 if command -v mix >/dev/null 2>&1; then

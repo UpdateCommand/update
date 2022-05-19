@@ -1,5 +1,6 @@
 #!/bin/sh
 set -euf
+${UPDATE:=}
 
 # Rust programming language update tool
 if command -v rustup >/dev/null 2>&1; then

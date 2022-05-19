@@ -1,5 +1,6 @@
 #!/bin/sh
 set -euf
+${UPDATE:=}
 
 # Rust cargo package manager
 if command -v cargo >/dev/null 2>&1; then

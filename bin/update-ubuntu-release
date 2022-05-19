@@ -1,5 +1,6 @@
 #!/bin/sh
 set -euf
+${UPDATE:=}
 
 # Upgrade an Ubuntu operating system by running do-release-upgrade.
 #
