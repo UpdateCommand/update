@@ -1,9 +1,8 @@
 #!/bin/sh
 set -euf
-${UPDATE:=}
 
 # Yay package manager for Arch Linux.
 #
 if command -v yay >/dev/null 2>&1; then
-    $UPDATE yay -Syu
+    yay -Syu
 fi

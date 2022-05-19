@@ -1,10 +1,9 @@
 #!/bin/sh
 set -euf
-${UPDATE:=}
 
 # PNPM: Performant Node Package Manager
 if command -v pnpm >/dev/null 2>&1; then
     if [ -r "package.json" ]; then
-        $UPDATE pnpm update
+        pnpm update
     fi
 fi

@@ -1,6 +1,5 @@
 #!/bin/sh
 set -euf
-${UPDATE:=}
 
 # Pod: Cocoapod package manager for macOS
 if command -v pod >/dev/null 2>&1; then

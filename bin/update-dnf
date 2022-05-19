@@ -1,10 +1,9 @@
 #!/bin/sh
 set -euf
-${UPDATE:=}
 
 # DNF package manager for Fedora Linux.
 if command -v dnf >/dev/null 2>&1; then
-    $UPDATE dnf --assumeyes autoremove
-    $UPDATE dnf --assumeyes upgrade
-    $UPDATE dnf --assumeyes autoremove
+    dnf --assumeyes autoremove
+    dnf --assumeyes upgrade
+    dnf --assumeyes autoremove
 fi

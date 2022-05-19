@@ -1,9 +1,8 @@
 #!/bin/sh
 set -euf
-${UPDATE:=}
 
 # freebsd-update: FreeBSD system 
 if command -v freebsd-update >/dev/null 2>&1; then
-	$UPDATE freebsd-update fetch
-    $UPDATE freebsd-update install
+	freebsd-update fetch
+    freebsd-update install
 fi

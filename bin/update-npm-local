@@ -1,14 +1,13 @@
 #!/bin/sh
 set -euf
-${UPDATE:=}
 
 # NPM: Node Package Manager
 if command -v npm >/dev/null 2>&1; then
-    $UPDATE npm install npm
-    $UPDATE npm update
-    $UPDATE npm audit fix
+    npm install npm
+    npm update
+    npm audit fix
 fi
 
 if npm list npm-check-updates >/dev/null 2>&1; then
-    $UPDATE npm exec npm-check-updates --upgrade
+    npm exec npm-check-updates --upgrade
 fi

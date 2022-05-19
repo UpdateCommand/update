@@ -1,5 +1,4 @@
 #!/bin/sh
 set -euf
-${UPDATE:=}
 
 exe "$(config_home)""/update/update-run-last"

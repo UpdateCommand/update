@@ -1,6 +1,5 @@
 #!/bin/sh
 set -euf
-${UPDATE:=}
 
 # Swift progrsmming language
 

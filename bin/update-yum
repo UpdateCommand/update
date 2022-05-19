@@ -1,10 +1,9 @@
 #!/bin/sh
 set -euf
-${UPDATE:=}
 
 # Yum package manager for RedHat Linux, Fedora Linux, CentOS Linux, etc.
 if command -v yum >/dev/null 2>&1; then
-    $UPDATE yum --assumeyes clean
-    $UPDATE yum --assumeyes --obsolete update
-    $UPDATE yum --assumeyes clean
+    yum --assumeyes clean
+    yum --assumeyes --obsolete update
+    yum --assumeyes clean
 fi

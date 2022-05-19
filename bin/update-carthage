@@ -1,10 +1,9 @@
 #!/bin/sh
 set -euf
-${UPDATE:=}
 
 # Carthage: iOS dependency manager
 if command -v carthage >/dev/null 2>&1; then
     if [ -e ./Cartfile ] ; then
-        $UPDATE carthage update
+        carthage update
     fi
 fi

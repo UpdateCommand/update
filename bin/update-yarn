@@ -1,6 +1,5 @@
 #!/bin/sh
 set -euf
-${UPDATE:=}
 
 # Yarn JavaScript package manager
 #
@@ -8,5 +7,5 @@ ${UPDATE:=}
 # in the file 'yarn.lock', or latest version if no range is specified.
 #
 if command -v yarn >/dev/null 2>&1; then
-    $UPDATE yarn upgrade
+    yarn upgrade
 fi

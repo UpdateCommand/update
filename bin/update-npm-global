@@ -1,18 +1,17 @@
 #!/bin/sh
 set -euf
-${UPDATE:=}
 
 # NPM: Node Package Manager
 if command -v npm >/dev/null 2>&1; then
-    $UPDATE npm install -g npm
-    $UPDATE npm update -g
+    npm install -g npm
+    npm update -g
     # Via local
-    $UPDATE npm install npm
-    $UPDATE npm update
+    npm install npm
+    npm update
     # Via manager
     if command -v n >/dev/null 2>&1; then
-        $UPDATE n stable
-        $UPDATE npm update -g
-        $UPDATE npm update
+        n stable
+        npm update -g
+        npm update
     fi
 fi

@@ -1,8 +1,7 @@
 #!/bin/sh
 set -euf
-${UPDATE:=}
 
 # Zypper package manager for openSUSE
 if command -v zypper >/dev/null 2>&1; then
-    $UPDATE zypper up
+    zypper up
 fi

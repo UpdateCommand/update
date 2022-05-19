@@ -1,6 +1,5 @@
 #!/bin/sh
 set -euf
-${UPDATE:=}
 
 ## Program Tracking
 
@@ -55,14 +54,6 @@ We welcome patches, pull requests, and ideas.
 
   * --program-contact:
       print the program contact information for the maintainer
-
-
-## Environment Variables
-
-  * UPDATE:
-      use this prefix before every major terminal command,
-      such as "sudo" or "nice" or "sudo nice".
-
 
 Heuristics for ordering:
 

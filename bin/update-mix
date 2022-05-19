@@ -1,9 +1,8 @@
 #!/bin/sh
 set -euf
-${UPDATE:=}
 
 # Mix for Elixir
 if command -v mix >/dev/null 2>&1; then
-    $UPDATE mix local.hex --force
-    $UPDATE mix local.rebar --force
+    mix local.hex --force
+    mix local.rebar --force
 fi

@@ -1,11 +1,10 @@
 #!/bin/sh
 set -euf
-${UPDATE:=}
 
 # NPM: Node Package Manager
 if command -v npm >/dev/null 2>&1; then
     if command -v n >/dev/null 2>&1; then
-        $UPDATE n stable
-        $UPDATE npm update
+        n stable
+        npm update
     fi
 fi

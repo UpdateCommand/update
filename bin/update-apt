@@ -1,6 +1,5 @@
 #!/bin/sh
 set -euf
-${UPDATE:=}
 
 # Apt package manager for Debian Linux, Ubuntu Linux, etc.
 #
@@ -55,14 +54,14 @@ ${UPDATE:=}
 #   package conflict.
 #
 if command -v apt-get >/dev/null 2>&1; then
-    $UPDATE apt-get --quiet --yes autoclean
-    $UPDATE apt-get --quiet --yes --purge autoremove
-    $UPDATE apt-get --quiet --yes update
-    $UPDATE apt-get --quiet --yes install update-manager
-    $UPDATE apt-get --quiet --yes install update-manager-core
-    $UPDATE apt-get --quiet --yes upgrade --fix-broken --fix-missing
-    $UPDATE apt-get --quiet --yes dist-upgrade --fix-broken --fix-missing
-    $UPDATE apt-get --quiet --yes full-upgrade --fix-broken --fix-missing
-    $UPDATE apt-get --quiet --yes autoclean
-    $UPDATE apt-get --quiet --yes --purge autoremove
+    apt-get --quiet --yes autoclean
+    apt-get --quiet --yes --purge autoremove
+    apt-get --quiet --yes update
+    apt-get --quiet --yes install update-manager
+    apt-get --quiet --yes install update-manager-core
+    apt-get --quiet --yes upgrade --fix-broken --fix-missing
+    apt-get --quiet --yes dist-upgrade --fix-broken --fix-missing
+    apt-get --quiet --yes full-upgrade --fix-broken --fix-missing
+    apt-get --quiet --yes autoclean
+    apt-get --quiet --yes --purge autoremove
 fi
