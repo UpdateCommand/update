@@ -67,6 +67,7 @@ systems, package managers, language modules, et. al.
  * [`update-rustup-cargo-test-build-release`](bin/update-rustup-rustup-cargo-test-build-release): update Rust project for release.
  * [`update-run-first`](bin/update-run-first): run custom scripts first, before other commands.
  * [`update-run-last`](bin/update-run-last): run custom scripts last, after other commands.
+ * [`update-scoop`](bin/update-scoop): update scoop for Microsoft Windows package management.
  * [`update-swift`](bin/update-swift): update macOS Swift language - this merely prints advice.
  * [`update-ubuntu-release`](bin/update-ubuntu-release): update Ubuntu release - for major system upgrades.
  * [`update-yay`](bin/update-yay): update Yay package manager - for Arch Linux
@@ -166,8 +167,8 @@ Then install the file:
 ## Tracking
 
   * Package: UpdateCommand
-  * Version: 6.3.0
+  * Version: 6.4.0
   * Created: 2005-07-05
-  * Updated: 2021-01-21T07:23:03Z
-  * License: GPL-2.0-only
+  * Updated: 2022-07-16T21:47:38Z
+  * License: GPL-2.0-or-later or contact us for custom
   * Contact: Joel Parker Henderson (https://joelparkerhenderson.com)

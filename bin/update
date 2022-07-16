@@ -150,7 +150,7 @@ x="$(config_home)/update/update-first" && [ -d "$x" ] && dot_all "$x"
 . update-ubuntu-release || :
 . update-macos || :
 
-## Update system packages
+## Update via system-wide package managers
 . update-apt || :
 . update-brew || :
 . update-brewfile || :
@@ -170,13 +170,15 @@ x="$(config_home)/update/update-first" && [ -d "$x" ] && dot_all "$x"
 # Update system languages
 . update-rustup || :
 
-# Update tool packages
+# Update via tool-specific package managers
 . update-apm || :
 . update-asdf || :
+. update-cabal || :
 . update-cargo || :
 . update-gem || :
 . update-gemfile || :
 . update-mix || :
+. update-motion || :
 . update-pip || :
 . update-pod || :
 . update-podfile || :
@@ -185,8 +187,7 @@ x="$(config_home)/update/update-first" && [ -d "$x" ] && dot_all "$x"
 . update-npm-n-stable || :
 . update-pnpm-global || :
 . update-pnpm-local || :
-. update-cabal || :
-. update-motion || :
+. update-scoop || :
 . update-yarn || :
 
 # Update repositories
