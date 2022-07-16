@@ -154,12 +154,14 @@ x="$(config_home)/update/update-first" && [ -d "$x" ] && dot_all "$x"
 . update-apt || :
 . update-brew || :
 . update-brewfile || :
+. update-choco || :
 . update-dnf || :
 . update-freebsd || :
 . update-mas || :
 . update-pacman || :
 . update-pkg || :
 . update-pkg-add || :
+. update-scoop || :
 . update-yay || :
 . update-yum || :
 . update-zypper || :
@@ -187,7 +189,6 @@ x="$(config_home)/update/update-first" && [ -d "$x" ] && dot_all "$x"
 . update-npm-n-stable || :
 . update-pnpm-global || :
 . update-pnpm-local || :
-. update-scoop || :
 . update-yarn || :
 
 # Update repositories

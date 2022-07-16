@@ -6,6 +6,7 @@ When you run `update` the command will run many software updates and upgrades:
 
   * Linux: Ubuntu `apt`, RedHat `yum`, Arch `yay`, Fedora `dnf`, etc.
   * macOS: `softwareupdate`, Homebrew `brew`, Mac App Store `mas`, etc.
+  * Windows: `scoop`, `choco` for Chocolately, etc.
   * tooling: Node `npm`, Python `pip`, Rust `cargo`, Ruby `gem`, Atom `apm`, etc.
   * source code management: `git pull`, `hg pull`, etc.
   * any of your own custom scripts, before and after everything else.
@@ -45,6 +46,7 @@ systems, package managers, language modules, et. al.
  * [`update-cabal`](bin/update-cabal): update Haskell Cabal pacakages.
  * [`update-cargo`](bin/update-cargo): update Rust cargo package manager.
  * [`update-carthage`](bin/update-carthane): udpate Xcode Carthage pacakges - for macOS.
+ * [`update-choco`](bin/update-choco): update choco Chocolatey packages - for Windows.
  * [`update-dnf`](bin/update-dnf): update DNF - for Fedora Linux.
  * [`update-hg-pull`](bin/update-hg-pull): update mercurial repositories.
  * [`update-gem`](bin/update-gem): update Ruby gems.
@@ -67,7 +69,7 @@ systems, package managers, language modules, et. al.
  * [`update-rustup-cargo-test-build-release`](bin/update-rustup-rustup-cargo-test-build-release): update Rust project for release.
  * [`update-run-first`](bin/update-run-first): run custom scripts first, before other commands.
  * [`update-run-last`](bin/update-run-last): run custom scripts last, after other commands.
- * [`update-scoop`](bin/update-scoop): update scoop for Microsoft Windows package management.
+ * [`update-scoop`](bin/update-scoop): update scoop for system-wide packages - for Windows.
  * [`update-swift`](bin/update-swift): update macOS Swift language - this merely prints advice.
  * [`update-ubuntu-release`](bin/update-ubuntu-release): update Ubuntu release - for major system upgrades.
  * [`update-yay`](bin/update-yay): update Yay package manager - for Arch Linux
