@@ -36,7 +36,7 @@ Run the script:
 This project has Unix update scripts for many tools,
 systems, package managers, language modules, et. al.
 
- * [`update`](bin/update): run all the udpate scripts.
+ * [`update`](bin/update): run all the update scripts.
  * [`update-apm`](bin/update-apm): update Atom Package Manager - for the GitHub Atom editor.
  * [`update-apt`](bin/update-apt): update apt-get - for Debian, Ubuntu, etc.
  * [`update-asdf`](bin/update-apm): update asdf - for managing multiple runtimes and languages.
@@ -45,7 +45,7 @@ systems, package managers, language modules, et. al.
  * [`update-brew-cask`](bin/update-brew-cask): update Homebrew Cask packages - for macOS apps.
  * [`update-cabal`](bin/update-cabal): update Haskell Cabal pacakages.
  * [`update-cargo`](bin/update-cargo): update Rust cargo package manager.
- * [`update-carthage`](bin/update-carthane): udpate Xcode Carthage pacakges - for macOS.
+ * [`update-carthage`](bin/update-carthane): update Xcode Carthage pacakges - for macOS.
  * [`update-choco`](bin/update-choco): update choco Chocolatey packages - for Windows.
  * [`update-dnf`](bin/update-dnf): update DNF - for Fedora Linux.
  * [`update-hg-pull`](bin/update-hg-pull): update mercurial repositories.
