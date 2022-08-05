@@ -60,19 +60,19 @@ if command -v brew >/dev/null 2>&1; then
 
         brew outdated | 
         while read x; do
-            brew reinstall --force "$x"
+            brew reinstall --force "$x" || true
         done
 
         brew outdated --cask | 
         while read x; do
-            brew reinstall --force "$x"
+            brew reinstall --force "$x" || true
         done
 
         brew outdated --cask --greedy --verbose |
         grep -v '(latest)' |
         awk '{print $1}' |
         while read x; do
-            brew reinstall --force "$x"
+            brew reinstall --force "$x" || true
         done
 
         # Upgrade all the normal applications.
