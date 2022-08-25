@@ -36,7 +36,7 @@ set -euf
 #     brew update --force
 #
 if command -v brew >/dev/null 2>&1; then
-    if [[ `whoami` != "root" ]]; then
+    if [ "$(whoami)" != "root" ]; then
 
         # Cleanup in order to make space and mitigate stale formulas
         brew cleanup
@@ -44,11 +44,10 @@ if command -v brew >/dev/null 2>&1; then
         # Update the brew taps one by one via git
         for tap in $(brew tap); do
             repo=$(brew --repo "$tap")
-            pushd "$repo"
+            cd "$repo"
             git clean -dfx
             git reset --hard origin/master
             git pull origin master
-            popd
         done
 
         # Update the brew knowledgebase via the typical command.
@@ -59,19 +58,19 @@ if command -v brew >/dev/null 2>&1; then
         # each one, one by one, and continuing even if any item fails.
 
         brew outdated | 
-        while read x; do
+        while read -r x; do
             brew reinstall --force "$x" || true
         done
 
         brew outdated --cask | 
-        while read x; do
+        while read -r x; do
             brew reinstall --force "$x" || true
         done
 
         brew outdated --cask --greedy --verbose |
         grep -v '(latest)' |
         awk '{print $1}' |
-        while read x; do
+        while read -r x; do
             brew reinstall --force "$x" || true
         done
 
