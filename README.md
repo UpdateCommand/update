@@ -4,7 +4,7 @@ Want to update your computer software? The update command is for you.
 
 When you run `update` the command will run many software updates and upgrades:
 
-  * Linux: Ubuntu `apt`, RedHat `yum`, Arch `yay`, Fedora `dnf`, etc.
+  * Linux: Debian/Ubuntu `apt`, RedHat `yum`, Arch `yay`, Fedora `dnf`, etc.
   * macOS: `softwareupdate`, Homebrew `brew`, Mac App Store `mas`, etc.
   * Windows: `scoop`, `choco` for Chocolately, etc.
   * tooling: Node `npm`, Python `pip`, Rust `cargo`, Ruby `gem`, Atom `apm`, etc.
