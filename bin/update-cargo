@@ -21,5 +21,10 @@ if command -v cargo >/dev/null 2>&1; then
         cargo check --all-targets
         cargo build --all-targets
         cargo test --all-targets --no-run
+        # Is "cargo upgrade" available?
+        # If yes, then upgrade the Cargo.toml file.
+        if cargo upgrade --help>/dev/null 2>&1; then
+            cargo upgrade --recursive true
+        fi
     fi
 fi
