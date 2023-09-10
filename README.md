@@ -2,39 +2,7 @@
 
 Want to update your computer software? The update command is for you.
 
-When you run `update` the command will run many software updates and upgrades:
-
-  * Linux: Ubuntu `apt`, RedHat `yum`, Arch `yay`, Fedora `dnf`, etc.
-  * macOS: `softwareupdate`, Homebrew `brew`, Mac App Store `mas`, etc.
-  * Windows: `scoop`, `choco` for Chocolately, etc.
-  * tooling: Node `npm`, Python `pip`, Rust `cargo`, Ruby `gem`, Atom `apm`, etc.
-  * source code management: `git pull`, `hg pull`, etc.
-  * any of your own custom scripts, before and after everything else.
-
-
-## Install
-
-Clone the repo to your own system, such as:
-
-    $ git clone https://github.com/UpdateCommand/update.git ~/update
-
-Add the `bin` directory to your own path:
-
-    $ export PATH="$PATH:~/update/bin"
-
-Copy the `config` directory to your own directory:
-
-    $ cp -R ~/update/config/update ~/.config/update
-
-Run the script:
-
-    $ update
-
-
-## What's included
-
-This project has Unix update scripts for many tools,
-systems, package managers, language modules, et. al.
+When you run `update` the command will run many software updates and upgrades.
 
  * [`update`](bin/update): run all the update scripts.
  * [`update-apm`](bin/update-apm): update Atom Package Manager - for the GitHub Atom editor.
@@ -67,7 +35,6 @@ systems, package managers, language modules, et. al.
  * [`update-podfile`](bin/update-podfile): update Cocoapods packages for macOS by using a Podfile
  * [`update-repos`](bin/update-repos): update Git repositories - customize this for your system.
  * [`update-rustup`](bin/update-rustup): update Rust programming language tooling.
- * [`update-rustup-cargo-test-build-release`](bin/update-rustup-rustup-cargo-test-build-release): update Rust project for release.
  * [`update-scoop`](bin/update-scoop): update scoop for system-wide packages - for Windows.
  * [`update-swift`](bin/update-swift): update macOS Swift language - this merely prints advice.
  * [`update-ubuntu-release`](bin/update-ubuntu-release): update Ubuntu release - for major system upgrades.
@@ -75,7 +42,20 @@ systems, package managers, language modules, et. al.
  * [`update-yarn`](bin/update-yarn): update Yarn JavaScript packages - for yarn upgrade.
  * [`update-zypper`](bin/update-zypper): update Zypper package manager - for openSUSE
 
-We welcome additions to these scripts.
+
+## Install
+
+Clone the repo to your own system, such as:
+
+    $ git clone https://github.com/UpdateCommand/update.git ~/update
+
+Add the `bin` directory to your own path:
+
+    $ export PATH="$PATH:~/update/bin"
+
+Run the script:
+
+    $ update
 
 
 ## To run daily
@@ -99,7 +79,7 @@ Then install the file:
 
 ## Special options for package manager files
 
-Some of the update programs read package manager files:
+Some of the update programs can read package manager files:
 
 * `update-brewfile` looks for a `Brewfile` for macOS Homebrew packages.
 
@@ -112,7 +92,7 @@ For details, see the respective programs.
 
 ### Special options for project manifests
 
-Some of the update programs read project manifests:
+Some of the update programs can read project manifests:
 
 * `update-cargo-crate` looks for `<config>/update-cargo-crate/manifests/*`
 
