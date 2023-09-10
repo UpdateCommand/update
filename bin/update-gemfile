@@ -1,12 +1,17 @@
 #!/bin/sh
 set -euf
 
-# Gemfile by using the `gem` package manager
+# Update via Gemfile by using the `gem` package manager.
+#
+# Look for a Gemfile in this order:
+#
+#     $GEMFILE
+#     $XDG_CONFIG_HOME/gem/Gemfile
+#     $HOME/.config/gem/Gemfile
+#
 if command -v gem >/dev/null 2>&1; then
-    if [ "$(whoami)" != "root" ]; then
-        dir="${XDG_CONFIG_HOME:-$HOME/.config}/gem"
-        if [ -r "$dir" ] && [ -r "$dir/Gemfile" ]; then
-            (cd "$dir"; bundle install )
-        fi
+    file=${GEMFILE:-${XDG_CONFIG_HOME:-$HOME/.config}/gem/Gemfile}
+    if [ -r "$file" ]; then
+        (cd "$(dirname "$file")"; bundle install )
     fi
 fi
