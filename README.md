@@ -44,6 +44,7 @@ systems, package managers, language modules, et. al.
  * [`update-brewfile`](bin/update-brewfile): update brew packages for macOS by using a Brewfile
  * [`update-brew-cask`](bin/update-brew-cask): update Homebrew Cask packages - for macOS apps.
  * [`update-cabal`](bin/update-cabal): update Haskell Cabal pacakages.
+ * [`update-cargo-crate`](bin/update-cargo-crate): update Rust cargo crate project.
  * [`update-cargo`](bin/update-cargo): update Rust cargo package manager.
  * [`update-carthage`](bin/update-carthane): update Xcode Carthage pacakges - for macOS.
  * [`update-choco`](bin/update-choco): update choco Chocolatey packages - for Windows.
