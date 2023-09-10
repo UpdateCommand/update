@@ -14,7 +14,7 @@ When you run `update` the command will run many software updates and upgrades:
 
 ## Install
 
-Clone the repo to your own system:
+Clone the repo to your own system, such as:
 
     $ git clone https://github.com/UpdateCommand/update.git ~/update
 
@@ -68,8 +68,6 @@ systems, package managers, language modules, et. al.
  * [`update-repos`](bin/update-repos): update Git repositories - customize this for your system.
  * [`update-rustup`](bin/update-rustup): update Rust programming language tooling.
  * [`update-rustup-cargo-test-build-release`](bin/update-rustup-rustup-cargo-test-build-release): update Rust project for release.
- * [`update-run-first`](bin/update-run-first): run custom scripts first, before other commands.
- * [`update-run-last`](bin/update-run-last): run custom scripts last, after other commands.
  * [`update-scoop`](bin/update-scoop): update scoop for system-wide packages - for Windows.
  * [`update-swift`](bin/update-swift): update macOS Swift language - this merely prints advice.
  * [`update-ubuntu-release`](bin/update-ubuntu-release): update Ubuntu release - for major system upgrades.
@@ -78,74 +76,6 @@ systems, package managers, language modules, et. al.
  * [`update-zypper`](bin/update-zypper): update Zypper package manager - for openSUSE
 
 We welcome additions to these scripts.
-
-
-## Configuration
-
-The command uses a config home directory and program subdirectory:
-
-    ~/.config/update
-
-You can change the config home directory by setting the environment variable `XDG_CONFIG_HOME`. This is POSIX standard. The default is `$HOME/.config/`.
-
-
-### Run your own scripts first and last
-
-You can configure your own scripts to run first before the start of the update commands, or last after the finish of the update commands.
-
-Put your own scripts in these directories:
-
-    ~/.config/update/update-run-first
-    ~/.config/update/update-run-last
-
-For advanced users:
-
-  * You can use as many files and subdirectories as you like.
-
-  * The program runs the user-executable files, and skips the non-user-executable files.
-
-
-## Package manager files
-
-The program also reads these package manager files:
-
-    ~/.config/Brewfile/Brewfile
-    ~/.config/Gemfile/Gemfile
-    ~/.config/Podfile/Podfile
-
-
-### Source code management directories
-
-You can configure the source code management directories to update.
-
-Edit the files in these directories:
-
-    ~/.config/update/update-git-pull/directories
-    ~/.config/update/update-hg-pull/directories
-
-For example edit the git pull directories default file:
-
-    ~/.config/update/update-git-pull/directories
-
-The default file currently has these:
-
-    ~/.config/bash
-    ~/.config/emacs
-    ~/.config/fish
-    ~/.config/tmux
-    ~/.config/vim
-    ~/.config/zsh
-    ~/.emacs.d
-    ~/.oh-my-zsh
-    ~/.tmux
-    ~/.vim.d
-    ~/.zshrc
-
-For advanced users:
-
-  * You can use as many files and subdirectories as you like.
-
-  * The program updates the existing directories, and skips the non-existing directories.
 
 
 ## To run daily
@@ -167,11 +97,43 @@ Then install the file:
     crontab ~/.crontab
 
 
+## Special options for package manager files
+
+Some of the update programs read package manager files:
+
+* `update-brewfile` looks for a `Brewfile` for macOS Homebrew packages.
+
+* `update-gemfile` looks for a `Gemfile` for Ruby gem packages.
+
+* `update-podfile` looks for a `Podfile` for XCode Cocoapod pacakges.
+
+For details, see the respective programs.
+
+
+### Special options for project manifests
+
+Some of the update programs read project manifests:
+
+* `update-cargo-crate` looks for `<config>/update-cargo-crate/manifests/*`
+
+* `update-git-pull` looks for `<config>/update-git-pull/manifests/*`
+
+* `update-hg-pull` looks for `<config>/update-hg-pull/manifests/*`
+
+Each manifest file is simply a list of local project directories.
+
+The program skips lines that are comments (begin with #) or blank.
+
+You can use as many manifest files and subdirectories as you like.
+
+For details, see the respective programs.
+
+
 ## Tracking
 
   * Package: UpdateCommand
-  * Version: 6.4.0
+  * Version: 7.0.0
   * Created: 2005-07-05
-  * Updated: 2022-07-16T21:47:38Z
+  * Updated: 2023-09-10T22:47:45Z
   * License: GPL-2.0-or-later or contact us for custom
   * Contact: Joel Parker Henderson (https://joelparkerhenderson.com)
