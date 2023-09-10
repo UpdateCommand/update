@@ -1,11 +1,17 @@
 #!/bin/sh
 set -euf
 
-# Podfile by using the `pod` package manager
-name="Podfile"
+# Update via Podfile by using the `pod` package manager.
+#
+# Look for a Podfile file in this order:
+#
+#     $PODFILE
+#     $XDG_CONFIG_HOME/pod/Podfile
+#     $HOME/.config/pod/Podfile
+#
 if command -v pod >/dev/null 2>&1; then
-    dir="${XDG_CONFIG_HOME:-$HOME/.config}/$name"
-    if [ -r "$dir" ] && [ -r "$dir/$name" ]; then
-        ( cd "$dir"; pod update )
+    file=${PODFILE:-${XDG_CONFIG_HOME:-$HOME/.config}/pod/Podfile}
+    if [ -r "$file" ]; then
+        ( cd "$(dirname "$file")"; pod update )
     fi
 fi
