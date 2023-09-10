@@ -1,8 +1,11 @@
 #!/bin/sh
 set -euf
 
+# Helpers https://github.com/sixarm/unix-shell-script-kit
+. "$(dirname "$(readlink -f "$0")")/unix-shell-script-kit"
+
 # NPM: Node Package Manager
-if command -v npm >/dev/null 2>&1; then
+if command_exists npm; then
     npm install npm
     npm update
     npm audit fix

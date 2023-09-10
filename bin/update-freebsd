@@ -1,8 +1,11 @@
 #!/bin/sh
 set -euf
 
+# Helpers https://github.com/sixarm/unix-shell-script-kit
+. "$(dirname "$(readlink -f "$0")")/unix-shell-script-kit"
+
 # freebsd-update: FreeBSD system 
-if command -v freebsd-update >/dev/null 2>&1; then
+if command_exists freebsd-update; then
 	freebsd-update fetch
     freebsd-update install
 fi

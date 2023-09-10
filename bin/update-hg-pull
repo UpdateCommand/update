@@ -1,6 +1,9 @@
 #!/bin/sh
 set -euf
 
+# Helpers https://github.com/sixarm/unix-shell-script-kit
+. "$(dirname "$(readlink -f "$0")")/unix-shell-script-kit"
+
 # Mercurial pull for typical directories.
 #
 # This looks for manifests of local project directories here:
@@ -16,7 +19,7 @@ set -euf
 # Each manifest file is simply a list of local project directories.
 # The program skips lines that are comments (begin with #) or blank.
 #
-if command -v hg >/dev/null 2>&1; then
+if command_exists hg; then
     config_dir="${XDG_CONFIG_HOME:-$HOME/.config}/update-hg-pull"
     manifest_dir="$config_dir/manifests"
     if [ -d "$manifest_dir" ]; then

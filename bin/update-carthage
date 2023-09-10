@@ -1,8 +1,11 @@
 #!/bin/sh
 set -euf
 
+# Helpers https://github.com/sixarm/unix-shell-script-kit
+. "$(dirname "$(readlink -f "$0")")/unix-shell-script-kit"
+
 # Carthage: iOS dependency manager
-if command -v carthage >/dev/null 2>&1; then
+if command_exists carthage; then
     if [ -e ./Cartfile ] ; then
         carthage update
     fi

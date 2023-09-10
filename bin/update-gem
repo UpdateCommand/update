@@ -1,8 +1,11 @@
 #!/bin/sh
 set -euf
 
+# Helpers https://github.com/sixarm/unix-shell-script-kit
+. "$(dirname "$(readlink -f "$0")")/unix-shell-script-kit"
+
 # gem: Ruby package manager
-if command -v gem >/dev/null 2>&1; then
+if command_exists gem; then
     dir=$(gem environment | sed -n 's/ * - INSTALLATION DIRECTORY: //p')
     if [ -w "$dir" ]; then
         gem cleanup

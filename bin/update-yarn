@@ -1,11 +1,14 @@
 #!/bin/sh
 set -euf
 
+# Helpers https://github.com/sixarm/unix-shell-script-kit
+. "$(dirname "$(readlink -f "$0")")/unix-shell-script-kit"
+
 # Yarn JavaScript package manager
 #
 # Upgrade packages to their latest version based on the specified range
 # in the file 'yarn.lock', or latest version if no range is specified.
 #
-if command -v yarn >/dev/null 2>&1; then
+if command_exists yarn; then
     yarn upgrade
 fi

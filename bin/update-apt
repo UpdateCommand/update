@@ -1,6 +1,9 @@
 #!/bin/sh
 set -euf
 
+# Helpers https://github.com/sixarm/unix-shell-script-kit
+. "$(dirname "$(readlink -f "$0")")/unix-shell-script-kit"
+
 # Apt package manager for Debian Linux, Ubuntu Linux, etc.
 #
 # If you want the system to force saying yes, use this setting:
@@ -53,7 +56,7 @@ set -euf
 #   installed packages if that is required in order to resolve a
 #   package conflict.
 #
-if command -v apt-get >/dev/null 2>&1; then
+if command_exists apt-get; then
     apt-get --quiet --yes autoclean
     apt-get --quiet --yes --purge autoremove
     apt-get --quiet --yes update

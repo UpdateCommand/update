@@ -1,7 +1,10 @@
 #!/bin/sh
 set -euf
 
+# Helpers https://github.com/sixarm/unix-shell-script-kit
+. "$(dirname "$(readlink -f "$0")")/unix-shell-script-kit"
+
 # Pod: Cocoapod package manager for macOS
-if command -v pod >/dev/null 2>&1; then
+if command_exists pod; then
     : #TODO
 fi

@@ -1,6 +1,9 @@
 #!/bin/sh
 set -euf
 
+# Helpers https://github.com/sixarm/unix-shell-script-kit
+. "$(dirname "$(readlink -f "$0")")/unix-shell-script-kit"
+
 # Update via Podfile by using the `pod` package manager.
 #
 # Look for a Podfile file in this order:
@@ -9,7 +12,7 @@ set -euf
 #     $XDG_CONFIG_HOME/pod/Podfile
 #     $HOME/.config/pod/Podfile
 #
-if command -v pod >/dev/null 2>&1; then
+if command_exists pod; then
     file=${PODFILE:-${XDG_CONFIG_HOME:-$HOME/.config}/pod/Podfile}
     if [ -r "$file" ]; then
         ( cd "$(dirname "$file")"; pod update )

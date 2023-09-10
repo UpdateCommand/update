@@ -1,7 +1,10 @@
 #!/bin/sh
 set -euf
 
+# Helpers https://github.com/sixarm/unix-shell-script-kit
+. "$(dirname "$(readlink -f "$0")")/unix-shell-script-kit"
+
 # Zypper package manager for openSUSE
-if command -v zypper >/dev/null 2>&1; then
+if command_exists zypper; then
     zypper up
 fi

@@ -1,7 +1,10 @@
 #!/bin/sh
 set -euf
 
+# Helpers https://github.com/sixarm/unix-shell-script-kit
+. "$(dirname "$(readlink -f "$0")")/unix-shell-script-kit"
+
 # mas: Mac App Store command line interface
-if command -v mas >/dev/null 2>&1; then
+if command_exists mas; then
     mas upgrade
 fi

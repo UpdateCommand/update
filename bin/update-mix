@@ -1,8 +1,11 @@
 #!/bin/sh
 set -euf
 
+# Helpers https://github.com/sixarm/unix-shell-script-kit
+. "$(dirname "$(readlink -f "$0")")/unix-shell-script-kit"
+
 # Mix for Elixir
-if command -v mix >/dev/null 2>&1; then
+if command_exists mix; then
     mix local.hex --force
     mix local.rebar --force
 fi

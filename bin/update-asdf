@@ -1,8 +1,11 @@
 #!/bin/sh
 set -euf
 
+# Helpers https://github.com/sixarm/unix-shell-script-kit
+. "$(dirname "$(readlink -f "$0")")/unix-shell-script-kit"
+
 # asdf-vm: manage multiple runtime versions with a single CLI tool
-if command -v asdf >/dev/null 2>&1; then
+if command_exists asdf; then
     # asdf has multiple ways that may be able to do updates,
     # and has internal logic to test the ways, and deny some ways.
     #
