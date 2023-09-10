@@ -1,14 +1,35 @@
 #!/bin/sh
 set -euf
 
-# Mercurial pull for typical directories
+# Mercurial pull for typical directories.
+#
+# This looks for manifests of local project directories here:
+#
+#     $XDG_CONFIG_HOME/update-hg-pull/manifests/*
+#     $HOME/update-hg-pull/manifests/*
+#
+# For example:
+#
+#     ~/update-hg-pull/manifests/my-home-project-list.txt
+#     ~/update-hg-pull/manifests/my-work-project-list.txt
+#
+# Each manifest file is simply a list of local project directories.
+# The program skips lines that are comments (begin with #) or blank.
+#
 if command -v hg >/dev/null 2>&1; then
-    dir=$(config_home)"/update/update-hg-pull"
-    if [ -d "$dir" ]; then
-        for file in $(find "$dir" -type f); do
-            for line in $(cat "$file"); do
-                if [ -d "$line" ]; then
-                    ( cd "$line" && hg pull -u )
+    config_dir="${XDG_CONFIG_HOME:-$HOME/.config}/update-hg-pull"
+    manifest_dir="$config_dir/manifests"
+    if [ -d "$manifest_dir" ]; then
+        find "$manifest_dir" -type f |
+        while read -r manifest_file; do
+            cat "$manifest_file" | 
+            grep -v "^#" | 
+            grep -v "^[[:space:]]*$" |  
+            while read -r project_dir; do
+                if [ -d "$project_dir" ] && [ -w "$project_dir" ]; then
+                    ( cd "$project_dir" && hg pull -u )
+                else
+                    >&2 printf %s\\n "err update-hg-pull config_dir:$config_dir manifest_dir:$manifest_dir project_dir:$project_dir"
                 fi
             done
         done
