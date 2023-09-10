@@ -4,9 +4,9 @@ set -euf
 ## Program Tracking
 
 program_command="update"
-program_version="6.3.0"
-program_updated="2021-01-21T07:23:03Z"
-program_license="GPL-2.0-only"
+program_version="7.0.0"
+program_updated="2023-09-10T22:47:45Z"
+program_license="GPL-2.0-or-later or contact us for custom"
 program_contact="Joel Parker Henderson (https://joelparkerhenderson.com)"
 
 ## Help Function
@@ -143,9 +143,6 @@ if [ "$#" -eq 1 ]; then
   esac
 fi
 
-## Run the user's own scripts
-x="$(config_home)/update/update-first" && [ -d "$x" ] && dot_all "$x"
-
 ## Update operating system
 . update-ubuntu-release || :
 . update-macos || :
@@ -177,6 +174,7 @@ x="$(config_home)/update/update-first" && [ -d "$x" ] && dot_all "$x"
 . update-asdf || :
 . update-cabal || :
 . update-cargo || :
+. update-cargo-crate || :
 . update-gem || :
 . update-gemfile || :
 . update-mix || :
@@ -194,9 +192,3 @@ x="$(config_home)/update/update-first" && [ -d "$x" ] && dot_all "$x"
 # Update repositories
 . update-hg-pull || :
 . update-git-pull || :
-
-# Update projects
-. update-rustup-cargo-test-build-release || :
-
-## Run the user's own scripts
-x="$(config_home)/update/update-last" && [ -d "$x" ] && dot_all "$x"
