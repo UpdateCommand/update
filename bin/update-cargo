@@ -14,17 +14,4 @@ if command -v cargo >/dev/null 2>&1; then
             cargo install "$x"
         done
     fi
-    # Is this command running inside a cargo project?
-    # If yes, update the project and its binaries.
-    if cargo check>/dev/null 2>&1; then 
-        cargo update --aggressive
-        cargo check --all-targets
-        cargo build --all-targets
-        cargo test --all-targets --no-run
-        # Is "cargo upgrade" available?
-        # If yes, then upgrade the Cargo.toml file.
-        if cargo upgrade --help>/dev/null 2>&1; then
-            cargo upgrade --recursive true
-        fi
-    fi
 fi
