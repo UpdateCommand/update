@@ -1,6 +1,6 @@
-# Update command scripts
+# Update command
 
-Want to update your computer software? The update command is for you.
+Want to update your computer software? The update command can help you.
 
 When you run `update` the command will run many software updates and upgrades.
 
@@ -56,6 +56,19 @@ Add the `bin` directory to your own path:
 Run the script:
 
     $ update
+
+
+## Design goals
+
+1. Use simple shell scripts that developers can customize.
+
+2. Make it easy for developers to help by doing merge requests.
+
+3. Quality is intended for typical developer boxen. YMMV.
+
+We welcome help, and new scripts, and constructive criticism.
+
+If you prefer something more powerful, we highly recommend you consider tools such as Nix and Ansible.
 
 
 ## To run daily
