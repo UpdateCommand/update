@@ -36,13 +36,17 @@ set -euf
 #     brew update --force
 #
 if command -v brew >/dev/null 2>&1; then
-    if [ "$(whoami)" != "root" ]; then
-
-        if [ -n "${VERBOSE+1}" ] && [ "$VERBOSE" = true ]; then arg_verbose="--verbose"; else arg_verbose=""; fi
-        if [ -n "${DEBUG+1}" ] && [ "$DEBUG" = true ]; then arg_debug="--debug"; else arg_debug=""; fi
+    # Brew strongly prefers to run as the current user.
+    # Otherwise, brew tends to carp due to ownership issues.
+    this_uid="$(id -u "$(whoami)")"
+    brew_uid="$(stat -f %u "$(brew --cellar)")"
+    if [ "$this_uid" -eq "$brew_uid" ]; then
+    
+        arg_verbose=""; if [ -n "${VERBOSE+1}" ] && [ "$VERBOSE" = true ]; then arg_verbose="--verbose"; fi
+        arg_debug=""; if [ -n "${DEBUG+1}" ] && [ "$DEBUG" = true ]; then arg_debug="--debug"; fi
 
         # Cleanup in order to make space and mitigate stale formulas
-        brew cleanup "$arg_verbose" "$arg_debug"
+        brew cleanup $arg_verbose $arg_debug
 
         # Update the brew taps one by one via git
         for tap in $(brew tap); do
@@ -54,7 +58,7 @@ if command -v brew >/dev/null 2>&1; then
         done
 
         # Update the brew knowledgebase via the typical command.
-        brew update "$arg_verbose" "$arg_debug"
+        brew update $arg_verbose $arg_debug
 
         # As of 2019-04-10, these loops below are the best known simple
         # way to figure out which items are stil outdated, then upgrade
@@ -62,36 +66,36 @@ if command -v brew >/dev/null 2>&1; then
 
         brew outdated | 
         while read -r x; do
-            brew reinstall "$arg_verbose" "$arg_debug" --force "$x" || true
+            brew reinstall $arg_verbose $arg_debug --force "$x" || true
         done
 
         brew outdated --cask | 
         while read -r x; do
-            brew reinstall "$arg_verbose" "$arg_debug" --force "$x" || true
+            brew reinstall $arg_verbose $arg_debug --force "$x" || true
         done
 
         brew outdated --cask --greedy --verbose |
         grep -v '(latest)' |
         awk '{print $1}' |
         while read -r x; do
-            brew reinstall "$arg_verbose" "$arg_debug" --force "$x" || true
+            brew reinstall $arg_verbose $arg_debug --force "$x" || true
         done
 
         # Upgrade all the normal applications.
-        brew upgrade "$arg_verbose" "$arg_debug"
-        brew cleanup "$arg_verbose" "$arg_debug"
+        brew upgrade $arg_verbose $arg_debug
+        brew cleanup $arg_verbose $arg_debug
 
         # Upgrade all the normal applications, plus use greedy flag.
-        brew upgrade "$arg_verbose" "$arg_debug" --greedy
-        brew cleanup "$arg_verbose" "$arg_debug"
+        brew upgrade $arg_verbose $arg_debug --greedy
+        brew cleanup $arg_verbose $arg_debug
 
         # Upgrade all the cask applications.
-        brew upgrade "$arg_verbose" "$arg_debug" --cask
-        brew cleanup "$arg_verbose" "$arg_debug"
+        brew upgrade $arg_verbose $arg_debug --cask
+        brew cleanup $arg_verbose $arg_debug
 
         # Upgrade all the cask applications, plus use greedy flag.
-        brew upgrade "$arg_verbose" "$arg_debug" --cask --greedy
-        brew cleanup "$arg_verbose" "$arg_debug"
+        brew upgrade $arg_verbose $arg_debug --cask --greedy
+        brew cleanup $arg_verbose $arg_debug
 
     fi
 fi
