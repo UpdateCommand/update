@@ -38,8 +38,8 @@ set -euf
 if command -v brew >/dev/null 2>&1; then
     if [ "$(whoami)" != "root" ]; then
 
-        if [ "$VERBOSE" = true ]; then arg_verbose="--verbose"; else arg_verbose=""; fi
-        if [ "$DEBUG" = true ]; then arg_debug="--debug"; else arg_debug=""; fi
+        if [ -n "${VERBOSE+1}" ] && [ "$VERBOSE" = true ]; then arg_verbose="--verbose"; else arg_verbose=""; fi
+        if [ -n "${DEBUG+1}" ] && [ "$DEBUG" = true ]; then arg_debug="--debug"; else arg_debug=""; fi
 
         # Cleanup in order to make space and mitigate stale formulas
         brew cleanup "$arg_verbose" "$arg_debug"
