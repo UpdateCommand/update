@@ -60,7 +60,7 @@ Run the script:
 
 ## Design goals
 
-1. Use simple shell scripts that developers can customize.
+1. Use POSIX simple shell scripts that developers can customize.
 
 2. Make it easy for developers to help by doing merge requests.
 
