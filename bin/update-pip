@@ -2,16 +2,26 @@
 set -euf
 
 # pip: Python package installer
+#
+# From the pip documentation: WARNING: Running pip as the 'root' user can result
+# in broken permissions and conflicting behaviour with the system package
+# manager. It is recommended to use a virtual environment instead:
+# https://pip.pypa.io/warnings/venv
+
 for python in "python" "python3"; do
     if command -v "$python" >/dev/null 2>&1; then    
-        $python -m pip install --upgrade pip
-        $python -m pip install --upgrade setuptools
+        if [ "$(whoami)" != "root" ]; then
+            $python -m pip install --upgrade pip
+            $python -m pip install --upgrade setuptools
+        fi
     fi
 done
 for pip in "pip" "pip3"; do
-    if command -v "$pip" >/dev/null 2>&1; then    
-        $pip install --upgrade pip
-        $pip install --upgrade setuptools
-        $pip freeze --local | sed -n 's/==.*//p' | xargs -n1 -I{} $pip install --upgrade "{}"
+    if [ "$(whoami)" != "root" ]; then
+        if command -v "$pip" >/dev/null 2>&1; then    
+            $pip install --upgrade pip
+            $pip install --upgrade setuptools
+            $pip freeze --local | sed -n 's/==.*//p' | xargs -n1 -I{} $pip install --upgrade "{}"
+        fi
     fi
 done
