@@ -1,9 +1,6 @@
 #!/bin/sh
 set -euf
 
-# Helpers https://github.com/sixarm/unix-shell-script-kit
-. "$(dirname "$(readlink -f "$0")")/unix-shell-script-kit"
-
 # Brew for macOS
 #
 # Update Homebrew package manager for Apple macOS.
@@ -38,7 +35,7 @@ set -euf
 #     git reset --hard origin/master
 #     brew update --force
 #
-if command_exists brew; then
+if command -v brew >/dev/null 2>&1; then
     if [ "$(whoami)" != "root" ]; then
 
         if [ "$VERBOSE" = true ]; then arg_verbose="--verbose"; else arg_verbose=""; fi

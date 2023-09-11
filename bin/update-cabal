@@ -1,11 +1,8 @@
 #!/bin/sh
 set -euf
 
-# Helpers https://github.com/sixarm/unix-shell-script-kit
-. "$(dirname "$(readlink -f "$0")")/unix-shell-script-kit"
-
 # Cabal for Haskell
-if command_exists cabal; then
+if command -v cabal >/dev/null 2>&1; then
     if [ "$(whoami)" != "root" ]; then
         cabal update
     fi

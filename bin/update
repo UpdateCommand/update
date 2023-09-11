@@ -1,9 +1,6 @@
 #!/bin/sh
 set -euf
 
-# Helpers https://github.com/sixarm/unix-shell-script-kit
-. "$(dirname "$(readlink -f "$0")")/unix-shell-script-kit"
-
 ## Program Tracking
 
 program_command="update"
@@ -85,6 +82,34 @@ Heuristics for ordering:
   * Contact: $program_contact
 EOF
 }
+
+## Function helpers
+out() { printf %s\\n "$*" ; };
+err() { >&2 printf %s\\n "$*" ; };
+die() { err $(log) "$*" ; exit 255 ; };
+log() { printf '%s %s %s\n' "$( now )" $$ "$*" ; };
+now() { date -u "+%Y-%m-%dT%H:%M:%S.%NZ" ; };
+sec() { date "+%s" ; };
+zid() { hexdump -n 16 -v -e '16/1 "%02x" "\n"' /dev/random ; };
+cmd() { command -v $1 >/dev/null 2>&1 ; };
+dot_all() { find "${1:-}" -type f \( -perm -u=x -o -perm -g=x -o -perm -o=x \) -exec test -x {} \; -exec . {} \; ; }
+run_all() { find "${1:-}" -type f \( -perm -u=x -o -perm -g=x -o -perm -o=x \) -exec test -x {} \; -exec {} \; ; }
+
+## Home helpers
+log_home() { out "${LOG_HOME:=$HOME/.log}" ; };
+data_home() { out "${XDG_DATA_HOME:=$HOME/.local/share}" ; };
+cache_home() { out "${XDG_CACHE_HOME:=$HOME/.cache}" ; };
+config_home() { out "${XDG_CONFIG_HOME:-$HOME/.config}" ; };
+runtime_home() { out "${XDG_RUNTIME_HOME:=$HOME/.runtime}" ; };
+temp_home() { out $(mktemp -d -t "${1:-$(zid)}"); };
+
+## Directory helpers
+log_dir() { out "$(log_home)/$program_command" ; };
+data_dir() { out "$(data_home)/$program_command" ; };
+cache_dir() { out "$(cache_home)/$program_command" ; };
+config_dir() { out "$(config_home)/$program_command" ; };
+runtime_dir() { out "$(runtime_home)/$program_command" ; };
+temp_dir() { out "$(temp_home)/$program_command" ; };
 
 ## Options
 if [ "$#" -eq 1 ]; then

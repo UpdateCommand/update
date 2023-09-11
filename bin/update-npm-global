@@ -1,18 +1,15 @@
 #!/bin/sh
 set -euf
 
-# Helpers https://github.com/sixarm/unix-shell-script-kit
-. "$(dirname "$(readlink -f "$0")")/unix-shell-script-kit"
-
 # NPM: Node Package Manager
-if command_exists npm; then
+if command -v npm >/dev/null 2>&1; then
     npm install -g npm
     npm update -g
     # Via local
     npm install npm
     npm update
     # Via manager
-    if command_exists n; then
+    if command -v n >/dev/null 2>&1; then
         n stable
         npm update -g
         npm update

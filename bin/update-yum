@@ -1,11 +1,8 @@
 #!/bin/sh
 set -euf
 
-# Helpers https://github.com/sixarm/unix-shell-script-kit
-. "$(dirname "$(readlink -f "$0")")/unix-shell-script-kit"
-
 # Yum package manager for RedHat Linux, Fedora Linux, CentOS Linux, etc.
-if command_exists yum; then
+if command -v yum >/dev/null 2>&1; then
     yum --assumeyes clean
     yum --assumeyes --obsolete update
     yum --assumeyes clean

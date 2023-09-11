@@ -1,9 +1,6 @@
 #!/bin/sh
 set -euf
 
-# Helpers https://github.com/sixarm/unix-shell-script-kit
-. "$(dirname "$(readlink -f "$0")")/unix-shell-script-kit"
-
 # Update via Gemfile by using the `gem` package manager.
 #
 # Look for a Gemfile in this order:
@@ -12,7 +9,7 @@ set -euf
 #     $XDG_CONFIG_HOME/gem/Gemfile
 #     $HOME/.config/gem/Gemfile
 #
-if command_exists gem; then
+if command -v gem >/dev/null 2>&1; then
     file=${GEMFILE:-${XDG_CONFIG_HOME:-$HOME/.config}/gem/Gemfile}
     if [ -r "$file" ]; then
         (cd "$(dirname "$file")"; bundle install )

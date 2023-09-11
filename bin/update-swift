@@ -1,9 +1,6 @@
 #!/bin/sh
 set -euf
 
-# Helpers https://github.com/sixarm/unix-shell-script-kit
-. "$(dirname "$(readlink -f "$0")")/unix-shell-script-kit"
-
 # Swift progrsmming language
 
 expect_version="3.0.2"
@@ -16,7 +13,7 @@ swift_version(){
     echo $(parse_semver "$(xcrun swift -version | head -1)")
 }
 
-if command_exists xcrun; then
+if command -v xcrun >/dev/null 2>&1; then
     actual_version=$(swift_version)
     if [ "$expect_version" != "$actual_version" ]; then
         echo "Update Swift: expect:$expect_version, actual:$actual_version"

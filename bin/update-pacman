@@ -1,9 +1,6 @@
 #!/bin/sh
 set -euf
 
-# Helpers https://github.com/sixarm/unix-shell-script-kit
-. "$(dirname "$(readlink -f "$0")")/unix-shell-script-kit"
-
 # Pacman package manager for Arch Linux.
 #
 # One-liner with long options:
@@ -14,7 +11,7 @@ set -euf
 #
 #     sudo pacman -Syu
 #
-if command_exists pacman; then
+if command -v pacman >/dev/null 2>&1; then
     # Update the package databases for each of the repositories on your system.
     pacman --sync --refresh
     # Update the local database of PGP keys used by the package maintainers. 

@@ -1,11 +1,8 @@
 #!/bin/sh
 set -euf
 
-# Helpers https://github.com/sixarm/unix-shell-script-kit
-. "$(dirname "$(readlink -f "$0")")/unix-shell-script-kit"
-
 # Rust cargo package manager
-if command_exists cargo; then
+if command -v cargo >/dev/null 2>&1; then
     # Is this command running inside a cargo project?
     if cargo check>/dev/null 2>&1; then 
         cargo update --aggressive

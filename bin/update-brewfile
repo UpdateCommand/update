@@ -1,9 +1,6 @@
 #!/bin/sh
 set -euf
 
-# Helpers https://github.com/sixarm/unix-shell-script-kit
-. "$(dirname "$(readlink -f "$0")")/unix-shell-script-kit"
-
 # Update via Brewfile using the `brew` package manager.
 #
 # The brew documentation says to look for its file in order:
@@ -12,7 +9,7 @@ set -euf
 #     $XDG_CONFIG_HOME/brewfile/Brewfile
 #     $HOME/.config/brewfile/Brewfile
 #
-if command_exists brew; then
+if command -v brew >/dev/null 2>&1; then
     # Brew doesn't tend to run correctly as root
     if [ "$(whoami)" != "root" ]; then
         file=${HOMEBREW_BUNDLE_FILE:-${XDG_CONFIG_HOME:-$HOME/.config}/brewfile/Brewfile}

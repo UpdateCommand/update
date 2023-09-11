@@ -1,10 +1,7 @@
 #!/bin/sh
 set -euf
 
-# Helpers https://github.com/sixarm/unix-shell-script-kit
-. "$(dirname "$(readlink -f "$0")")/unix-shell-script-kit"
-
 # macOS Software Update
-if command_exists softwareupdate; then
+if command -v softwareupdate >/dev/null 2>&1; then
     softwareupdate --install --all
 fi

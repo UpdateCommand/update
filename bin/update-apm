@@ -1,10 +1,7 @@
 #!/bin/sh
 set -euf
 
-# Helpers https://github.com/sixarm/unix-shell-script-kit
-. "$(dirname "$(readlink -f "$0")")/unix-shell-script-kit"
-
 # APM: Atom Package Manager
-if command_exists apm; then
+if command -v apm >/dev/null 2>&1; then
     apm upgrade --no-confirm
 fi

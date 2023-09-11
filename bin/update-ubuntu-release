@@ -1,9 +1,6 @@
 #!/bin/sh
 set -euf
 
-# Helpers https://github.com/sixarm/unix-shell-script-kit
-. "$(dirname "$(readlink -f "$0")")/unix-shell-script-kit"
-
 # Upgrade an Ubuntu operating system by running do-release-upgrade.
 #
 # ## How to choose upgrades
@@ -61,6 +58,6 @@ set -euf
 # command returns 1 if there's no upgrade needed, which would quit.
 # TODO: handle this so it continues if there's no upgrade needed.
 #
-if command_exists do-release-upgrade; then
+if command -v do-release-upgrade >/dev/null 2>&1; then
     do-release-upgrade || true
 fi
