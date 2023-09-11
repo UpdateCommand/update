@@ -2,6 +2,18 @@
 set -euf
 
 # PNPM: Performant Node Package Manager
+#
 if command -v pnpm >/dev/null 2>&1; then
+    # This code is enabled to fail silently because pnpm does not seem to have a
+    # simple way to see if a global file is available or not, without an error.
+    #
+    # If pnpm does not have a global, then the pnpm error message is:
+    #
+    #     $ pnpm update --global
+    #     ERR_PNPM_NO_PKG_MANIFEST  
+    #     No package.json found in /var/root/Library/pnpm/global/5
+    #
+    set +e
     pnpm update --global
+    set -e
 fi
