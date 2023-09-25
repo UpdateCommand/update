@@ -1,0 +1,30 @@
+#!/bin/sh
+set -euf
+
+# Example code to find each Cargo.toml and update its project:
+#
+#     find "$HOME" -type f -name 'Cargo.toml' -exec dirname {} \; | 
+#     while read -r x; do 
+#         cd "$x" &&
+#         update-cargo-toml
+#     done
+
+update_cargo_toml() {
+    # Rust cargo package manager
+    if command -v cargo >/dev/null 2>&1; then
+        # Is this command running inside a cargo project?
+        if cargo check>/dev/null 2>&1; then 
+            cargo update --aggressive
+            cargo check --all-targets
+            cargo build --all-targets
+            cargo test --all-targets --no-run
+            # Is "cargo upgrade" available?
+            # If yes, then upgrade the Cargo.toml file.
+            if cargo upgrade --help>/dev/null 2>&1; then
+                cargo upgrade --recursive true
+            fi
+        fi
+    fi
+}
+
+update_cargo_toml
