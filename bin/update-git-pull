@@ -1,37 +1,19 @@
 #!/bin/sh
 set -euf
 
-# git pull for typical directories.
+# Example code to find each .git and update its project:
 #
-# This looks for lists of project directories here:
-#
-#     $XDG_CONFIG_HOME/update-git-pull/manifests/*
-#     $HOME/update-git-pull/manifests/*
-#
-# For example:
-#
-#     ~/update-git-pull/manifests/my-home-project-list.txt
-#     ~/update-git-pull/manifests/my-work-project-list.txt
-#
-# Each manifest file is simply a list of local project directories.
-# The program skips lines that are comments (begin with #) or blank.
-#
-if command -v git >/dev/null 2>&1; then
-    config_dir="${XDG_CONFIG_HOME:-$HOME/.config}/update-git-pull"
-    manifest_dir="$config_dir/manifests"
-    if [ -d "$manifest_dir" ]; then
-        find "$manifest_dir" -type f |
-        while read -r manifest_file; do
-            cat "$manifest_file" | 
-            grep -v "^#" | 
-            grep "[^[:space:]]" |  
-            while read -r project_dir; do
-                if [ -d "$project_dir" ] && [ -w "$project_dir" ]; then
-                    ( cd "$project_dir" && git pull && git submodule update --init --recursive )
-                else
-                    >&2 printf %s\\n "err update-git-pull config_dir:$config_dir manifest_dir:$manifest_dir project_dir:$project_dir"
-                fi
-            done
-        done
+#     find "$HOME" -type d -name '.git' -exec dirname {} \; | 
+#     while read -r x; do 
+#         cd "$x" &&
+#         update-cargo-crate
+#     done
+
+update_git_pull() {
+    if command -v git >/dev/null 2>&1; then
+        git pull && 
+        git submodule update --init --recursive
     fi
-fi
+}
+
+update_git_pull
