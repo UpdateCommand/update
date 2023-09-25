@@ -1,0 +1,37 @@
+#!/bin/sh
+set -euf
+
+# Run update-hg-pull with manifests:
+#
+#     $XDG_CONFIG_HOME/update-hg-pull-manifests/*
+#     $HOME/update-hg-pull-manifests/*
+#
+# For example:
+#
+#     ~/update-hg-pull-manifests/foo.txt
+#     ~/update-hg-pull-manifests/bar.txt
+#
+# Each manifest file is simply a list of local project directories.
+# The program skips lines that are comments (begin with #) or blank.
+
+update_hg_pull_manifests() {
+    manifests_to_lines "${XDG_CONFIG_HOME:-$HOME/.config}/update-hg-pull-manifests" |
+    while read -r line; do
+        cd "$line" 2>/dev/null && 
+        update_hg_pull
+    done
+}
+
+update_hg_pull() {
+    if command -v hg >/dev/null 2>&1; then
+        hg pull -u
+    fi
+}
+
+manifests_to_lines() {
+    find "$1" -type f -exec cat {} \; 2>/dev/null |
+    grep -v "^#" |
+    grep -v "^[:space:]*$"
+}
+
+update_hg_pull_manifests
