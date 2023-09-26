@@ -30,8 +30,7 @@ update_hg_pull() {
 
 manifests_to_lines() {
     find "$1" -type f -exec cat {} \; 2>/dev/null |
-    grep -v "^#" |
-    grep -v "^[:space:]*$"
+    grep '^[:space]*[^#[:space:]]' 
 }
 
 update_hg_pull_manifests
