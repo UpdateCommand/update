@@ -14,8 +14,11 @@ set -euf
 # Each manifest file is simply a list of local project directories.
 # The program skips lines that are comments (begin with #) or blank.
 
+program_command="$(basename "$0")"
+program_config="${XDG_CONFIG_HOME:-$HOME/.config}/$program_command"
+
 update_git_pull_manifests() {
-    manifests_to_lines "${XDG_CONFIG_HOME:-$HOME/.config}/update-git-pull-manifests" |
+    manifests_to_lines |
     while read -r line; do
         cd "$line" 2>/dev/null && 
         update_git_pull
@@ -30,7 +33,7 @@ update_git_pull() {
 }
 
 manifests_to_lines() {
-    find "$1" -type f -exec cat {} \; 2>/dev/null |
+    find "$program_config" -type f -exec cat {} \; 2>/dev/null |
     grep '^[:space]*[^#[:space:]]' 
 }
 
