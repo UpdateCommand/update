@@ -1,0 +1,8 @@
+#!/bin/sh
+set -euf
+
+# Cards stands for 'Create, Add, Remove and Download System' packages. It is a
+# set of utilities to manage the installed software on your NuTyX Linux system. 
+if command -v cards >/dev/null 2>&1; then
+   cards upgrade
+fi
