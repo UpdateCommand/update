@@ -141,6 +141,7 @@ fi
 . update-scoop || :
 . update-slackpkg || :
 . update-urpmi || :
+. update-xbps || :
 . update-yay || :
 . update-yum || :
 . update-zypper || :

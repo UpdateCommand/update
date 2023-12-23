@@ -1,0 +1,7 @@
+#!/bin/sh
+set -euf
+
+# xbps to build packages for Void Linux.
+if command -v xbps >/dev/null 2>&1; then
+    xbps-install --sync
+fi
