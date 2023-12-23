@@ -1,0 +1,7 @@
+#!/bin/sh
+set -euf
+
+# slackpkg package manager for Slack Linux.
+if command -v slackpkg >/dev/null 2>&1; then
+   slackpkg update
+fi

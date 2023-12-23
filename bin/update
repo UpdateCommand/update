@@ -139,6 +139,7 @@ fi
 . update-pkg-add || :
 . update-prt-get || :
 . update-scoop || :
+. update-slackpkg || :
 . update-yay || :
 . update-yum || :
 . update-zypper || :

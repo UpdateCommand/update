@@ -45,6 +45,7 @@ When you run `update` the command will run many software updates and upgrades.
  * [`update-repos`](bin/update-repos): update Git repositories - customize this for your system.
  * [`update-rustup`](bin/update-rustup): update Rust programming language tooling.
  * [`update-scoop`](bin/update-scoop): update scoop for system-wide packages - for Windows.
+ * [`update-slackpkg`](bin/update-slackpkg): update slackpkg - for Slack Linux.
  * [`update-swift`](bin/update-swift): update macOS Swift language - this merely prints advice.
  * [`update-ubuntu-release`](bin/update-ubuntu-release): update Ubuntu release - for major system upgrades.
  * [`update-yay`](bin/update-yay): update Yay package manager - for Arch Linux
