@@ -1,0 +1,7 @@
+#!/bin/sh
+set -euf
+
+# eopkg is for software packages on Solus Linux.
+if command -v emerge >/dev/null 2>&1; then
+   eopkg upgrade
+fi
