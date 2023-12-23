@@ -18,6 +18,7 @@ When you run `update` the command will run many software updates and upgrades.
  * [`update-carthage`](bin/update-carthage): update Xcode Carthage pacakges - for macOS.
  * [`update-choco`](bin/update-choco): update choco Chocolatey packages - for Windows.
  * [`update-dnf`](bin/update-dnf): update DNF - for Fedora Linux.
+ * [`update-emerge`](bin/update-emerge): update emerge - for Gentoo Linux.
  * [`update-hg-pull`](bin/update-hg-pull): update mercurial repositories.
  * [`update-gem`](bin/update-gem): update Ruby gems.
  * [`update-git-pull`](bin/update-git-pull): update git repositories.
