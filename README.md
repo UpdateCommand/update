@@ -28,6 +28,7 @@ When you run `update` the command will run many software updates and upgrades.
  * [`update-guix`](bin/update-guix): update guix - for Guix System Linux.
  * [`update-mas`](bin/update-mas): update mas packages by using the Mac App Store.
  * [`update-motion`](bin/update-motion): update Ruby Motion - needs a valid paid license.
+ * [`update-nix`](bin/update-nix): update nix-env for cross-platform and NixOS.
  * [`update-npm-global`](bin/update-npm-global): update Node Package Manager (NPM) via global settings.
  * [`update-npm-local`](bin/update-npm-global): update Node Package Manager (NPM) via local settings.
  * [`update-npm-n-stable`](bin/update-npm-global): update Node Package Manager (NPM) via `n` environment manager.

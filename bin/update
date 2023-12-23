@@ -131,6 +131,7 @@ fi
 . update-freebsd || :
 . update-guix || :
 . update-mas || :
+. update-nix || :
 . update-pacman || :
 . update-pkg || :
 . update-pkg-add || :
