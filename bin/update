@@ -137,6 +137,7 @@ fi
 . update-opkg || :
 . update-pkg || :
 . update-pkg-add || :
+. update-prt-get || :
 . update-scoop || :
 . update-yay || :
 . update-yum || :

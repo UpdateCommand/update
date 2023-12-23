@@ -1,0 +1,7 @@
+#!/bin/sh
+set -euf
+
+# prt-get package management tool for CRUX Linux. 
+if command -v prt-get >/dev/null 2>&1; then
+   prt-get sysup
+fi

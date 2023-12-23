@@ -41,6 +41,7 @@ When you run `update` the command will run many software updates and upgrades.
  * [`update-pnpm-local`](bin/update-pnpm-global): update Performant Node Package Manager (PNPM) via local settings.
  * [`update-pod`](bin/update-pod): update Cocoapods for macOS
  * [`update-podfile`](bin/update-podfile): update Cocoapods packages for macOS by using a Podfile
+ * [`update-prt-get`](bin/update-nix): update prt-get - for CRUX Linux. 
  * [`update-repos`](bin/update-repos): update Git repositories - customize this for your system.
  * [`update-rustup`](bin/update-rustup): update Rust programming language tooling.
  * [`update-scoop`](bin/update-scoop): update scoop for system-wide packages - for Windows.
