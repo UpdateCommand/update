@@ -120,6 +120,7 @@ fi
 . update-macos || :
 
 ## Update via system-wide package managers
+. update-apk || :
 . update-apt || :
 . update-brew || :
 . update-brewfile || :
