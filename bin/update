@@ -140,6 +140,7 @@ fi
 . update-prt-get || :
 . update-scoop || :
 . update-slackpkg || :
+. update-urpmi || :
 . update-yay || :
 . update-yum || :
 . update-zypper || :
