@@ -1,0 +1,7 @@
+#!/bin/sh
+set -euf
+
+# flatpak is used for software packages on many Linux systems.
+if command -v flatpak >/dev/null 2>&1; then
+   flatpak update
+fi
