@@ -25,6 +25,7 @@ When you run `update` the command will run many software updates and upgrades.
  * [`update-gem`](bin/update-gem): update Ruby gems.
  * [`update-git-pull`](bin/update-git-pull): update git repositories.
  * [`update-gemfile`](bin/update-gemfile): update gem packages for Ruby by using a Gemfile.
+ * [`update-guix`](bin/update-guix): update guix - for Guix System Linux.
  * [`update-mas`](bin/update-mas): update mas packages by using the Mac App Store.
  * [`update-motion`](bin/update-motion): update Ruby Motion - needs a valid paid license.
  * [`update-npm-global`](bin/update-npm-global): update Node Package Manager (NPM) via global settings.

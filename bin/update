@@ -123,9 +123,13 @@ fi
 . update-apt || :
 . update-brew || :
 . update-brewfile || :
+. update-cards || :
 . update-choco || :
 . update-dnf || :
+. update-emerge || :
+. update-eopkg || :
 . update-freebsd || :
+. update-guix || :
 . update-mas || :
 . update-pacman || :
 . update-pkg || :

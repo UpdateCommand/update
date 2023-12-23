@@ -1,0 +1,7 @@
+#!/bin/sh
+set -euf
+
+# Guix is for software packages on Guix System Linux.
+if command -v guix >/dev/null 2>&1; then
+   guix upgrade
+fi
