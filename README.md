@@ -34,6 +34,7 @@ When you run `update` the command will run many software updates and upgrades.
  * [`update-npm-local`](bin/update-npm-global): update Node Package Manager (NPM) via local settings.
  * [`update-npm-n-stable`](bin/update-npm-global): update Node Package Manager (NPM) via `n` environment manager.
  * [`update-macos`](bin/update-macos): update the macOS Mac operating system - large downloads.
+ * [`update-opkg`](bin/update-opkg): update opkg - for embedded Linux devices.
  * [`update-pacman`](bin/update-pacman): update pacman - for Arch Linux.
  * [`update-pip`](bin/update-pip): update Python PIP.
  * [`update-pnpm-global`](bin/update-pnpm-global): update Performant Node Package Manager (PNPM) via global settings.

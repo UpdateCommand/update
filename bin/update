@@ -134,6 +134,7 @@ fi
 . update-mas || :
 . update-nix || :
 . update-pacman || :
+. update-opkg || :
 . update-pkg || :
 . update-pkg-add || :
 . update-scoop || :
