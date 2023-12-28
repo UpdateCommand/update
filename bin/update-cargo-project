@@ -1,15 +1,15 @@
 #!/bin/sh
 set -euf
 
-# Example code to find each Cargo.toml and update its project:
+# Example code to find each cargo project and update it:
 #
 #     find "$HOME" -type f -name 'Cargo.toml' -exec dirname {} \; | 
 #     while read -r x; do 
 #         cd "$x" &&
-#         update-cargo-toml
+#         update-cargo-project
 #     done
 
-update_cargo_toml() {
+update_cargo_project() {
     # Rust cargo package manager
     if command -v cargo >/dev/null 2>&1; then
         # Is this command running inside a cargo project?
@@ -24,7 +24,11 @@ update_cargo_toml() {
                 cargo upgrade --recursive true
             fi
         fi
+        # Delete old build artifacts
+        if cargo --list | grep -q '^ *sweep$'; then 
+            cargo sweep --installed
+        fi
     fi
 }
 
-update_cargo_toml
+update_cargo_project

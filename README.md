@@ -14,8 +14,9 @@ When you run `update` the command will run many software updates and upgrades.
  * [`update-brew-cask`](bin/update-brew-cask): update Homebrew Cask packages - for macOS apps.
  * [`update-cabal`](bin/update-cabal): update Haskell Cabal pacakages.
  * [`update-cards`](bin/update-cards): update cards packages - for NuTyX Linux. 
- * [`update-cargo-crate`](bin/update-cargo-crate): update Rust cargo crate project.
  * [`update-cargo`](bin/update-cargo): update Rust cargo package manager.
+ * [`update-cargo-project`](bin/update-cargo-project): update one Rust cargo project.
+ * [`update-cargo-project-manifests`](bin/update-cargo-project): update each Rust cargo projects based on manifests.
  * [`update-carthage`](bin/update-carthage): update Xcode Carthage pacakges - for macOS.
  * [`update-choco`](bin/update-choco): update choco Chocolatey packages - for Windows.
  * [`update-dnf`](bin/update-dnf): update DNF - for Fedora Linux.
@@ -137,8 +138,8 @@ For details, see the respective programs.
 ## Tracking
 
   * Package: UpdateCommand
-  * Version: 7.1.0
+  * Version: 8.0.0
   * Created: 2005-07-05
-  * Updated: 2023-12-23T19:02:12Z
+  * Updated: 2023-12-28T22:26:48Z
   * License: GPL-2.0-or-later or contact us for custom
   * Contact: Joel Parker Henderson (https://joelparkerhenderson.com)
