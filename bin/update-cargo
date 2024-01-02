@@ -9,9 +9,7 @@ if command -v cargo >/dev/null 2>&1; then
         # Update installed crates via default cargo tooling,
         # which works even if `cargo-install-update` is not available.
         cargo install --list | 
-        awk '/^\w/ { print $1 }' | 
-        while read -r x; do
-            cargo install "$x"
-        done
+        awk '/^[[:alnum:]]/ {print $1}' | 
+        xargs cargo install
     fi
 fi
