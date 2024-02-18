@@ -24,9 +24,27 @@ update_cargo_project() {
                 cargo upgrade --recursive true
             fi
         fi
-        # Delete old build artifacts
+        # Delete old build artifacts.
         if cargo --list | grep -q '^ *sweep$'; then 
             cargo sweep --installed
+            # Rebuild all dependencies that are older than 90 days.
+            # As of 2024-02-17 this is the least-worst way we know
+            # to delete old dependencies that are no longer used.
+            # Replace this code when there's any better solution,
+            # such as a cargo command that can delete unreachables.
+            # We choose 90 days because it's a reasonably long time.
+            cargo sweep --time 90
+            cargo update --aggressive
+            cargo check --all-targets
+            cargo build --all-targets
+            cargo test --all-targets --no-run
+        fi
+        # Delete unused dependencies.
+        # As of 2024-02-17 cargo-udeps requires nightly to run.
+        if cargo --list | grep -q '^ *cargo-udeps$'; then 
+            if rustup toolchain list | grep -q '^nightly-'; then
+                # cargo +nightly udeps
+            fi
         fi
     fi
 }
