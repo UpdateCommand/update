@@ -41,11 +41,11 @@ update_cargo_project() {
         fi
         # Delete unused dependencies.
         # As of 2024-02-17 cargo-udeps requires nightly to run.
-        if cargo --list | grep -q '^ *cargo-udeps$'; then 
-            if rustup toolchain list | grep -q '^nightly-'; then
-                # cargo +nightly udeps
-            fi
-        fi
+        # if cargo --list | grep -q '^ *cargo-udeps$'; then 
+        #     if rustup toolchain list | grep -q '^nightly-'; then
+        #         cargo +nightly udeps
+        #     fi
+        # fi
     fi
 }
 
