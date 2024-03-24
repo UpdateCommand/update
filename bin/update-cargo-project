@@ -12,8 +12,9 @@ set -euf
 #     $ cd ~/my-rust-project
 #     $ update-cargo-project
 #
-# The script does various updates and upgrades,
-# depending on what you have installed.
+# The script does various updates and upgrades.
+# The capabilties depend on what you have installed.
+# The goal is to have the project fully built and testable.
 #
 # Example code to find each cargo project and update it:
 #
@@ -67,14 +68,14 @@ update_cargo_project_with_sweep() {
     if cargo --list | grep -q '^ *sweep$'; then 
         # Delete build artifacts that weren't built 
         # with any of the currently installed toolchains.
-        cargo sweep --installed
+        cargo sweep --recursive --installed
         # Rebuild all dependencies that are older than 90 days.
         # As of 2024-02-17 this is the least-worst way we know
         # to delete old dependencies that are no longer used.
         # Replace this code when there's any better solution,
         # such as a cargo command that can delete unreachables.
         # We choose 90 days because it's a reasonably long time.
-        cargo sweep --time 90
+        cargo sweep --recursive --time 90
         update_cargo_project_with_targets
     fi
 }
