@@ -53,16 +53,9 @@ if command -v brew >/dev/null 2>&1; then
             repo=$(brew --repo "$tap")
             cd "$repo"
             git clean -dfx
-            if [ "$(git rev-parse --abbrev-ref HEAD)" = "master" ]; then
-                git reset --hard origin/master
-                git pull origin master
-            elif [ "$(git rev-parse --abbrev-ref HEAD)" = "main" ]; then
-                git reset --hard origin/main
-                git pull origin main
-            else
-                echo "Unknown default branch. Exiting without resetting."
-                exit 1
-            fi
+            branch="$(git rev-parse --abbrev-ref HEAD)"
+            git reset --hard "origin/$branch"
+            git pull origin "$branch"
         done
 
         # Update the brew knowledgebase via the typical command.
