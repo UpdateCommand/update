@@ -1,24 +1,18 @@
 #!/bin/sh
 set -euf
 
-# When asdf is installed via homebrew it does not allow self-update via asdf
-if brew list --formula | grep -q '^asdf$'; then
-    exit 0
-fi
-
 # asdf-vm: manage multiple runtime versions with a single CLI tool
 if command -v asdf >/dev/null 2>&1; then
     # asdf has multiple ways that may be able to do updates,
     # and has internal logic to test the ways, and deny some ways.
     #
-    # For example if asdf is installed on macOS via brew via a `brew`
-    # dedicated user, and then later the user tries to run `asdf update`, 
-    # then asdf prints `Update command disabled. Please use the package 
-    # manager that you used to install asdf to upgrade asdf.`
+    # If asdf is installed on macOS via homebrew then later the user tries to
+    # run `asdf update`, then asdf prints `Update command disabled. Please use
+    # the package manager that you used to install asdf to upgrade asdf.`
     #
-    # Our workaround is to test whether the ASDF_DIR is set.
-    # TODO: research if there's a better way to do this.
-    if [ -n "${ASDF_DIR+1}" ]; then
+    if command -v brew >/dev/null 2>&1 && brew list --formula | grep -q '^asdf$'; then
+        :
+    else
         asdf update
     fi
     if [ -n "${ASDF_DATA_DIR+1}" ]; then
