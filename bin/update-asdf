@@ -1,6 +1,11 @@
 #!/bin/sh
 set -euf
 
+# When asdf is installed via homebrew it does not allow self-update via asdf
+if brew list --formula | grep -q '^asdf$'; then
+    exit 0
+fi
+
 # asdf-vm: manage multiple runtime versions with a single CLI tool
 if command -v asdf >/dev/null 2>&1; then
     # asdf has multiple ways that may be able to do updates,
