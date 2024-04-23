@@ -53,8 +53,10 @@ if command -v brew >/dev/null 2>&1; then
             repo=$(brew --repo "$tap")
             cd "$repo"
             git clean -dfx
-            git reset --hard '@{u}'
-            git pull ||  git pull origin "$(git branch --show-current)"
+            origin=$(git remote -v | grep -m1 '(fetch)' | awk '{print $1}')
+            branch=$(git branch --show-current)
+            git reset --hard "$origin/$branch"
+            git pull "$origin" "$branch"
         done
 
         # Update the brew knowledgebase via the typical command.
