@@ -4,5 +4,7 @@ set -euf
 # Yay package manager for Arch Linux.
 #
 if command -v yay >/dev/null 2>&1; then
-    yay -Syu
+    if [ "$(whoami)" != "root" ]; then
+        yay -Syu
+    fi
 fi
