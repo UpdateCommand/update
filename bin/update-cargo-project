@@ -30,7 +30,7 @@ update_cargo_project() {
     # Rust cargo package manager
     if command -v cargo >/dev/null 2>&1; then
         # Is this command running inside a cargo project?
-        if cargo check>/dev/null 2>&1; then 
+        if [ -e Cargo.toml ]; then 
             update_cargo_project_with_targets
             update_cargo_project_with_upgrade
             update_cargo_project_with_sweep
