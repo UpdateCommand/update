@@ -10,7 +10,7 @@ if command -v asdf >/dev/null 2>&1; then
     # run `asdf update`, then asdf prints `Update command disabled. Please use
     # the package manager that you used to install asdf to upgrade asdf.`
     #
-    if command -v brew >/dev/null 2>&1 && brew list --formula | grep -q '^asdf$'; then
+    if [ "$(id -u)" -ne 0 ] && command -v brew >/dev/null 2>&1 && brew list --formula | grep -q '^asdf$'; then
         :
     else
         asdf update
