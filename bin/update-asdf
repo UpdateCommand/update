@@ -13,7 +13,7 @@ if command -v asdf >/dev/null 2>&1; then
     if [ "$(id -u)" -ne 0 ] && command -v brew >/dev/null 2>&1 && brew list --formula | grep -q '^asdf$'; then
         :
     else
-        asdf update
+        asdf update || :
     fi
     if [ -n "${ASDF_DATA_DIR+1}" ]; then
         if [ -n "$(find "$ASDF_DATA_DIR"/plugins -type d -mindepth 1 -maxdepth 1 2>/dev/null | head -1)" ]; then
