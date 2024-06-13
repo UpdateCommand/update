@@ -53,14 +53,21 @@ update_cargo_project_with_targets() {
     cargo test --all-targets --no-run
 }
 
-# Is "cargo upgrade" available?
-# If yes, then upgrade the Cargo.toml file.
+# Is "cargo upgrade" available? If yes, then upgrade the Cargo.toml file.
+#
+# If you have cargo-edit installed, then you can run cargo upgrade (without s)
+# to automatically bump all dependencies to their latest versions.
+#
+# If you want to add "cargo upgrade":
+#
+#     cargo add cargo-upgrades
+#     cargo add cargo-edit
+#
 update_cargo_project_with_upgrade() {
     if cargo upgrade --help>/dev/null 2>&1; then
         cargo upgrade --recursive true
     fi
 }
-
 
 # Is "cargo sweep" available?
 # If yes, then delete old build artifacts.
@@ -68,7 +75,7 @@ update_cargo_project_with_sweep() {
     if cargo --list | grep -q '^ *sweep$'; then 
         # Delete build artifacts that weren't built 
         # with any of the currently installed toolchains.
-        cargo sweep --recursive --installed
+        cargo sweep --recursive
         # Rebuild all dependencies that are older than 90 days.
         # As of 2024-02-17 this is the least-worst way we know
         # to delete old dependencies that are no longer used.
@@ -76,7 +83,12 @@ update_cargo_project_with_sweep() {
         # such as a cargo command that can delete unreachables.
         # We choose 90 days because it's a reasonably long time.
         cargo sweep --recursive --time 90
-        update_cargo_project_with_targets
+        # Use a cargo sweep timestamp file to keep 
+        # just the most-recent build artifacts.
+        cargo sweep --recursive --stamp
+        cargo build --all-targets
+        cargo test --all-targets --no-run
+        cargo sweep --recursive --file
     fi
 }
 
