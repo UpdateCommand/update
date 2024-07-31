@@ -21,7 +21,8 @@ set -euf
 #     find "$HOME" -type f -name 'Cargo.toml' -exec dirname {} \; | 
 #     while read -r x; do 
 #         cd "$x" &&
-#         update-cargo-project
+#         update-cargo-project || 
+#         true
 #     done
 #
 # Feedback appreciated.
