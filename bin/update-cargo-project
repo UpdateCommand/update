@@ -45,7 +45,7 @@ update_cargo_project() {
 update_cargo_project_with_targets() {
     # Update dependencies as recorded in the local lock file.
     # Force updating all dependencies of [SPEC]... as well.
-    cargo update --recursive
+    cargo update
     # Check the current package and all of its dependencies for errors.
     cargo check --all-targets
     # Compile the current package and all of its dependencies.
