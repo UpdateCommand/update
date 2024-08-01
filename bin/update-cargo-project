@@ -76,7 +76,7 @@ update_cargo_project_with_sweep() {
     if cargo --list | grep -q '^ *sweep$'; then 
         # Delete build artifacts that weren't built 
         # with any of the currently installed toolchains.
-        cargo sweep --recursive
+        cargo sweep --recursive --installed
         # Rebuild all dependencies that are older than 90 days.
         # As of 2024-02-17 this is the least-worst way we know
         # to delete old dependencies that are no longer used.
