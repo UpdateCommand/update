@@ -32,26 +32,12 @@ update_cargo_project() {
     if command -v cargo >/dev/null 2>&1; then
         # Is this command running inside a cargo project?
         if [ -e Cargo.toml ]; then 
-            update_cargo_project_with_targets
             update_cargo_project_with_upgrade
             update_cargo_project_with_sweep
             update_cargo_project_with_udeps
+            update_cargo_project_with_targets
         fi
     fi
-}
-
-# Run cargo update & cargo check & cargo build & cargo test.
-# This function is best effort to make everything current.
-update_cargo_project_with_targets() {
-    # Update dependencies as recorded in the local lock file.
-    # Force updating all dependencies of [SPEC]... as well.
-    cargo update
-    # Check the current package and all of its dependencies for errors.
-    cargo check --all-targets
-    # Compile the current package and all of its dependencies.
-    cargo build --all-targets
-    # Compile unit tests, integration test, and documentation tests.
-    cargo test --all-targets --no-run
 }
 
 # Is "cargo upgrade" available? If yes, then upgrade the Cargo.toml file.
@@ -74,22 +60,15 @@ update_cargo_project_with_upgrade() {
 # If yes, then delete old build artifacts.
 update_cargo_project_with_sweep() {
     if cargo --list | grep -q '^ *sweep$'; then 
-        # Delete build artifacts that weren't built 
-        # with any of the currently installed toolchains.
+        # Heuristic 1 of 3: Delete build artifacts that weren't built with any
+        # of the currently installed toolchains.
         cargo sweep --recursive --installed
-        # Rebuild all dependencies that are older than 90 days.
-        # As of 2024-02-17 this is the least-worst way we know
-        # to delete old dependencies that are no longer used.
-        # Replace this code when there's any better solution,
-        # such as a cargo command that can delete unreachables.
-        # We choose 90 days because it's a reasonably long time.
+        # Heuristic 2 of 3: Rebuild all dependencies that are older than 90
+        # days. As of 2024-02-17 this is the least-worst way we know to delete
+        # old dependencies that are no longer used. Replace this code when
+        # there's any better solution, such as a cargo command that can delete
+        # unreachables. We choose 90 days because it's a reasonably long time.
         cargo sweep --recursive --time 90
-        # Use a cargo sweep timestamp file to keep 
-        # just the most-recent build artifacts.
-        cargo sweep --recursive --stamp
-        cargo build --all-targets
-        cargo test --all-targets --no-run
-        cargo sweep --recursive --file
     fi
 }
 
@@ -102,6 +81,21 @@ update_cargo_project_with_udeps() {
             cargo +nightly udeps
         fi
     fi
+}
+
+# Run cargo update & cargo check & cargo build & cargo test.
+# This function is best effort to make everything current,
+# within the constraint of using solely default cargo.
+update_cargo_project_with_targets() {
+    # Update dependencies as recorded in the local lock file.
+    # Force updating all dependencies of [SPEC]... as well.
+    cargo update
+    # Check the current package and all of its dependencies for errors.
+    cargo check --all-targets
+    # Compile the current package and all of its dependencies.
+    cargo build --all-targets
+    # Compile unit tests, integration test, and documentation tests.
+    cargo test --all-targets --no-run
 }
 
 update_cargo_project
