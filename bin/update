@@ -166,11 +166,11 @@ fi
 . update-pip || :
 . update-pod || :
 . update-podfile || :
+. update-npm || :
+. update-npm-n || :
 . update-npm-global || :
-. update-npm-local || :
-. update-npm-n-stable || :
+. update-pnpm || :
 . update-pnpm-global || :
-. update-pnpm-local || :
 . update-yarn || :
 
 # Update repositories
