@@ -1,0 +1,12 @@
+#!/bin/sh
+set -euf
+
+# Update Helm charts.
+#
+# Helm is a Kubernetes package manager that simplifies the deployment of applications.
+# This script checks for Helm installation, then runs `helm repo update`
+# to update the repositories and refresh chart information.
+#
+if command -v helm >/dev/null 2>&1; then
+    helm repo update
+fi
