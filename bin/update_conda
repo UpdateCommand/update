@@ -1,0 +1,11 @@
+#!/bin/sh
+set -euf
+
+# Update Conda packages for the active environment.
+#
+# Conda is an environment management system widely used for Python.
+# The `conda update --all` updates all packages in the active environment.
+#
+if command -v conda >/dev/null 2>&1; then
+    conda update --all -y
+fi
