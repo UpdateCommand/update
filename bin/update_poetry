@@ -1,0 +1,13 @@
+#!/bin/sh
+set -euf
+
+# Update Poetry project dependencies.
+#
+# Poetry is used for Python project dependency management.
+# This command updates the dependencies listed in pyproject.toml.
+#
+if command -v poetry >/dev/null 2>&1; then
+    if [ -f pyproject.toml ]; then
+        poetry update
+    fi
+fi
