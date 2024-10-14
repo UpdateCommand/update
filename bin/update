@@ -140,6 +140,7 @@ fi
 . update-prt-get || :
 . update-scoop || :
 . update-slackpkg || :
+. update-snap || :
 . update-urpmi || :
 . update-xbps || :
 . update-yay || :
@@ -159,6 +160,7 @@ fi
 . update-cargo || :
 . update-cargo-project || :
 . update-cargo-project-manifests || :
+. update-conda || :
 . update-gem || :
 . update-gemfile || :
 . update-mix || :

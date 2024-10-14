@@ -19,6 +19,7 @@ When you run `update` the command will run many software updates and upgrades.
  * [`update-cargo-project-manifests`](bin/update-cargo-project): update each Rust cargo projects based on manifests.
  * [`update-carthage`](bin/update-carthage): update Xcode Carthage pacakges - for macOS.
  * [`update-choco`](bin/update-choco): update choco Chocolatey packages - for Windows.
+ * [`update-conda`](bin/update-conda): update conda packages - for Python package manager.
  * [`update-dnf`](bin/update-dnf): update DNF - for Fedora Linux.
  * [`update-emerge`](bin/update-emerge): update emerge - for Gentoo Linux.
  * [`update-eopkg`](bin/update-eopkg): update eopkg - for Solus Linux.
@@ -47,6 +48,7 @@ When you run `update` the command will run many software updates and upgrades.
  * [`update-rustup`](bin/update-rustup): update Rust programming language tooling.
  * [`update-scoop`](bin/update-scoop): update scoop for system-wide packages - for Windows.
  * [`update-slackpkg`](bin/update-slackpkg): update slackpkg - for Slack Linux.
+ * [`update-snap`](bin/update-snpa): update snap - for Canonical Linux Snap app containers.
  * [`update-swift`](bin/update-swift): update macOS Swift language - this merely prints advice.
  * [`update-urpmi`](bin/update-urpmi): update urpmi system package manager for Mageia Linux.
  * [`update-ubuntu-release`](bin/update-ubuntu-release): update Ubuntu release - for major system upgrades.
