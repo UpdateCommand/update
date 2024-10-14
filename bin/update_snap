@@ -3,6 +3,9 @@ set -euf
 
 # Update Snap packages.
 #
+# Snap is a software packaging and deployment system developed by Canonical for
+# operating systems that use the Linux kernel and the systemd init system.
+#
 # Running Snap as root is unnecessary.
 #
 if command -v snap >/dev/null 2>&1; then
