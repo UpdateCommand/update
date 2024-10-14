@@ -1,0 +1,10 @@
+#!/bin/sh
+set -euf
+
+# Update Snap packages.
+#
+# Running Snap as root is unnecessary.
+#
+if command -v snap >/dev/null 2>&1; then
+    snap refresh
+fi
