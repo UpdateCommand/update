@@ -163,11 +163,14 @@ fi
 . update-conda || :
 . update-gem || :
 . update-gemfile || :
+. update-helm || :
 . update-mix || :
 . update-motion || :
 . update-pip || :
+. update-pipenv || :
 . update-pod || :
 . update-podfile || :
+. update-poetry || :
 . update-npm || :
 . update-npm-n || :
 . update-npm-global || :

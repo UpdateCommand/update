@@ -1,0 +1,15 @@
+#!/bin/sh
+set -euf
+
+# Update Pipenv project dependencies.
+#
+# Pipenv is a Python dependency management tool.
+# This script will check if Pipenv is available and
+# if a Pipfile exists in the current directory.
+# It then runs the `pipenv update` command to update all dependencies.
+#
+if command -v pipenv >/dev/null 2>&1; then
+    if [ -f Pipfile ]; then
+        pipenv update
+    fi
+fi
