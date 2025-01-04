@@ -4,7 +4,7 @@ set -euf
 # Rust cargo package manager
 if command -v cargo >/dev/null 2>&1; then
     if command -v cargo-install-update >/dev/null 2>&1; then
-        cargo install-update -a
+        cargo install-update --all --git
     else
         # Update installed crates via default cargo tooling,
         # which works even if `cargo-install-update` is not available.
