@@ -143,8 +143,8 @@ For details, see the respective programs.
 ## Tracking
 
   * Package: UpdateCommand
-  * Version: 8.0.0
+  * Version: 8.0.1
   * Created: 2005-07-05
-  * Updated: 2023-12-28T22:26:48Z
+  * Updated: 2025-02-27T14:23:13Z
   * License: GPL-2.0-or-later or contact us for custom
   * Contact: Joel Parker Henderson (https://joelparkerhenderson.com)

@@ -4,8 +4,8 @@ set -euf
 ## Program Tracking
 
 program_command="update"
-program_version="8.0.0"
-program_updated="2023-12-28T22:26:48Z"
+program_version="8.0.1"
+program_updated="2025-02-27T14:23:13Z"
 program_license="GPL-2.0-or-later or contact us for custom"
 program_contact="Joel Parker Henderson (https://joelparkerhenderson.com)"
 
