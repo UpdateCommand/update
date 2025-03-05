@@ -181,3 +181,6 @@ fi
 # Update repositories
 . update-hg-pull || :
 . update-git-pull || :
+
+# Update individual programs
+. update-az || :
