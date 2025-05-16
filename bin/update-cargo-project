@@ -18,7 +18,7 @@ set -euf
 #
 # Example code to find each cargo project and update it:
 #
-#     find "$HOME" -type f -name 'Cargo.toml' -exec dirname {} \; | 
+#     find "$HOME" -path '*/.*' -prune -o -type f -name 'Cargo.toml' -exec dirname {} \; | 
 #     while read -r x; do 
 #         cd "$x" &&
 #         update-cargo-project || 

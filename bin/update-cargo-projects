@@ -1,0 +1,9 @@
+#!/bin/sh
+set -euf
+
+find "${1:-$HOME}" -path '*/.*' -prune -o -type f -name 'Cargo.toml' -exec dirname {} \; | 
+while read -r x; do 
+    cd "$x" &&
+    update-cargo-project || 
+    true
+done
