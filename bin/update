@@ -184,3 +184,4 @@ fi
 
 # Update individual programs
 . update-az || :
+. update-playwright-via-pnpm || :

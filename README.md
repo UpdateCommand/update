@@ -42,6 +42,7 @@ When you run `update` the command will run many software updates and upgrades.
 * [`update-pacman`](bin/update-pacman): update pacman - for Arch Linux.
 * [`update-pip`](bin/update-pip): update Python PIP.
 * [`update-pipenv`](bin/update-pipenv): update Pipenv project dependencies.
+* [`update-playwright-via-pnpm`](bin/update-playwright-via-pnpm): update Playwright testing and dependencies via PNPM.
 * [`update-pnpm-global`](bin/update-pnpm-global): update Performant Node Package Manager (PNPM) via global settings.
 * [`update-pnpm-local`](bin/update-pnpm-global): update Performant Node Package Manager (PNPM) via local settings.
 * [`update-pod`](bin/update-pod): update Cocoapods for macOS
@@ -59,22 +60,27 @@ When you run `update` the command will run many software updates and upgrades.
 * [`update-xbps`](bin/update-xbsp): update xbps system package manager for Void Linux.
 * [`update-yay`](bin/update-yay): update Yay package manager - for Arch Linux
 * [`update-yarn`](bin/update-yarn): update Yarn JavaScript packages - for yarn upgrade.
-* [`update-zypper`](bin/update-zypper): update Zypper package manager - for openSUSE
+* [`update-zypper`](bin/update-zypper): update Zypper package manager - for openSUSE.
 
 ## Install
 
 Clone the repo to your own system, such as:
 
-    $ git clone https://github.com/UpdateCommand/update.git ~/update
+```sh
+git clone https://github.com/UpdateCommand/update.git ~/update
+```
 
 Add the `bin` directory to your own path:
 
-    $ export PATH="$PATH:~/update/bin"
+```sh
+export PATH="$PATH:~/update/bin"
+```
 
 Run the script:
 
-    $ update
-
+```sh
+update
+```
 
 ## Design goals
 
@@ -95,18 +101,23 @@ To run the update command daily, you can use the `crontab` command.
 
 To see if you have an existing `crontab` file, you can list it by running this:
 
-    crontab -l > ~/.crontab
+```sh
+crontab -l > ~/.crontab
+```
 
 Edit the `~/.crontab` file.
 
 Add a line that runs the `nice` command and use the full path to the `update` command:
 
-    @daily /usr/bin/nice /foo/bar/update
+```crontab
+@daily /usr/bin/nice /foo/bar/update
+```
 
 Then install the file:
 
-    crontab ~/.crontab
-
+```sh
+crontab ~/.crontab
+```
 
 ## Special options for package manager files
 
@@ -120,8 +131,7 @@ Some of the update programs can read package manager files:
 
 For details, see the respective programs.
 
-
-### Special options for project manifests
+## Special options for project manifests
 
 Some of the update programs can read project manifests:
 
@@ -139,12 +149,11 @@ You can use as many manifest files and subdirectories as you like.
 
 For details, see the respective programs.
 
-
 ## Tracking
 
 * Package: UpdateCommand
-* Version: 8.1.0
+* Version: 8.2.0
 * Created: 2005-07-05
-* Updated: 2025-05-16T07:17:30Z
+* Updated: 2025-05-30T07:37:31Z
 * License: GPL-2.0-or-later or contact us for custom
 * Contact: Joel Parker Henderson (https://joelparkerhenderson.com)

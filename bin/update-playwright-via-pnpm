@@ -1,0 +1,10 @@
+#!/bin/sh
+set -euf
+
+# Playwright testing via PNPM
+if command -v pnpm >/dev/null 2>&1; then
+  if pnpm list --parseable '@playwright/test' | grep '@' >/dev/null 2>&1; then
+    pnpm install --save-dev @playwright/test@latest
+    pnpm exec playwright install --with-deps
+  fi
+fi
