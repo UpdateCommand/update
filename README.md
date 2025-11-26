@@ -7,7 +7,8 @@ When you run `update` the command will run many software updates and upgrades.
 * [`update`](bin/update): run all the update scripts.
 * [`update-apk`](bin/update-apm): update Alpine Package Keeper (APK) - for Alpine Linux. 
 * [`update-apm`](bin/update-apm): update Atom Package Manager (APM) - for the GitHub Atom editor.
-* [`update-apt`](bin/update-apt): update apt-get - for Debian, Ubuntu, etc.
+* [`update-apt`](bin/update-apt): update apt - for Debian, Ubuntu, etc.
+* [`update-apt-get`](bin/update-apt-get): update apt-get - for Debian, Ubuntu, etc.
 * [`update-asdf`](bin/update-apm): update asdf - for managing multiple runtimes and languages.
 * [`update-brew`](bin/update-brew): update Homebrew packages - for macOS.
 * [`update-brewfile`](bin/update-brewfile): update brew packages for macOS by using a Brewfile

@@ -5,20 +5,20 @@ set -euf
 #
 # If you want the system to force saying yes, use this setting:
 #
-#     sudo apt --yes --force-yes ...
+#     sudo apt-get --yes --force-yes ...
 #
 # If you want the update to be quieter, use the --quiet option:
 #
-#     sudo apt --quiet ...
+#     sudo apt-get --quiet ...
 #
 # If you want the system to automatically use default answers whenever an
 # interactive prompt appears, use this setting:
 #
-#     sudo DEBIAN_FRONTEND=noninteractive apt ...
+#     sudo DEBIAN_FRONTEND=noninteractive apt-get ...
 #
 # If you want to combine all of the above:
 #
-#     sudo DEBIAN_FRONTEND=noninteractive apt --quiet --yes --force-yes ...
+#     sudo DEBIAN_FRONTEND=noninteractive apt-get --quiet --yes --force-yes ...
 #
 # Guide to perform an unattended installation of a Debian package:
 # http://www.microhowto.info/howto/perform_an_unattended_installation_of_a_debian_package.html
@@ -35,12 +35,12 @@ set -euf
 #   installed packages removed, or packages not already installed retrieved and
 #   installed. New versions of currently installed packages that cannot be
 #   upgraded without changing the install status of another package will be left
-#   at their current version. An update must be performed first so that apt
+#   at their current version. An update must be performed first so that apt-get
 #   knows that new versions of packages are available.
 #
 # * dist-upgrade in addition to performing the function of upgrade, also
 #   intelligently handles changing dependencies with new versions of packages;
-#   apt has a "smart" conflict resolution system, and it will attempt to
+#   apt-get has a "smart" conflict resolution system, and it will attempt to
 #   upgrade the most important packages at the expense of less important ones if
 #   necessary. So, dist-upgrade command may remove some packages. The
 #   /etc/apt/sources.list file contains a list of locations from which to
@@ -75,24 +75,20 @@ set -euf
 #
 # This script updates the file from Debian 12 "bookworm" to Debian 13 "trixie".
 
-if command -v apt >/dev/null 2>&1; then
-    # Optional for some versions: get update-manager and update-manager-core
-    apt --quiet --yes install update-manager
-    apt --quiet --yes install update-manager-core
-    # Update current release
-    apt --quiet --yes update
-    apt --quiet --yes upgrade --fix-broken --fix-missing
-    apt --quiet --yes dist-upgrade --fix-broken --fix-missing
-    apt --quiet --yes full-upgrade --fix-broken --fix-missing
-    apt --quiet --yes autoclean
-    apt --quiet --yes --purge autoremove
-    # Update code name from Debian 12 "bookworm" to Debian 13 "trixie"
-    sed -i.bak 's/ bookworm / trixie /g; s/ bookworm-/ trixie-/g;' /etc/apt/sources.list
-    # Update to new release
-    apt --quiet --yes update
-    apt --quiet --yes upgrade --fix-broken --fix-missing
-    apt --quiet --yes dist-upgrade --fix-broken --fix-missing
-    apt --quiet --yes full-upgrade --fix-broken --fix-missing
-    apt --quiet --yes autoclean
-    apt --quiet --yes --purge autoremove
+if command -v apt-get >/dev/null 2>&1; then
+    apt-get --quiet --yes autoclean
+    apt-get --quiet --yes --purge autoremove
+    apt-get --quiet --yes update
+    apt-get --quiet --yes install update-manager
+    apt-get --quiet --yes install update-manager-core
+    apt-get --quiet --yes upgrade --fix-broken --fix-missing
+    apt-get --quiet --yes dist-upgrade --fix-broken --fix-missing
+    apt-get --quiet --yes full-upgrade --fix-broken --fix-missing
+    apt-get --quiet --yes autoclean
+    apt-get --quiet --yes --purge autoremove
+    sed -i.bak 's/ bookworm / trixie /g; s/ bookworm-/ trixie-/g;'
+    apt-get --quiet --yes dist-upgrade --fix-broken --fix-missing
+    apt-get --quiet --yes full-upgrade --fix-broken --fix-missing
+    apt-get --quiet --yes autoclean
+    apt-get --quiet --yes --purge autoremove
 fi

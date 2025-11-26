@@ -122,6 +122,7 @@ fi
 ## Update via system-wide package managers
 . update-apk || :
 . update-apt || :
+. update-apt-get || :
 . update-brew || :
 . update-brewfile || :
 . update-cards || :
