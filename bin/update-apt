@@ -40,8 +40,8 @@ set -euf
 #
 # * dist-upgrade in addition to performing the function of upgrade, also
 #   intelligently handles changing dependencies with new versions of packages;
-#   apt has a "smart" conflict resolution system, and it will attempt to
-#   upgrade the most important packages at the expense of less important ones if
+#   apt has a "smart" conflict resolution system, and it will attempt to upgrade
+#   the most important packages at the expense of less important ones if
 #   necessary. So, dist-upgrade command may remove some packages. The
 #   /etc/apt/sources.list file contains a list of locations from which to
 #   retrieve desired package files. See also apt_preferences(5) for a mechanism
@@ -73,7 +73,10 @@ set -euf
 # deb-src http://deb.debian.org/debian bookworm-updates main non-free-firmware
 # ```
 #
-# This script updates the file from Debian 12 "bookworm" to Debian 13 "trixie".
+# This script updates the file from Debian version-specific code names, such as
+# Debian 12 "bookworm" or Debian 13 "trixie", to the Debian "stable" which is
+# always the current stable version. Some developers prefer to use Debian
+# "testing" which has more-frequent updates but may be less stable.
 
 if command -v apt >/dev/null 2>&1; then
     # Optional for some versions: get update-manager and update-manager-core
@@ -86,8 +89,9 @@ if command -v apt >/dev/null 2>&1; then
     apt --quiet --yes full-upgrade --fix-broken --fix-missing
     apt --quiet --yes autoclean
     apt --quiet --yes --purge autoremove
-    # Update code name from Debian 12 "bookworm" to Debian 13 "trixie"
-    sed -i.bak 's/ bookworm / trixie /g; s/ bookworm-/ trixie-/g;' /etc/apt/sources.list
+    # Update code name from Debian 12 "bookworm" or Debian 13 "trixie" to "stable"
+    sed -i.bak 's/ bookworm / stable /g; s/ bookworm-/ stable-/g;' /etc/apt/sources.list
+    sed -i.bak 's/ trixie / stable /g; s/ trixie-/ stable-/g;' /etc/apt/sources.list
     # Update to new release
     apt --quiet --yes update
     apt --quiet --yes upgrade --fix-broken --fix-missing
