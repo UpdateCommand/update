@@ -5,9 +5,9 @@ set -euf
 if command -v npm >/dev/null 2>&1; then
     npm install npm
     npm update
-    npm audit fix
+    npm audit fix || :
     # Via npm-check-updates
     if npm list npm-check-updates >/dev/null 2>&1; then
-        npm exec npm-check-updates --upgrade
+        npx npm-check-updates -u
     fi
 fi

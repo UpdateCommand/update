@@ -1,6 +1,82 @@
 #!/bin/sh
 set -euf
 
+# Helper Functions for Logging and Execution
+log_info() {
+    printf "[\033[1;34mINFO\033[0m] %s\n" "$*"
+}
+log_success() {
+    printf "[\033[1;32mSUCCESS\033[0m] %s\n" "$*"
+}
+log_error() {
+    printf "[\033[1;31mERROR\033[0m] %s\n" "$*" >&2
+}
+
+run_update() {
+    cmd="$1"
+    # Find the command either in PATH, or relative to the script directory
+    script_path=""
+    if command -v "$cmd" >/dev/null 2>&1; then
+        script_path="$cmd"
+    elif [ -x "$(dirname "$0")/$cmd" ]; then
+        script_path="$(dirname "$0")/$cmd"
+    fi
+
+    if [ -n "$script_path" ]; then
+        if [ "$dry_run" -eq 1 ]; then
+            log_info "[DRY-RUN] Would execute $cmd"
+        else
+            log_info "Running $cmd..."
+            if "$script_path"; then
+                log_success "Completed $cmd."
+            else
+                log_error "Failed $cmd."
+            fi
+        fi
+    else
+        # If the script isn't found at all, just skip quietly like before
+        :
+    fi
+}
+
+run_update_async() {
+    cmd="$1"
+    script_path=""
+    if command -v "$cmd" >/dev/null 2>&1; then
+        script_path="$cmd"
+    elif [ -x "$(dirname "$0")/$cmd" ]; then
+        script_path="$(dirname "$0")/$cmd"
+    fi
+
+    if [ -n "$script_path" ]; then
+        if [ "$dry_run" -eq 1 ]; then
+            log_info "[DRY-RUN] Would execute $cmd in background"
+        else
+            log_info "Starting $cmd in background..."
+            (
+                tmp_log=$(mktemp)
+                if "$script_path" > "$tmp_log" 2>&1; then
+                    log_success "Completed $cmd."
+                else
+                    log_error "Failed $cmd. Output:"
+                    cat "$tmp_log" >&2
+                fi
+                rm -f "$tmp_log"
+            ) &
+        fi
+    else
+        :
+    fi
+}
+
+run_maybe_async() {
+    if [ "$concurrent" -eq 1 ]; then
+        run_update_async "$1"
+    else
+        run_update "$1"
+    fi
+}
+
 ## Program Tracking
 
 program_command="update"
@@ -83,108 +159,126 @@ Heuristics for ordering:
 EOF
 }
 
+concurrent=0
+dry_run=0
+
 ## Options
-if [ "$#" -eq 1 ]; then
-  case "$1" in
+for arg in "$@"; do
+  case "$arg" in
     -h|--help)
       help; exit 0
       ;;
     -v|--version)
-      out "$program_version"; exit 0
+      echo "$program_version"; exit 0
+      ;;
+    --concurrent)
+      concurrent=1
+      ;;
+    --dry-run)
+      dry_run=1
       ;;
     --program-command)
-      out "$program_command"; exit 0
+      echo "$program_command"; exit 0
       ;;
     --program-version)
-      out "$program_version"; exit 0
+      echo "$program_version"; exit 0
       ;;
     --program-updated)
-      out "$program_version"; exit 0
+      echo "$program_updated"; exit 0
       ;;
     --program-license)
-      out "$program_license"; exit 0
+      echo "$program_license"; exit 0
       ;;
     --program-contact)
-      out "$program_contact"; exit 0
+      echo "$program_contact"; exit 0
       ;;
     --*=*)
-      key="${1#--}"; key="${key%%=*}";
-      val="${1#*=}";
+      key="${arg#--}"; key="${key%%=*}";
+      val="${arg#*=}";
       eval "$key"=\$val
       ;;
   esac
-fi
+done
 
 ## Update operating system
-. update-ubuntu-release || :
-. update-debian-release || :
-. update-macos || :
+run_update update-ubuntu-release
+run_update update-debian-release
+run_update update-macos
 
 ## Update via system-wide package managers
-. update-apk || :
-. update-apt || :
-. update-apt-get || :
-. update-brew || :
-. update-brewfile || :
-. update-cards || :
-. update-choco || :
-. update-dnf || :
-. update-emerge || :
-. update-eopkg || :
-. update-freebsd || :
-. update-guix || :
-. update-mas || :
-. update-nix || :
-. update-pacman || :
-. update-opkg || :
-. update-pkg || :
-. update-pkg-add || :
-. update-prt-get || :
-. update-scoop || :
-. update-slackpkg || :
-. update-snap || :
-. update-urpmi || :
-. update-xbps || :
-. update-yay || :
-. update-yum || :
-. update-zypper || :
+run_update update-apk
+run_update update-apt
+run_update update-apt-get
+run_update update-brew
+run_update update-brewfile
+run_update update-cards
+run_update update-choco
+run_update update-dnf
+run_update update-emerge
+run_update update-eopkg
+run_update update-freebsd
+run_update update-guix
+run_update update-mas
+run_update update-nix
+run_update update-pacman
+run_update update-opkg
+run_update update-pkg
+run_update update-pkg-add
+run_update update-prt-get
+run_update update-scoop
+run_update update-slackpkg
+run_update update-snap
+run_update update-urpmi
+run_update update-xbps
+run_update update-yay
+run_update update-yum
+run_update update-zypper
 
 # Update system shells
-. update-oh-my-zsh || :
+run_update update-oh-my-zsh
 
 # Update system languages
-. update-rustup || :
+run_update update-rustup
 
 # Update via tool-specific package managers
-. update-apm || :
-. update-asdf || :
-. update-cabal || :
-. update-cargo || :
-. update-cargo-project || :
-. update-cargo-project-manifests || :
-. update-conda || :
-. update-gem || :
-. update-gemfile || :
-. update-helm || :
-. update-mix || :
-. update-motion || :
-. update-pip || :
-. update-pipenv || :
-. update-pod || :
-. update-podfile || :
-. update-poetry || :
-. update-npm || :
-. update-npm-n || :
-. update-npm-global || :
-. update-pnpm || :
-. update-pnpm-global || :
-. update-pnpm-package || :
-. update-yarn || :
+run_maybe_async update-asdf
+run_maybe_async update-bun
+run_maybe_async update-cabal
+run_maybe_async update-cargo
+run_maybe_async update-cargo-project
+run_maybe_async update-cargo-project-manifests
+run_maybe_async update-conda
+run_maybe_async update-deno
+run_maybe_async update-gem
+run_maybe_async update-gemfile
+run_maybe_async update-helm
+run_maybe_async update-mise
+run_maybe_async update-mix
+run_maybe_async update-motion
+run_maybe_async update-pip
+run_maybe_async update-pipenv
+run_maybe_async update-pod
+run_maybe_async update-podfile
+run_maybe_async update-poetry
+run_maybe_async update-npm
+run_maybe_async update-npm-n
+run_maybe_async update-npm-global
+run_maybe_async update-pnpm
+run_maybe_async update-pnpm-global
+run_maybe_async update-pnpm-package
+run_maybe_async update-uv
+run_maybe_async update-yarn
 
 # Update repositories
-. update-hg-pull || :
-. update-git-pull || :
+run_update update-hg-pull
+run_update update-git-pull
 
 # Update individual programs
-. update-az || :
-. update-playwright-via-pnpm || :
+run_update update-az
+run_update update-playwright-via-pnpm
+
+if [ "$concurrent" -eq 1 ]; then
+    log_info "Waiting for concurrent tasks to finish..."
+    wait
+    log_success "All concurrent tasks finished."
+fi

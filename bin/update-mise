@@ -1,0 +1,8 @@
+#!/bin/sh
+set -euf
+
+# Mise: dev tools, env vars, task runner
+if command -v mise >/dev/null 2>&1; then
+    mise self-update
+    mise plugins update
+fi

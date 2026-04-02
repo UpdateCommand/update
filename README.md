@@ -6,10 +6,10 @@ When you run `update` the command will run many software updates and upgrades.
 
 - [`update`](bin/update): run all the update scripts.
 - [`update-apk`](bin/update-apm): update Alpine Package Keeper (APK) - for Alpine Linux.
-- [`update-apm`](bin/update-apm): update Atom Package Manager (APM) - for the GitHub Atom editor.
 - [`update-apt`](bin/update-apt): update apt - for Debian, Ubuntu, etc.
 - [`update-apt-get`](bin/update-apt-get): update apt-get - for Debian, Ubuntu, etc.
-- [`update-asdf`](bin/update-apm): update asdf - for managing multiple runtimes and languages.
+- [`update-asdf`](bin/update-asdf): update asdf - for managing multiple runtimes and languages.
+- [`update-bun`](bin/update-bun): update Bun - fast all-in-one JavaScript runtime.
 - [`update-brew`](bin/update-brew): update Homebrew packages - for macOS.
 - [`update-brewfile`](bin/update-brewfile): update brew packages for macOS by using a Brewfile
 - [`update-brew-cask`](bin/update-brew-cask): update Homebrew Cask packages - for macOS apps.
@@ -23,6 +23,7 @@ When you run `update` the command will run many software updates and upgrades.
 - [`update-choco`](bin/update-choco): update choco Chocolatey packages - for Windows.
 - [`update-conda`](bin/update-conda): update conda packages - for Python package manager.
 - [`update-debian`](bin/update-debian): update Debian, including full upgrades for major versions.
+- [`update-deno`](bin/update-deno): update Deno - secure runtime for JavaScript and TypeScript.
 - [`update-dnf`](bin/update-dnf): update DNF - for Fedora Linux.
 - [`update-emerge`](bin/update-emerge): update emerge - for Gentoo Linux.
 - [`update-eopkg`](bin/update-eopkg): update eopkg - for Solus Linux.
@@ -34,6 +35,7 @@ When you run `update` the command will run many software updates and upgrades.
 - [`update-helm`](bin/update-helm): update Helm charts.
 - [`update-hg-pull`](bin/update-hg-pull): update mercurial repositories.
 - [`update-mas`](bin/update-mas): update mas packages by using the Mac App Store.
+- [`update-mise`](bin/update-mise): update Mise - dev tools, env vars, task runner.
 - [`update-motion`](bin/update-motion): update Ruby Motion - needs a valid paid license.
 - [`update-nix`](bin/update-nix): update nix-env for cross-platform and NixOS.
 - [`update-npm-global`](bin/update-npm-global): update Node Package Manager (NPM) via global settings.
@@ -59,6 +61,7 @@ When you run `update` the command will run many software updates and upgrades.
 - [`update-snap`](bin/update-snap): update snap - for Canonical Linux Snap app containers.
 - [`update-swift`](bin/update-swift): update macOS Swift language - this merely prints advice.
 - [`update-urpmi`](bin/update-urpmi): update urpmi system package manager for Mageia Linux.
+- [`update-uv`](bin/update-uv): update UV - extremely fast Python package and project manager.
 - [`update-ubuntu-release`](bin/update-ubuntu-release): update Ubuntu release - for major system upgrades.
 - [`update-xbps`](bin/update-xbsp): update xbps system package manager for Void Linux.
 - [`update-yay`](bin/update-yay): update Yay package manager - for Arch Linux
