@@ -1,0 +1,7 @@
+#!/bin/sh
+set -euf
+
+# Bun: fast all-in-one JavaScript runtime
+if command -v bun >/dev/null 2>&1; then
+    bun upgrade
+fi

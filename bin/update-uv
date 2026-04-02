@@ -1,0 +1,7 @@
+#!/bin/sh
+set -euf
+
+# uv: an extremely fast Python package and project manager
+if command -v uv >/dev/null 2>&1; then
+    uv self update
+fi
