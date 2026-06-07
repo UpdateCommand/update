@@ -187,4 +187,5 @@ fi
 
 # Update individual programs
 . update-az || :
+. update-claude || :
 . update-playwright-via-pnpm || :

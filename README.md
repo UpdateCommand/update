@@ -21,6 +21,7 @@ When you run `update` the command will run many software updates and upgrades.
 - [`update-cargo-projects`](bin/update-cargo-projects): update all Rust cargo projects in a given directory tree.
 - [`update-carthage`](bin/update-carthage): update Xcode Carthage pacakges - for macOS.
 - [`update-choco`](bin/update-choco): update choco Chocolatey packages - for Windows.
+- [`update-claude`](bin/update-claude): update Claude.ai application.
 - [`update-conda`](bin/update-conda): update conda packages - for Python package manager.
 - [`update-debian`](bin/update-debian): update Debian, including full upgrades for major versions.
 - [`update-dnf`](bin/update-dnf): update DNF - for Fedora Linux.

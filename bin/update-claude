@@ -1,0 +1,6 @@
+#!/bin/sh
+set -euf
+
+if command -v claude >/dev/null 2>&1; then
+    claude udpate
+fi
