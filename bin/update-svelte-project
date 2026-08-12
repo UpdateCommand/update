@@ -1,0 +1,48 @@
+#!/bin/sh
+set -euf
+
+# Update a Svelte project.
+#
+# Syntax:
+#
+#     update-svelte-project
+#
+# Example:
+#
+#     $ cd ~/my-svelte-project
+#     $ update-svelte-project
+#   
+# The script does various updates and upgrades.
+# The capabilties depend on what you have installed.
+# The goal is to have the project fully built and testable.
+#
+# Example code to find each project and update it:
+#
+#     find "$HOME" -path '*/.*' -prune -o -type f -name 'svelte.config.js' -exec dirname {} \; | 
+#     while read -r x; do 
+#         cd "$x" &&
+#         update-svelte-project || 
+#         true
+#     done
+#
+# Feedback appreciated.
+
+update_svelte_project() {
+    # Svelte command line toolchain
+    if command -v pnpm >/dev/null 2>&1 &&
+       command -v npx >/dev/null 2>&1
+    then
+        # Is this command running inside a relevant project?
+        if [ -e svelte.config.js ]; then
+            pnpm install
+            pnpm update
+            pnpm audit fix --force
+            pnpm install @sveltejs/kit@latest svelte@latest
+            npx sv@latest migrate app-state
+            npx sv@latest migrate svelte-5
+            npx sv@latest migrate sveltekit-3
+        fi
+    fi
+}
+
+update_svelte_project

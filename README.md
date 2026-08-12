@@ -58,6 +58,8 @@ When you run `update` the command will run many software updates and upgrades.
 - [`update-scoop`](bin/update-scoop): update scoop for system-wide packages - for Windows.
 - [`update-slackpkg`](bin/update-slackpkg): update slackpkg - for Slack Linux.
 - [`update-snap`](bin/update-snap): update snap - for Canonical Linux Snap app containers.
+- [`update-svelte-project`](bin/update-svelte-project): update one Svelte/SvelteKit project via pnpm and npx.
+- [`update-svelte-projects`](bin/update-svelte-projects): update all Svelte/SvelteKit projects in a given directory.
 - [`update-swift`](bin/update-swift): update macOS Swift language - this merely prints advice.
 - [`update-urpmi`](bin/update-urpmi): update urpmi system package manager for Mageia Linux.
 - [`update-ubuntu-release`](bin/update-ubuntu-release): update Ubuntu release - for major system upgrades.

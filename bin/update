@@ -179,6 +179,7 @@ fi
 . update-pnpm || :
 . update-pnpm-global || :
 . update-pnpm-package || :
+. update-svelte-project || :
 . update-yarn || :
 
 # Update repositories

@@ -16,7 +16,7 @@ set -euf
 # The capabilties depend on what you have installed.
 # The goal is to have the project fully built and testable.
 #
-# Example code to find each cargo project and update it:
+# Example code to find each project and update it:
 #
 #     find "$HOME" -path '*/.*' -prune -o -type f -name 'Cargo.toml' -exec dirname {} \; | 
 #     while read -r x; do 
@@ -30,7 +30,7 @@ set -euf
 update_cargo_project() {
     # Rust cargo package manager
     if command -v cargo >/dev/null 2>&1; then
-        # Is this command running inside a cargo project?
+        # Is this command running inside a relevant project?
         if [ -e Cargo.toml ]; then 
             update_cargo_project_with_upgrade
             update_cargo_project_with_sweep
