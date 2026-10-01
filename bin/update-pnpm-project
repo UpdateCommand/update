@@ -1,0 +1,28 @@
+
+#!/bin/sh
+set -euf
+
+# Update a PNPM project.
+#
+# Syntax:
+#
+#     update-pnpm-project
+#
+# Example:
+#
+#     $ cd ~/my-project
+#     $ update-pnpm-project
+#
+# Feedback appreciated.
+
+update_pnpm_project() {
+    # Rust cargo package manager
+    if command -v pnpm >/dev/null 2>&1; then
+        # Is this command running inside a relevant project?
+        if [ -e pnpm-lock.yaml ]; then 
+            pnpm update
+        fi
+    fi
+}
+
+update_pnpm_project

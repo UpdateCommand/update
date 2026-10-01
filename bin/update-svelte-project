@@ -38,9 +38,12 @@ update_svelte_project() {
             pnpm update
             pnpm audit fix --force
             pnpm install @sveltejs/kit@latest svelte@latest
-            npx sv@latest migrate app-state
-            npx sv@latest migrate svelte-5
-            npx sv@latest migrate sveltekit-3
+            npx svelte-migrate@latest package
+            npx svelte-migrate@latest routes
+            npx svelte-migrate@latest self-closing-tags
+            npx svelte-migrate@latest app-state
+            # npx svelte-migrate@latest sv@latest migrate svelte-5
+            # npx sv@latest migrate sveltekit-3 --tasks all --confirm
         fi
     fi
 }

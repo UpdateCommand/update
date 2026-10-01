@@ -49,6 +49,8 @@ When you run `update` the command will run many software updates and upgrades.
 - [`update-pnpm`](bin/update-pnpm): update Performant Node Package Manager (PNPM).
 - [`update-pnpm-global`](bin/update-pnpm-global): update Performant Node Package Manager (PNPM) via global settings.
 - [`update-pnpm-package`](bin/update-pnpm-package): update Performant Node Package Manager (PNPM) package.json.
+- [`update-pnpm-project`](bin/update-pnpm-project): update Performant Node Package Manager (PNPM) project via pnpm update.
+- [`update-pnpm-projects`](bin/update-pnpm-projects): update Performant Node Package Manager (PNPM) projects via pnpm update.
 - [`update-pod`](bin/update-pod): update Cocoapods for macOS
 - [`update-podfile`](bin/update-podfile): update Cocoapods packages for macOS by using a Podfile
 - [`update-poetry`](bin/update-poetry): update dependencies listed in pyproject.toml.
@@ -157,8 +159,8 @@ For details, see the respective programs.
 ## Tracking
 
 - Package: UpdateCommand
-- Version: 8.2.0
+- Version: 8.3.0
 - Created: 2005-07-05
-- Updated: 2025-05-30T07:37:31Z
+- Updated: 2026-10-01T16:04:55Z
 - License: GPL-2.0-or-later or contact us for custom
 - Contact: Joel Parker Henderson (https://joelparkerhenderson.com)

@@ -1,0 +1,9 @@
+#!/bin/sh
+set -euf
+
+find "${1:-$HOME}" -path '*/.*' -prune -o -type f -name 'pnpm-lock.yaml' -exec dirname {} \; | 
+while read -r x; do 
+    cd "$x" &&
+    update-pnpm-project || 
+    true
+done
