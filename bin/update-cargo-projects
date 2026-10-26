@@ -1,9 +1,17 @@
 #!/bin/sh
 set -euf
 
-find "${1:-$HOME}" -path '*/.*' -prune -o -type f -name 'Cargo.toml' -exec dirname {} \; | 
+# Find projects then sort by datetime ascending.
+find \
+    "${1:-$HOME}" \
+    \( -type d \( -name target -o -name '.?*' \) -prune \) \
+    -o -type f -name Cargo.toml \
+    -exec stat -f '%Sm%t%N' -t '%Y-%m-%dT%H:%M:%S' {} \; |
+    sort |
+    awk -F'\t' '{ sub(/\/Cargo\.toml$/, "", $2); print $2}' |
 while read -r x; do 
     cd "$x" &&
     update-cargo-project || 
     true
+    touch "$x/Cargo.toml"
 done

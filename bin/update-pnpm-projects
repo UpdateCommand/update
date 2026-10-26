@@ -1,7 +1,14 @@
 #!/bin/sh
 set -euf
 
-find "${1:-$HOME}" -path '*/.*' -prune -o -type f -name 'pnpm-lock.yaml' -exec dirname {} \; | 
+# Find projects then sort by datetime ascending.
+find \
+    "${1:-$HOME}" \
+    \( -type d \( -name target -o -name '.?*' \) -prune \) \
+    -o -type f -name pnpm-lock.yaml \
+    -exec stat -f '%Sm%t%N' -t '%Y-%m-%dT%H:%M:%S' {} \; |
+    sort |
+    awk -F'\t' '{ sub(/\/pnpm-lock\.yaml$/, "", $2); print $2}' |
 while read -r x; do 
     cd "$x" &&
     update-pnpm-project || 
