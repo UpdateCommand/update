@@ -1,6 +1,47 @@
 #!/bin/sh
 set -euf
 
+# Fetch and install FreeBSD system updates with freebsd-update.
+#
+# Run directly or sourced by `update`. Details below; `-h` prints them too.
+#
+# Syntax:
+#
+#     update-freebsd
+#
+# Example:
+#
+#     sudo update-freebsd
+#
+# Needs: freebsd-update; root.
+# If a needed command is missing, the script does nothing and succeeds.
+#
+# Help: -h or --help prints this text.
+
+if [ "$#" -eq 1 ]; then
+    case "$1" in
+        -h|--help)
+            cat <<'HELP_EOF'
+Fetch and install FreeBSD system updates with freebsd-update.
+
+Syntax:
+
+    update-freebsd
+
+Example:
+
+    sudo update-freebsd
+
+Needs: freebsd-update; root.
+If a needed command is missing, the script does nothing and succeeds.
+
+Help: -h or --help prints this text.
+HELP_EOF
+            exit 0
+            ;;
+    esac
+fi
+
 # freebsd-update: FreeBSD system 
 if command -v freebsd-update >/dev/null 2>&1; then
 	freebsd-update fetch

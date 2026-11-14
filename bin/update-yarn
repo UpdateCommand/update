@@ -1,6 +1,47 @@
 #!/bin/sh
 set -euf
 
+# Upgrade Yarn project dependencies.
+#
+# Run directly or sourced by `update`. Details below; `-h` prints them too.
+#
+# Syntax:
+#
+#     update-yarn
+#
+# Example:
+#
+#     cd ~/my-project && update-yarn
+#
+# Needs: yarn; run inside a directory that has yarn.lock.
+# If a needed command is missing, the script does nothing and succeeds.
+#
+# Help: -h or --help prints this text.
+
+if [ "$#" -eq 1 ]; then
+    case "$1" in
+        -h|--help)
+            cat <<'HELP_EOF'
+Upgrade Yarn project dependencies.
+
+Syntax:
+
+    update-yarn
+
+Example:
+
+    cd ~/my-project && update-yarn
+
+Needs: yarn; run inside a directory that has yarn.lock.
+If a needed command is missing, the script does nothing and succeeds.
+
+Help: -h or --help prints this text.
+HELP_EOF
+            exit 0
+            ;;
+    esac
+fi
+
 # Yarn JavaScript package manager
 #
 # Upgrade packages to their latest version based on the specified range

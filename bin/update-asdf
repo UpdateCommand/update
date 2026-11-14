@@ -1,6 +1,51 @@
 #!/bin/sh
 set -euf
 
+# Update asdf and all of its plugins.
+#
+# Run directly or sourced by `update`. Details below; `-h` prints them too.
+#
+# Syntax:
+#
+#     update-asdf
+#
+# Example:
+#
+#     update-asdf
+#
+# Needs: asdf; optional ASDF_DATA_DIR.
+# If a needed command is missing, the script does nothing and succeeds.
+#
+# Help: -h or --help prints this text.
+#
+# Skips "asdf update" when asdf was installed by Homebrew, which forbids it.
+
+if [ "$#" -eq 1 ]; then
+    case "$1" in
+        -h|--help)
+            cat <<'HELP_EOF'
+Update asdf and all of its plugins.
+
+Syntax:
+
+    update-asdf
+
+Example:
+
+    update-asdf
+
+Needs: asdf; optional ASDF_DATA_DIR.
+If a needed command is missing, the script does nothing and succeeds.
+
+Help: -h or --help prints this text.
+
+Skips "asdf update" when asdf was installed by Homebrew, which forbids it.
+HELP_EOF
+            exit 0
+            ;;
+    esac
+fi
+
 # asdf-vm: manage multiple runtime versions with a single CLI tool
 if command -v asdf >/dev/null 2>&1; then
     # asdf has multiple ways that may be able to do updates,

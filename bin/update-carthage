@@ -1,6 +1,47 @@
 #!/bin/sh
 set -euf
 
+# Update Carthage dependencies for an Xcode project.
+#
+# Run directly or sourced by `update`. Details below; `-h` prints them too.
+#
+# Syntax:
+#
+#     update-carthage
+#
+# Example:
+#
+#     cd ~/my-project && update-carthage
+#
+# Needs: carthage; run inside a directory that has a Cartfile.
+# If a needed command is missing, the script does nothing and succeeds.
+#
+# Help: -h or --help prints this text.
+
+if [ "$#" -eq 1 ]; then
+    case "$1" in
+        -h|--help)
+            cat <<'HELP_EOF'
+Update Carthage dependencies for an Xcode project.
+
+Syntax:
+
+    update-carthage
+
+Example:
+
+    cd ~/my-project && update-carthage
+
+Needs: carthage; run inside a directory that has a Cartfile.
+If a needed command is missing, the script does nothing and succeeds.
+
+Help: -h or --help prints this text.
+HELP_EOF
+            exit 0
+            ;;
+    esac
+fi
+
 # Carthage: iOS dependency manager
 if command -v carthage >/dev/null 2>&1; then
     if [ -e ./Cartfile ] ; then

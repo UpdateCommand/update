@@ -1,6 +1,47 @@
 #!/bin/sh
 set -euf
 
+# Upgrade Alpine Package Keeper (apk) packages on Alpine Linux.
+#
+# Run directly or sourced by `update`. Details below; `-h` prints them too.
+#
+# Syntax:
+#
+#     update-apk
+#
+# Example:
+#
+#     sudo update-apk
+#
+# Needs: apk; usually root.
+# If a needed command is missing, the script does nothing and succeeds.
+#
+# Help: -h or --help prints this text.
+
+if [ "$#" -eq 1 ]; then
+    case "$1" in
+        -h|--help)
+            cat <<'HELP_EOF'
+Upgrade Alpine Package Keeper (apk) packages on Alpine Linux.
+
+Syntax:
+
+    update-apk
+
+Example:
+
+    sudo update-apk
+
+Needs: apk; usually root.
+If a needed command is missing, the script does nothing and succeeds.
+
+Help: -h or --help prints this text.
+HELP_EOF
+            exit 0
+            ;;
+    esac
+fi
+
 # Alpine Package Keeper (apk) for Alpine Linux.
 if command -v apk >/dev/null 2>&1; then
    apk upgrade

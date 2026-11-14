@@ -1,6 +1,47 @@
 #!/bin/sh
 set -euf
 
+# Update RubyMotion.
+#
+# Run directly or sourced by `update`. Details below; `-h` prints them too.
+#
+# Syntax:
+#
+#     update-motion
+#
+# Example:
+#
+#     update-motion
+#
+# Needs: motion; a valid paid license.
+# If a needed command is missing, the script does nothing and succeeds.
+#
+# Help: -h or --help prints this text.
+
+if [ "$#" -eq 1 ]; then
+    case "$1" in
+        -h|--help)
+            cat <<'HELP_EOF'
+Update RubyMotion.
+
+Syntax:
+
+    update-motion
+
+Example:
+
+    update-motion
+
+Needs: motion; a valid paid license.
+If a needed command is missing, the script does nothing and succeeds.
+
+Help: -h or --help prints this text.
+HELP_EOF
+            exit 0
+            ;;
+    esac
+fi
+
 # RubyMotion: requires up-to-date license
 if command -v motion >/dev/null 2>&1; then
     motion update

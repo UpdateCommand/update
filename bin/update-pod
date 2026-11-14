@@ -1,6 +1,51 @@
 #!/bin/sh
 set -euf
 
+# CocoaPods tool placeholder (not yet implemented).
+#
+# Run directly or sourced by `update`. Details below; `-h` prints them too.
+#
+# Syntax:
+#
+#     update-pod
+#
+# Example:
+#
+#     update-pod
+#
+# Needs: pod.
+# If a needed command is missing, the script does nothing and succeeds.
+#
+# Help: -h or --help prints this text.
+#
+# TODO: nothing happens yet. See update-podfile for a working Podfile update.
+
+if [ "$#" -eq 1 ]; then
+    case "$1" in
+        -h|--help)
+            cat <<'HELP_EOF'
+CocoaPods tool placeholder (not yet implemented).
+
+Syntax:
+
+    update-pod
+
+Example:
+
+    update-pod
+
+Needs: pod.
+If a needed command is missing, the script does nothing and succeeds.
+
+Help: -h or --help prints this text.
+
+TODO: nothing happens yet. See update-podfile for a working Podfile update.
+HELP_EOF
+            exit 0
+            ;;
+    esac
+fi
+
 # Pod: Cocoapod package manager for macOS
 if command -v pod >/dev/null 2>&1; then
     : #TODO

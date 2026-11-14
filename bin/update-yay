@@ -1,6 +1,47 @@
 #!/bin/sh
 set -euf
 
+# Upgrade Arch Linux and AUR packages with yay.
+#
+# Run directly or sourced by `update`. Details below; `-h` prints them too.
+#
+# Syntax:
+#
+#     update-yay
+#
+# Example:
+#
+#     update-yay
+#
+# Needs: yay; must NOT be root.
+# If a needed command is missing, the script does nothing and succeeds.
+#
+# Help: -h or --help prints this text.
+
+if [ "$#" -eq 1 ]; then
+    case "$1" in
+        -h|--help)
+            cat <<'HELP_EOF'
+Upgrade Arch Linux and AUR packages with yay.
+
+Syntax:
+
+    update-yay
+
+Example:
+
+    update-yay
+
+Needs: yay; must NOT be root.
+If a needed command is missing, the script does nothing and succeeds.
+
+Help: -h or --help prints this text.
+HELP_EOF
+            exit 0
+            ;;
+    esac
+fi
+
 # Yay package manager for Arch Linux.
 
 if [ "$(id -u)" -ne 0 ]; then

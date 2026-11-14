@@ -1,6 +1,47 @@
 #!/bin/sh
 set -euf
 
+# Upgrade nix-env packages on NixOS or any system with Nix.
+#
+# Run directly or sourced by `update`. Details below; `-h` prints them too.
+#
+# Syntax:
+#
+#     update-nix
+#
+# Example:
+#
+#     update-nix
+#
+# Needs: nix-env.
+# If a needed command is missing, the script does nothing and succeeds.
+#
+# Help: -h or --help prints this text.
+
+if [ "$#" -eq 1 ]; then
+    case "$1" in
+        -h|--help)
+            cat <<'HELP_EOF'
+Upgrade nix-env packages on NixOS or any system with Nix.
+
+Syntax:
+
+    update-nix
+
+Example:
+
+    update-nix
+
+Needs: nix-env.
+If a needed command is missing, the script does nothing and succeeds.
+
+Help: -h or --help prints this text.
+HELP_EOF
+            exit 0
+            ;;
+    esac
+fi
+
 # Nix is for cross-platform software packages and NixOS
 if command -v nix-env >/dev/null 2>&1; then
    nix-env --upgrade

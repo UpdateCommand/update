@@ -1,6 +1,51 @@
 #!/bin/sh
 set -euf
 
+# Warn if the installed Swift version differs from the expected version.
+#
+# Run directly or sourced by `update`. Details below; `-h` prints them too.
+#
+# Syntax:
+#
+#     update-swift
+#
+# Example:
+#
+#     update-swift
+#
+# Needs: xcrun; macOS with Xcode.
+# If a needed command is missing, the script does nothing and succeeds.
+#
+# Help: -h or --help prints this text.
+#
+# Edit expect_version inside the script to match the version you want.
+
+if [ "$#" -eq 1 ]; then
+    case "$1" in
+        -h|--help)
+            cat <<'HELP_EOF'
+Warn if the installed Swift version differs from the expected version.
+
+Syntax:
+
+    update-swift
+
+Example:
+
+    update-swift
+
+Needs: xcrun; macOS with Xcode.
+If a needed command is missing, the script does nothing and succeeds.
+
+Help: -h or --help prints this text.
+
+Edit expect_version inside the script to match the version you want.
+HELP_EOF
+            exit 0
+            ;;
+    esac
+fi
+
 # Swift progrsmming language
 
 expect_version="3.0.2"

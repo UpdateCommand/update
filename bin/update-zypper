@@ -1,6 +1,47 @@
 #!/bin/sh
 set -euf
 
+# Update packages with zypper on openSUSE.
+#
+# Run directly or sourced by `update`. Details below; `-h` prints them too.
+#
+# Syntax:
+#
+#     update-zypper
+#
+# Example:
+#
+#     sudo update-zypper
+#
+# Needs: zypper; root (e.g. sudo).
+# If a needed command is missing, the script does nothing and succeeds.
+#
+# Help: -h or --help prints this text.
+
+if [ "$#" -eq 1 ]; then
+    case "$1" in
+        -h|--help)
+            cat <<'HELP_EOF'
+Update packages with zypper on openSUSE.
+
+Syntax:
+
+    update-zypper
+
+Example:
+
+    sudo update-zypper
+
+Needs: zypper; root (e.g. sudo).
+If a needed command is missing, the script does nothing and succeeds.
+
+Help: -h or --help prints this text.
+HELP_EOF
+            exit 0
+            ;;
+    esac
+fi
+
 # Zypper package manager for openSUSE
 if command -v zypper >/dev/null 2>&1; then
     zypper up

@@ -1,6 +1,51 @@
 #!/bin/sh
 set -euf
 
+# Clean, update, and upgrade packages with apt-get on Debian, Ubuntu, etc.
+#
+# Run directly or sourced by `update`. Details below; `-h` prints them too.
+#
+# Syntax:
+#
+#     update-apt-get
+#
+# Example:
+#
+#     sudo update-apt-get
+#
+# Needs: apt-get; root (e.g. sudo).
+# If a needed command is missing, the script does nothing and succeeds.
+#
+# Help: -h or --help prints this text.
+#
+# Prefer update-apt on modern systems; this is for older systems without apt.
+
+if [ "$#" -eq 1 ]; then
+    case "$1" in
+        -h|--help)
+            cat <<'HELP_EOF'
+Clean, update, and upgrade packages with apt-get on Debian, Ubuntu, etc.
+
+Syntax:
+
+    update-apt-get
+
+Example:
+
+    sudo update-apt-get
+
+Needs: apt-get; root (e.g. sudo).
+If a needed command is missing, the script does nothing and succeeds.
+
+Help: -h or --help prints this text.
+
+Prefer update-apt on modern systems; this is for older systems without apt.
+HELP_EOF
+            exit 0
+            ;;
+    esac
+fi
+
 # Apt package manager for Debian Linux, Ubuntu Linux, etc.
 #
 # If you want the system to force saying yes, use this setting:

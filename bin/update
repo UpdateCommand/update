@@ -9,6 +9,10 @@ program_updated="2025-02-27T14:23:13Z"
 program_license="GPL-2.0-or-later or contact us for custom"
 program_contact="Joel Parker Henderson (https://joelparkerhenderson.com)"
 
+## Output helper
+
+out(){ printf '%s\n' "$*"; }
+
 ## Help Function
 
 help(){
@@ -25,6 +29,17 @@ Guidance:
 
   * Each script should try to clean before running and after running.
     This helps create disk space, and helps maintain dependencies.
+
+Examples:
+
+  * Run everything:           update
+  * Run one updater:          update-brew
+  * Show help for one:        update-brew --help
+  * Update many Rust crates:  update-cargo-projects ~/git
+  * Preview the scripts:      ls "$(dirname "$(command -v update)")"
+
+Each update-* script checks that its tool exists and skips itself if not,
+so it is safe to run `update` on any platform.
 
 We welcome patches, pull requests, and ideas.
 
@@ -71,7 +86,7 @@ Heuristics for ordering:
 
   7. Update repositories: \`/opt\`, \`~/git\`, etc.
 
-  2. Run all user scripts in ~/.config/updatecommand/run/finish
+  8. Run all user scripts in ${XDG_CONFIG_HOME:-$HOME/.config}/updatecommand/run/finish
 
 ## Tracking
 
@@ -84,6 +99,7 @@ EOF
 }
 
 ## Options
+# Options are parsed only when there is exactly one argument.
 if [ "$#" -eq 1 ]; then
   case "$1" in
     -h|--help)
@@ -99,7 +115,7 @@ if [ "$#" -eq 1 ]; then
       out "$program_version"; exit 0
       ;;
     --program-updated)
-      out "$program_version"; exit 0
+      out "$program_updated"; exit 0
       ;;
     --program-license)
       out "$program_license"; exit 0

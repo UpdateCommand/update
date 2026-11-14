@@ -1,6 +1,51 @@
 #!/bin/sh
 set -euf
 
+# Reinstall or update globally-installed Rust cargo crates.
+#
+# Run directly or sourced by `update`. Details below; `-h` prints them too.
+#
+# Syntax:
+#
+#     update-cargo
+#
+# Example:
+#
+#     update-cargo
+#
+# Needs: cargo; optional cargo-install-update.
+# If a needed command is missing, the script does nothing and succeeds.
+#
+# Help: -h or --help prints this text.
+#
+# Uses "cargo install-update" when available; otherwise reinstalls each crate from "cargo install --list".
+
+if [ "$#" -eq 1 ]; then
+    case "$1" in
+        -h|--help)
+            cat <<'HELP_EOF'
+Reinstall or update globally-installed Rust cargo crates.
+
+Syntax:
+
+    update-cargo
+
+Example:
+
+    update-cargo
+
+Needs: cargo; optional cargo-install-update.
+If a needed command is missing, the script does nothing and succeeds.
+
+Help: -h or --help prints this text.
+
+Uses "cargo install-update" when available; otherwise reinstalls each crate from "cargo install --list".
+HELP_EOF
+            exit 0
+            ;;
+    esac
+fi
+
 # Rust cargo package manager
 if command -v cargo >/dev/null 2>&1; then
     if command -v cargo-install-update >/dev/null 2>&1; then

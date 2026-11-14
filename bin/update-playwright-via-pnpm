@@ -1,6 +1,47 @@
 #!/bin/sh
 set -euf
 
+# Update Playwright and its browsers via pnpm.
+#
+# Run directly or sourced by `update`. Details below; `-h` prints them too.
+#
+# Syntax:
+#
+#     update-playwright-via-pnpm
+#
+# Example:
+#
+#     cd ~/my-project && update-playwright-via-pnpm
+#
+# Needs: pnpm; run inside a project that depends on @playwright/test.
+# If a needed command is missing, the script does nothing and succeeds.
+#
+# Help: -h or --help prints this text.
+
+if [ "$#" -eq 1 ]; then
+    case "$1" in
+        -h|--help)
+            cat <<'HELP_EOF'
+Update Playwright and its browsers via pnpm.
+
+Syntax:
+
+    update-playwright-via-pnpm
+
+Example:
+
+    cd ~/my-project && update-playwright-via-pnpm
+
+Needs: pnpm; run inside a project that depends on @playwright/test.
+If a needed command is missing, the script does nothing and succeeds.
+
+Help: -h or --help prints this text.
+HELP_EOF
+            exit 0
+            ;;
+    esac
+fi
+
 # Playwright testing via PNPM
 if command -v pnpm >/dev/null 2>&1; then
   if pnpm list --parseable '@playwright/test' | grep '@' >/dev/null 2>&1; then

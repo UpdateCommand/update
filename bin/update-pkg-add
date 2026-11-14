@@ -1,6 +1,47 @@
 #!/bin/sh
 set -euf
 
+# Upgrade packages with pkg_add on NetBSD and OpenBSD.
+#
+# Run directly or sourced by `update`. Details below; `-h` prints them too.
+#
+# Syntax:
+#
+#     update-pkg-add
+#
+# Example:
+#
+#     sudo update-pkg-add
+#
+# Needs: pkg_add; root.
+# If a needed command is missing, the script does nothing and succeeds.
+#
+# Help: -h or --help prints this text.
+
+if [ "$#" -eq 1 ]; then
+    case "$1" in
+        -h|--help)
+            cat <<'HELP_EOF'
+Upgrade packages with pkg_add on NetBSD and OpenBSD.
+
+Syntax:
+
+    update-pkg-add
+
+Example:
+
+    sudo update-pkg-add
+
+Needs: pkg_add; root.
+If a needed command is missing, the script does nothing and succeeds.
+
+Help: -h or --help prints this text.
+HELP_EOF
+            exit 0
+            ;;
+    esac
+fi
+
 # pkg_add for NetBSD, OpenBSD
 if command -v pkg_add >/dev/null 2>&1; then
     pkg_add -u

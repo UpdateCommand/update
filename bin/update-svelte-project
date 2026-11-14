@@ -1,6 +1,51 @@
 #!/bin/sh
 set -euf
 
+# Update a Svelte project: dependencies, audit, SvelteKit, and migrations.
+#
+# Run directly or sourced by `update`. Details below; `-h` prints them too.
+#
+# Syntax:
+#
+#     update-svelte-project
+#
+# Example:
+#
+#     cd ~/my-project && update-svelte-project
+#
+# Needs: pnpm and npx; run inside a directory that has svelte.config.js.
+# If a needed command is missing, the script does nothing and succeeds.
+#
+# Help: -h or --help prints this text.
+#
+# Migrations may edit your source files. Commit your work first, then review the diff.
+
+if [ "$#" -eq 1 ]; then
+    case "$1" in
+        -h|--help)
+            cat <<'HELP_EOF'
+Update a Svelte project: dependencies, audit, SvelteKit, and migrations.
+
+Syntax:
+
+    update-svelte-project
+
+Example:
+
+    cd ~/my-project && update-svelte-project
+
+Needs: pnpm and npx; run inside a directory that has svelte.config.js.
+If a needed command is missing, the script does nothing and succeeds.
+
+Help: -h or --help prints this text.
+
+Migrations may edit your source files. Commit your work first, then review the diff.
+HELP_EOF
+            exit 0
+            ;;
+    esac
+fi
+
 # Update a Svelte project.
 #
 # Syntax:

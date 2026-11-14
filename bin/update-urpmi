@@ -1,6 +1,47 @@
 #!/bin/sh
 set -euf
 
+# Update urpmi media on Mageia Linux.
+#
+# Run directly or sourced by `update`. Details below; `-h` prints them too.
+#
+# Syntax:
+#
+#     update-urpmi
+#
+# Example:
+#
+#     sudo update-urpmi
+#
+# Needs: urpmi.update; root.
+# If a needed command is missing, the script does nothing and succeeds.
+#
+# Help: -h or --help prints this text.
+
+if [ "$#" -eq 1 ]; then
+    case "$1" in
+        -h|--help)
+            cat <<'HELP_EOF'
+Update urpmi media on Mageia Linux.
+
+Syntax:
+
+    update-urpmi
+
+Example:
+
+    sudo update-urpmi
+
+Needs: urpmi.update; root.
+If a needed command is missing, the script does nothing and succeeds.
+
+Help: -h or --help prints this text.
+HELP_EOF
+            exit 0
+            ;;
+    esac
+fi
+
 # urpmi is the system package manager for Mageia Linux.
 if command -v urpmi.update >/dev/null 2>&1; then
    urpmi.update -a

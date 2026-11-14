@@ -1,6 +1,47 @@
 #!/bin/sh
 set -euf
 
+# Update npm, project dependencies, audit fixes, and npm-check-updates.
+#
+# Run directly or sourced by `update`. Details below; `-h` prints them too.
+#
+# Syntax:
+#
+#     update-npm
+#
+# Example:
+#
+#     cd ~/my-project && update-npm
+#
+# Needs: npm; run inside a Node project.
+# If a needed command is missing, the script does nothing and succeeds.
+#
+# Help: -h or --help prints this text.
+
+if [ "$#" -eq 1 ]; then
+    case "$1" in
+        -h|--help)
+            cat <<'HELP_EOF'
+Update npm, project dependencies, audit fixes, and npm-check-updates.
+
+Syntax:
+
+    update-npm
+
+Example:
+
+    cd ~/my-project && update-npm
+
+Needs: npm; run inside a Node project.
+If a needed command is missing, the script does nothing and succeeds.
+
+Help: -h or --help prints this text.
+HELP_EOF
+            exit 0
+            ;;
+    esac
+fi
+
 # NPM: Node Package Manager
 if command -v npm >/dev/null 2>&1; then
     npm install npm

@@ -1,6 +1,51 @@
 #!/bin/sh
 set -euf
 
+# Move Debian to the "stable" release and do a full upgrade.
+#
+# Run directly or sourced by `update`. Details below; `-h` prints them too.
+#
+# Syntax:
+#
+#     update-debian-release
+#
+# Example:
+#
+#     sudo update-debian-release
+#
+# Needs: apt; root (e.g. sudo); edits /etc/apt/sources.list (backup saved as .bak).
+# If a needed command is missing, the script does nothing and succeeds.
+#
+# Help: -h or --help prints this text.
+#
+# Warning: this can do a major version upgrade. Back up first.
+
+if [ "$#" -eq 1 ]; then
+    case "$1" in
+        -h|--help)
+            cat <<'HELP_EOF'
+Move Debian to the "stable" release and do a full upgrade.
+
+Syntax:
+
+    update-debian-release
+
+Example:
+
+    sudo update-debian-release
+
+Needs: apt; root (e.g. sudo); edits /etc/apt/sources.list (backup saved as .bak).
+If a needed command is missing, the script does nothing and succeeds.
+
+Help: -h or --help prints this text.
+
+Warning: this can do a major version upgrade. Back up first.
+HELP_EOF
+            exit 0
+            ;;
+    esac
+fi
+
 # Update Debian, including doing major version upgrades
 #
 # If you want the system to force saying yes, use this setting:

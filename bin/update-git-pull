@@ -1,12 +1,53 @@
 #!/bin/sh
 set -euf
 
+# Run "git pull" and update submodules in the current git repository.
+#
+# Run directly or sourced by `update`. Details below; `-h` prints them too.
+#
+# Syntax:
+#
+#     update-git-pull
+#
+# Example:
+#
+#     cd ~/my-project && update-git-pull
+#
+# Needs: git; run inside a git repository.
+# If a needed command is missing, the script does nothing and succeeds.
+#
+# Help: -h or --help prints this text.
+
+if [ "$#" -eq 1 ]; then
+    case "$1" in
+        -h|--help)
+            cat <<'HELP_EOF'
+Run "git pull" and update submodules in the current git repository.
+
+Syntax:
+
+    update-git-pull
+
+Example:
+
+    cd ~/my-project && update-git-pull
+
+Needs: git; run inside a git repository.
+If a needed command is missing, the script does nothing and succeeds.
+
+Help: -h or --help prints this text.
+HELP_EOF
+            exit 0
+            ;;
+    esac
+fi
+
 # Example code to find each .git and update its project:
 #
 #     find "$HOME" -type d -name '.git' -exec dirname {} \; | 
 #     while read -r x; do 
 #         cd "$x" &&
-#         update-cargo-crate
+#         update-git-pull
 #     done
 
 update_git_pull() {

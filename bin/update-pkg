@@ -1,6 +1,47 @@
 #!/bin/sh
 set -euf
 
+# Update the pkg package catalog on FreeBSD.
+#
+# Run directly or sourced by `update`. Details below; `-h` prints them too.
+#
+# Syntax:
+#
+#     update-pkg
+#
+# Example:
+#
+#     update-pkg
+#
+# Needs: pkg.
+# If a needed command is missing, the script does nothing and succeeds.
+#
+# Help: -h or --help prints this text.
+
+if [ "$#" -eq 1 ]; then
+    case "$1" in
+        -h|--help)
+            cat <<'HELP_EOF'
+Update the pkg package catalog on FreeBSD.
+
+Syntax:
+
+    update-pkg
+
+Example:
+
+    update-pkg
+
+Needs: pkg.
+If a needed command is missing, the script does nothing and succeeds.
+
+Help: -h or --help prints this text.
+HELP_EOF
+            exit 0
+            ;;
+    esac
+fi
+
 # pkg package manager for FreeBSD
 if command -v pkg >/dev/null 2>&1; then
   pkg update

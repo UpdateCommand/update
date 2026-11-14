@@ -1,6 +1,47 @@
 #!/bin/sh
 set -euf
 
+# Sync databases, refresh the keyring, and upgrade with pacman on Arch Linux.
+#
+# Run directly or sourced by `update`. Details below; `-h` prints them too.
+#
+# Syntax:
+#
+#     update-pacman
+#
+# Example:
+#
+#     sudo update-pacman
+#
+# Needs: pacman; root (e.g. sudo).
+# If a needed command is missing, the script does nothing and succeeds.
+#
+# Help: -h or --help prints this text.
+
+if [ "$#" -eq 1 ]; then
+    case "$1" in
+        -h|--help)
+            cat <<'HELP_EOF'
+Sync databases, refresh the keyring, and upgrade with pacman on Arch Linux.
+
+Syntax:
+
+    update-pacman
+
+Example:
+
+    sudo update-pacman
+
+Needs: pacman; root (e.g. sudo).
+If a needed command is missing, the script does nothing and succeeds.
+
+Help: -h or --help prints this text.
+HELP_EOF
+            exit 0
+            ;;
+    esac
+fi
+
 # Pacman package manager for Arch Linux.
 #
 # One-liner with long options:

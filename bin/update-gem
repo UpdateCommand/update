@@ -1,6 +1,47 @@
 #!/bin/sh
 set -euf
 
+# Update RubyGems itself and all installed Ruby gems.
+#
+# Run directly or sourced by `update`. Details below; `-h` prints them too.
+#
+# Syntax:
+#
+#     update-gem
+#
+# Example:
+#
+#     update-gem
+#
+# Needs: gem; write access to the gem installation directory.
+# If a needed command is missing, the script does nothing and succeeds.
+#
+# Help: -h or --help prints this text.
+
+if [ "$#" -eq 1 ]; then
+    case "$1" in
+        -h|--help)
+            cat <<'HELP_EOF'
+Update RubyGems itself and all installed Ruby gems.
+
+Syntax:
+
+    update-gem
+
+Example:
+
+    update-gem
+
+Needs: gem; write access to the gem installation directory.
+If a needed command is missing, the script does nothing and succeeds.
+
+Help: -h or --help prints this text.
+HELP_EOF
+            exit 0
+            ;;
+    esac
+fi
+
 # gem: Ruby package manager
 if command -v gem >/dev/null 2>&1; then
     dir=$(gem environment | sed -n 's/ * - INSTALLATION DIRECTORY: //p')

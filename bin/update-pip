@@ -1,6 +1,51 @@
 #!/bin/sh
 set -euf
 
+# Upgrade pip, setuptools, and all locally installed Python packages.
+#
+# Run directly or sourced by `update`. Details below; `-h` prints them too.
+#
+# Syntax:
+#
+#     update-pip
+#
+# Example:
+#
+#     update-pip
+#
+# Needs: python/python3 or pip/pip3; must NOT be root.
+# If a needed command is missing, the script does nothing and succeeds.
+#
+# Help: -h or --help prints this text.
+#
+# Consider a virtual environment instead: https://pip.pypa.io/warnings/venv
+
+if [ "$#" -eq 1 ]; then
+    case "$1" in
+        -h|--help)
+            cat <<'HELP_EOF'
+Upgrade pip, setuptools, and all locally installed Python packages.
+
+Syntax:
+
+    update-pip
+
+Example:
+
+    update-pip
+
+Needs: python/python3 or pip/pip3; must NOT be root.
+If a needed command is missing, the script does nothing and succeeds.
+
+Help: -h or --help prints this text.
+
+Consider a virtual environment instead: https://pip.pypa.io/warnings/venv
+HELP_EOF
+            exit 0
+            ;;
+    esac
+fi
+
 # pip: Python package installer
 #
 # From the pip documentation: WARNING: Running pip as the 'root' user can result

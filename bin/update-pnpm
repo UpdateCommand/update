@@ -1,6 +1,47 @@
 #!/bin/sh
 set -euf
 
+# Update pnpm itself (self-update).
+#
+# Run directly or sourced by `update`. Details below; `-h` prints them too.
+#
+# Syntax:
+#
+#     update-pnpm
+#
+# Example:
+#
+#     update-pnpm
+#
+# Needs: pnpm.
+# If a needed command is missing, the script does nothing and succeeds.
+#
+# Help: -h or --help prints this text.
+
+if [ "$#" -eq 1 ]; then
+    case "$1" in
+        -h|--help)
+            cat <<'HELP_EOF'
+Update pnpm itself (self-update).
+
+Syntax:
+
+    update-pnpm
+
+Example:
+
+    update-pnpm
+
+Needs: pnpm.
+If a needed command is missing, the script does nothing and succeeds.
+
+Help: -h or --help prints this text.
+HELP_EOF
+            exit 0
+            ;;
+    esac
+fi
+
 # PNPM: Performant Node Package Manager
 if command -v pnpm >/dev/null 2>&1; then
     pnpm self-update

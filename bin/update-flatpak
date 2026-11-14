@@ -1,6 +1,47 @@
 #!/bin/sh
 set -euf
 
+# Update flatpak applications and runtimes.
+#
+# Run directly or sourced by `update`. Details below; `-h` prints them too.
+#
+# Syntax:
+#
+#     update-flatpak
+#
+# Example:
+#
+#     update-flatpak
+#
+# Needs: flatpak.
+# If a needed command is missing, the script does nothing and succeeds.
+#
+# Help: -h or --help prints this text.
+
+if [ "$#" -eq 1 ]; then
+    case "$1" in
+        -h|--help)
+            cat <<'HELP_EOF'
+Update flatpak applications and runtimes.
+
+Syntax:
+
+    update-flatpak
+
+Example:
+
+    update-flatpak
+
+Needs: flatpak.
+If a needed command is missing, the script does nothing and succeeds.
+
+Help: -h or --help prints this text.
+HELP_EOF
+            exit 0
+            ;;
+    esac
+fi
+
 # flatpak is used for software packages on many Linux systems.
 if command -v flatpak >/dev/null 2>&1; then
    flatpak update

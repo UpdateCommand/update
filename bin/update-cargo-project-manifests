@@ -1,15 +1,60 @@
 #!/bin/sh
 set -euf
 
+# Run the cargo project update in each directory listed in manifest files.
+#
+# Run directly or sourced by `update`. Details below; `-h` prints them too.
+#
+# Syntax:
+#
+#     update-cargo-project-manifests
+#
+# Example:
+#
+#     echo ~/git/my-project >> ${XDG_CONFIG_HOME:-$HOME/.config}/update-cargo-project-manifests/projects.txt && update-cargo-project-manifests
+#
+# Needs: cargo; manifest files.
+# If a needed command is missing, the script does nothing and succeeds.
+#
+# Help: -h or --help prints this text.
+#
+# Manifest directory: ${XDG_CONFIG_HOME:-$HOME/.config}/update-cargo-project-manifests/.
+
+if [ "$#" -eq 1 ]; then
+    case "$1" in
+        -h|--help)
+            cat <<'HELP_EOF'
+Run the cargo project update in each directory listed in manifest files.
+
+Syntax:
+
+    update-cargo-project-manifests
+
+Example:
+
+    echo ~/git/my-project >> ${XDG_CONFIG_HOME:-$HOME/.config}/update-cargo-project-manifests/projects.txt && update-cargo-project-manifests
+
+Needs: cargo; manifest files.
+If a needed command is missing, the script does nothing and succeeds.
+
+Help: -h or --help prints this text.
+
+Manifest directory: ${XDG_CONFIG_HOME:-$HOME/.config}/update-cargo-project-manifests/.
+HELP_EOF
+            exit 0
+            ;;
+    esac
+fi
+
 # Run update-cargo-project with manifests:
 #
-#     $XDG_CONFIG_HOME/update-git-pull-manifests/*
-#     $HOME/update-git-pull-manifests/*
+#     $XDG_CONFIG_HOME/update-cargo-project-manifests/*
+#     $HOME/update-cargo-project-manifests/*
 #
 # For example:
 #
-#     ~/update-git-pull-manifests/foo.txt
-#     ~/update-git-pull-manifests/bar.txt
+#     ~/update-cargo-project-manifests/foo.txt
+#     ~/update-cargo-project-manifests/bar.txt
 #
 # Each manifest file is simply a list of local project directories.
 # The program skips lines that are comments (begin with #) or blank.

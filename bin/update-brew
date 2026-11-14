@@ -1,6 +1,53 @@
 #!/bin/sh
 set -euf
 
+# Upgrade Homebrew formulas and casks, clean up, and repair taps.
+#
+# Run directly or sourced by `update`. Details below; `-h` prints them too.
+#
+# Syntax:
+#
+#     update-brew
+#
+# Example:
+#
+#     update-brew
+#
+# Needs: brew; must NOT be root; user must own the Homebrew cellar.
+# If a needed command is missing, the script does nothing and succeeds.
+#
+# Help: -h or --help prints this text.
+#
+# Set VERBOSE=true or DEBUG=true to pass --verbose or --debug to brew.
+# Example: VERBOSE=true update-brew
+
+if [ "$#" -eq 1 ]; then
+    case "$1" in
+        -h|--help)
+            cat <<'HELP_EOF'
+Upgrade Homebrew formulas and casks, clean up, and repair taps.
+
+Syntax:
+
+    update-brew
+
+Example:
+
+    update-brew
+
+Needs: brew; must NOT be root; user must own the Homebrew cellar.
+If a needed command is missing, the script does nothing and succeeds.
+
+Help: -h or --help prints this text.
+
+Set VERBOSE=true or DEBUG=true to pass --verbose or --debug to brew.
+Example: VERBOSE=true update-brew
+HELP_EOF
+            exit 0
+            ;;
+    esac
+fi
+
 # Brew for macOS
 #
 # Update Homebrew package manager for Apple macOS.

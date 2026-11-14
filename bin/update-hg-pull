@@ -1,12 +1,53 @@
 #!/bin/sh
 set -euf
 
+# Run "hg pull -u" in the current Mercurial repository.
+#
+# Run directly or sourced by `update`. Details below; `-h` prints them too.
+#
+# Syntax:
+#
+#     update-hg-pull
+#
+# Example:
+#
+#     cd ~/my-project && update-hg-pull
+#
+# Needs: hg; run inside a Mercurial repository.
+# If a needed command is missing, the script does nothing and succeeds.
+#
+# Help: -h or --help prints this text.
+
+if [ "$#" -eq 1 ]; then
+    case "$1" in
+        -h|--help)
+            cat <<'HELP_EOF'
+Run "hg pull -u" in the current Mercurial repository.
+
+Syntax:
+
+    update-hg-pull
+
+Example:
+
+    cd ~/my-project && update-hg-pull
+
+Needs: hg; run inside a Mercurial repository.
+If a needed command is missing, the script does nothing and succeeds.
+
+Help: -h or --help prints this text.
+HELP_EOF
+            exit 0
+            ;;
+    esac
+fi
+
 # Example code to find each .hg and update its project:
 #
 #     find "$HOME" -type d -name '.hg' -exec dirname {} \; | 
 #     while read -r x; do 
 #         cd "$x" &&
-#         update-cargo-crate
+#         update-hg-pull
 #     done
 
 update_hg_pull() {

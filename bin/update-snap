@@ -1,6 +1,47 @@
 #!/bin/sh
 set -euf
 
+# Refresh Snap packages.
+#
+# Run directly or sourced by `update`. Details below; `-h` prints them too.
+#
+# Syntax:
+#
+#     update-snap
+#
+# Example:
+#
+#     update-snap
+#
+# Needs: snap.
+# If a needed command is missing, the script does nothing and succeeds.
+#
+# Help: -h or --help prints this text.
+
+if [ "$#" -eq 1 ]; then
+    case "$1" in
+        -h|--help)
+            cat <<'HELP_EOF'
+Refresh Snap packages.
+
+Syntax:
+
+    update-snap
+
+Example:
+
+    update-snap
+
+Needs: snap.
+If a needed command is missing, the script does nothing and succeeds.
+
+Help: -h or --help prints this text.
+HELP_EOF
+            exit 0
+            ;;
+    esac
+fi
+
 # Update Snap packages.
 #
 # Snap is a software packaging and deployment system developed by Canonical for

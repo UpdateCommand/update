@@ -1,6 +1,47 @@
 #!/bin/sh
 set -euf
 
+# Upgrade Mac App Store apps using mas.
+#
+# Run directly or sourced by `update`. Details below; `-h` prints them too.
+#
+# Syntax:
+#
+#     update-mas
+#
+# Example:
+#
+#     update-mas
+#
+# Needs: mas; macOS.
+# If a needed command is missing, the script does nothing and succeeds.
+#
+# Help: -h or --help prints this text.
+
+if [ "$#" -eq 1 ]; then
+    case "$1" in
+        -h|--help)
+            cat <<'HELP_EOF'
+Upgrade Mac App Store apps using mas.
+
+Syntax:
+
+    update-mas
+
+Example:
+
+    update-mas
+
+Needs: mas; macOS.
+If a needed command is missing, the script does nothing and succeeds.
+
+Help: -h or --help prints this text.
+HELP_EOF
+            exit 0
+            ;;
+    esac
+fi
+
 # mas: Mac App Store command line interface
 if command -v mas >/dev/null 2>&1; then
     mas upgrade

@@ -1,6 +1,47 @@
 #!/bin/sh
 set -euf
 
+# Update the Gentoo @world set with emerge.
+#
+# Run directly or sourced by `update`. Details below; `-h` prints them too.
+#
+# Syntax:
+#
+#     update-emerge
+#
+# Example:
+#
+#     sudo update-emerge
+#
+# Needs: emerge; root.
+# If a needed command is missing, the script does nothing and succeeds.
+#
+# Help: -h or --help prints this text.
+
+if [ "$#" -eq 1 ]; then
+    case "$1" in
+        -h|--help)
+            cat <<'HELP_EOF'
+Update the Gentoo @world set with emerge.
+
+Syntax:
+
+    update-emerge
+
+Example:
+
+    sudo update-emerge
+
+Needs: emerge; root.
+If a needed command is missing, the script does nothing and succeeds.
+
+Help: -h or --help prints this text.
+HELP_EOF
+            exit 0
+            ;;
+    esac
+fi
+
 # emerge is used for software packages on Gentoo Linux.
 if command -v emerge >/dev/null 2>&1; then
    emerge -vuDN @world

@@ -1,6 +1,47 @@
 #!/bin/sh
 set -euf
 
+# Upgrade the Azure CLI (az) by Microsoft.
+#
+# Run directly or sourced by `update`. Details below; `-h` prints them too.
+#
+# Syntax:
+#
+#     update-az
+#
+# Example:
+#
+#     update-az
+#
+# Needs: az.
+# If a needed command is missing, the script does nothing and succeeds.
+#
+# Help: -h or --help prints this text.
+
+if [ "$#" -eq 1 ]; then
+    case "$1" in
+        -h|--help)
+            cat <<'HELP_EOF'
+Upgrade the Azure CLI (az) by Microsoft.
+
+Syntax:
+
+    update-az
+
+Example:
+
+    update-az
+
+Needs: az.
+If a needed command is missing, the script does nothing and succeeds.
+
+Help: -h or --help prints this text.
+HELP_EOF
+            exit 0
+            ;;
+    esac
+fi
+
 # az: Azure CLI by Microsoft
 if command -v az >/dev/null 2>&1; then
     az upgrade

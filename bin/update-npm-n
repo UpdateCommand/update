@@ -1,6 +1,47 @@
 #!/bin/sh
 set -euf
 
+# Install the stable Node version with "n", then update npm packages.
+#
+# Run directly or sourced by `update`. Details below; `-h` prints them too.
+#
+# Syntax:
+#
+#     update-npm-n
+#
+# Example:
+#
+#     update-npm-n
+#
+# Needs: npm and n.
+# If a needed command is missing, the script does nothing and succeeds.
+#
+# Help: -h or --help prints this text.
+
+if [ "$#" -eq 1 ]; then
+    case "$1" in
+        -h|--help)
+            cat <<'HELP_EOF'
+Install the stable Node version with "n", then update npm packages.
+
+Syntax:
+
+    update-npm-n
+
+Example:
+
+    update-npm-n
+
+Needs: npm and n.
+If a needed command is missing, the script does nothing and succeeds.
+
+Help: -h or --help prints this text.
+HELP_EOF
+            exit 0
+            ;;
+    esac
+fi
+
 # NPM: Node Package Manager
 if command -v npm >/dev/null 2>&1; then
     if command -v n >/dev/null 2>&1; then

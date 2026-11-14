@@ -1,6 +1,51 @@
 #!/bin/sh
 set -euf
 
+# Run "brew bundle" using a Brewfile.
+#
+# Run directly or sourced by `update`. Details below; `-h` prints them too.
+#
+# Syntax:
+#
+#     update-brewfile
+#
+# Example:
+#
+#     update-brewfile
+#
+# Needs: brew; must NOT be root; a readable Brewfile.
+# If a needed command is missing, the script does nothing and succeeds.
+#
+# Help: -h or --help prints this text.
+#
+# Brewfile search order: $HOMEBREW_BUNDLE_FILE, then ${XDG_CONFIG_HOME:-$HOME/.config}/brewfile/Brewfile.
+
+if [ "$#" -eq 1 ]; then
+    case "$1" in
+        -h|--help)
+            cat <<'HELP_EOF'
+Run "brew bundle" using a Brewfile.
+
+Syntax:
+
+    update-brewfile
+
+Example:
+
+    update-brewfile
+
+Needs: brew; must NOT be root; a readable Brewfile.
+If a needed command is missing, the script does nothing and succeeds.
+
+Help: -h or --help prints this text.
+
+Brewfile search order: $HOMEBREW_BUNDLE_FILE, then ${XDG_CONFIG_HOME:-$HOME/.config}/brewfile/Brewfile.
+HELP_EOF
+            exit 0
+            ;;
+    esac
+fi
+
 # Update via Brewfile using the `brew` package manager.
 #
 # The brew documentation says to look for its file in order:

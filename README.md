@@ -4,6 +4,8 @@ Want to update your computer software? The update command can help you.
 
 When you run `update` the command will run many software updates and upgrades.
 
+Every script supports `-h` or `--help`, which prints a summary, syntax, an example, and what the script needs. For example: `update-brew --help`.
+
 - [`update`](bin/update): run all the update scripts.
 - [`update-apk`](bin/update-apm): update Alpine Package Keeper (APK) - for Alpine Linux.
 - [`update-apm`](bin/update-apm): update Atom Package Manager (APM) - for the GitHub Atom editor.

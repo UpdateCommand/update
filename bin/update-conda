@@ -1,6 +1,51 @@
 #!/bin/sh
 set -euf
 
+# Update all packages in the active conda environment.
+#
+# Run directly or sourced by `update`. Details below; `-h` prints them too.
+#
+# Syntax:
+#
+#     update-conda
+#
+# Example:
+#
+#     update-conda
+#
+# Needs: conda.
+# If a needed command is missing, the script does nothing and succeeds.
+#
+# Help: -h or --help prints this text.
+#
+# Activate the environment you want first, e.g. "conda activate myenv".
+
+if [ "$#" -eq 1 ]; then
+    case "$1" in
+        -h|--help)
+            cat <<'HELP_EOF'
+Update all packages in the active conda environment.
+
+Syntax:
+
+    update-conda
+
+Example:
+
+    update-conda
+
+Needs: conda.
+If a needed command is missing, the script does nothing and succeeds.
+
+Help: -h or --help prints this text.
+
+Activate the environment you want first, e.g. "conda activate myenv".
+HELP_EOF
+            exit 0
+            ;;
+    esac
+fi
+
 # Update Conda packages for the active environment.
 #
 # Conda is an environment management system widely used for Python.

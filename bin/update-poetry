@@ -3,6 +3,47 @@ set -euf
 
 # Update Poetry project dependencies.
 #
+# Run directly or sourced by `update`. Details below; `-h` prints them too.
+#
+# Syntax:
+#
+#     update-poetry
+#
+# Example:
+#
+#     cd ~/my-project && update-poetry
+#
+# Needs: poetry; run inside a directory that has pyproject.toml.
+# If a needed command is missing, the script does nothing and succeeds.
+#
+# Help: -h or --help prints this text.
+
+if [ "$#" -eq 1 ]; then
+    case "$1" in
+        -h|--help)
+            cat <<'HELP_EOF'
+Update Poetry project dependencies.
+
+Syntax:
+
+    update-poetry
+
+Example:
+
+    cd ~/my-project && update-poetry
+
+Needs: poetry; run inside a directory that has pyproject.toml.
+If a needed command is missing, the script does nothing and succeeds.
+
+Help: -h or --help prints this text.
+HELP_EOF
+            exit 0
+            ;;
+    esac
+fi
+
+# Update Poetry project dependencies.
+#
 # Poetry is used for Python project dependency management.
 # This command updates the dependencies listed in pyproject.toml.
 #

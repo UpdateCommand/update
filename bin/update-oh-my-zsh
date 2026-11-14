@@ -1,7 +1,53 @@
 #!/bin/sh
 set -euf
 
+# Upgrade Oh My Zsh.
+#
+# Run directly or sourced by `update`. Details below; `-h` prints them too.
+#
+# Syntax:
+#
+#     update-oh-my-zsh
+#
+# Example:
+#
+#     update-oh-my-zsh
+#
+# Needs: zsh; Oh My Zsh installed at $ZSH or ~/.oh-my-zsh.
+# If a needed command is missing, the script does nothing and succeeds.
+#
+# Help: -h or --help prints this text.
+#
+# It runs Oh My Zsh's upgrade script through zsh, so it works from plain sh.
+
+if [ "$#" -eq 1 ]; then
+    case "$1" in
+        -h|--help)
+            cat <<'HELP_EOF'
+Upgrade Oh My Zsh.
+
+Syntax:
+
+    update-oh-my-zsh
+
+Example:
+
+    update-oh-my-zsh
+
+Needs: zsh; Oh My Zsh installed at $ZSH or ~/.oh-my-zsh.
+If a needed command is missing, the script does nothing and succeeds.
+
+Help: -h or --help prints this text.
+
+It runs Oh My Zsh's upgrade script through zsh, so it works from plain sh.
+HELP_EOF
+            exit 0
+            ;;
+    esac
+fi
+
 # Oh My Zsh
-if command -v upgrade_oh_my_zsh >/dev/null 2>&1; then
-    upgrade_oh_my_zsh
+omz="${ZSH:-$HOME/.oh-my-zsh}"
+if command -v zsh >/dev/null 2>&1 && [ -r "$omz/tools/upgrade.sh" ]; then
+    zsh -f -c 'ZSH="$1"; source "$ZSH/tools/upgrade.sh"' zsh "$omz"
 fi

@@ -1,6 +1,53 @@
 #!/bin/sh
 set -euf
 
+# Find every Rust cargo project under a directory and update each, oldest first.
+#
+# Run directly or sourced by `update`. Details below; `-h` prints them too.
+#
+# Syntax:
+#
+#     update-cargo-projects [DIRECTORY] [ARGS...]
+#
+# Example:
+#
+#     update-cargo-projects ~/git
+#
+# Needs: cargo; update-cargo-project on PATH.
+# If a needed command is missing, the script does nothing and succeeds.
+#
+# Help: -h or --help prints this text.
+#
+# Hidden directories and "target" are skipped. Extra arguments go to "cargo update".
+# Cooldown override: CARGO_RESOLVER_INCOMPATIBLE_PUBLISH_AGE=allow update-cargo-projects -p axa --precise 0.12.1
+
+if [ "$#" -eq 1 ]; then
+    case "$1" in
+        -h|--help)
+            cat <<'HELP_EOF'
+Find every Rust cargo project under a directory and update each, oldest first.
+
+Syntax:
+
+    update-cargo-projects [DIRECTORY] [ARGS...]
+
+Example:
+
+    update-cargo-projects ~/git
+
+Needs: cargo; update-cargo-project on PATH.
+If a needed command is missing, the script does nothing and succeeds.
+
+Help: -h or --help prints this text.
+
+Hidden directories and "target" are skipped. Extra arguments go to "cargo update".
+Cooldown override: CARGO_RESOLVER_INCOMPATIBLE_PUBLISH_AGE=allow update-cargo-projects -p axa --precise 0.12.1
+HELP_EOF
+            exit 0
+            ;;
+    esac
+fi
+
 # Update cargo projects recursively
 #
 # ## Cooldown
@@ -22,7 +69,7 @@ find \
     "${1:-$HOME}" \
     \( -type d \( -name target -o -name '.?*' \) -prune \) \
     -o -type f -name Cargo.toml \
-    -exec stat -f '%Sm%t%N' -t '%Y-%m-%dT%H:%M:%S' {} \; |
+    -exec sh -c 'stat -f "%Sm%t%N" -t "%Y-%m-%dT%H:%M:%S" "$1" 2>/dev/null || stat -c "%y%t%n" "$1"' sh {} \; |
     sort |
     awk -F'\t' '{ sub(/\/Cargo\.toml$/, "", $2); print $2}' |
 while read -r x; do 

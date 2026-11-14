@@ -1,6 +1,51 @@
 #!/bin/sh
 set -euf
 
+# Run "pod update" using a Podfile.
+#
+# Run directly or sourced by `update`. Details below; `-h` prints them too.
+#
+# Syntax:
+#
+#     update-podfile
+#
+# Example:
+#
+#     update-podfile
+#
+# Needs: pod; a readable Podfile.
+# If a needed command is missing, the script does nothing and succeeds.
+#
+# Help: -h or --help prints this text.
+#
+# Podfile search order: $PODFILE, then ${XDG_CONFIG_HOME:-$HOME/.config}/pod/Podfile.
+
+if [ "$#" -eq 1 ]; then
+    case "$1" in
+        -h|--help)
+            cat <<'HELP_EOF'
+Run "pod update" using a Podfile.
+
+Syntax:
+
+    update-podfile
+
+Example:
+
+    update-podfile
+
+Needs: pod; a readable Podfile.
+If a needed command is missing, the script does nothing and succeeds.
+
+Help: -h or --help prints this text.
+
+Podfile search order: $PODFILE, then ${XDG_CONFIG_HOME:-$HOME/.config}/pod/Podfile.
+HELP_EOF
+            exit 0
+            ;;
+    esac
+fi
+
 # Update via Podfile by using the `pod` package manager.
 #
 # Look for a Podfile file in this order:

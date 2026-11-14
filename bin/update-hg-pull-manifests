@@ -1,6 +1,51 @@
 #!/bin/sh
 set -euf
 
+# Run "hg pull -u" in each directory listed in manifest files.
+#
+# Run directly or sourced by `update`. Details below; `-h` prints them too.
+#
+# Syntax:
+#
+#     update-hg-pull-manifests
+#
+# Example:
+#
+#     echo ~/git/my-project >> ${XDG_CONFIG_HOME:-$HOME/.config}/update-hg-pull-manifests/projects.txt && update-hg-pull-manifests
+#
+# Needs: hg; manifest files.
+# If a needed command is missing, the script does nothing and succeeds.
+#
+# Help: -h or --help prints this text.
+#
+# Manifest directory: ${XDG_CONFIG_HOME:-$HOME/.config}/update-hg-pull-manifests/.
+
+if [ "$#" -eq 1 ]; then
+    case "$1" in
+        -h|--help)
+            cat <<'HELP_EOF'
+Run "hg pull -u" in each directory listed in manifest files.
+
+Syntax:
+
+    update-hg-pull-manifests
+
+Example:
+
+    echo ~/git/my-project >> ${XDG_CONFIG_HOME:-$HOME/.config}/update-hg-pull-manifests/projects.txt && update-hg-pull-manifests
+
+Needs: hg; manifest files.
+If a needed command is missing, the script does nothing and succeeds.
+
+Help: -h or --help prints this text.
+
+Manifest directory: ${XDG_CONFIG_HOME:-$HOME/.config}/update-hg-pull-manifests/.
+HELP_EOF
+            exit 0
+            ;;
+    esac
+fi
+
 # Run update-hg-pull with manifests:
 #
 #     $XDG_CONFIG_HOME/update-hg-pull-manifests/*

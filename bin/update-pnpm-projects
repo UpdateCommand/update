@@ -1,12 +1,57 @@
 #!/bin/sh
 set -euf
 
+# Find every pnpm project under a directory and update each, oldest first.
+#
+# Run directly or sourced by `update`. Details below; `-h` prints them too.
+#
+# Syntax:
+#
+#     update-pnpm-projects [DIRECTORY] [ARGS...]
+#
+# Example:
+#
+#     update-pnpm-projects ~/git
+#
+# Needs: pnpm; update-pnpm-project on PATH.
+# If a needed command is missing, the script does nothing and succeeds.
+#
+# Help: -h or --help prints this text.
+#
+# Hidden directories and "target" are skipped.
+
+if [ "$#" -eq 1 ]; then
+    case "$1" in
+        -h|--help)
+            cat <<'HELP_EOF'
+Find every pnpm project under a directory and update each, oldest first.
+
+Syntax:
+
+    update-pnpm-projects [DIRECTORY] [ARGS...]
+
+Example:
+
+    update-pnpm-projects ~/git
+
+Needs: pnpm; update-pnpm-project on PATH.
+If a needed command is missing, the script does nothing and succeeds.
+
+Help: -h or --help prints this text.
+
+Hidden directories and "target" are skipped.
+HELP_EOF
+            exit 0
+            ;;
+    esac
+fi
+
 # Find projects then sort by datetime ascending.
 find \
     "${1:-$HOME}" \
     \( -type d \( -name target -o -name '.?*' \) -prune \) \
     -o -type f -name pnpm-lock.yaml \
-    -exec stat -f '%Sm%t%N' -t '%Y-%m-%dT%H:%M:%S' {} \; |
+    -exec sh -c 'stat -f "%Sm%t%N" -t "%Y-%m-%dT%H:%M:%S" "$1" 2>/dev/null || stat -c "%y%t%n" "$1"' sh {} \; |
     sort |
     awk -F'\t' '{ sub(/\/pnpm-lock\.yaml$/, "", $2); print $2}' |
 while read -r x; do 

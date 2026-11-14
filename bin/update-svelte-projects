@@ -1,6 +1,51 @@
 #!/bin/sh
 set -euf
 
+# Find every Svelte project under a directory and update each.
+#
+# Run directly or sourced by `update`. Details below; `-h` prints them too.
+#
+# Syntax:
+#
+#     update-svelte-projects [DIRECTORY] [ARGS...]
+#
+# Example:
+#
+#     update-svelte-projects ~/git
+#
+# Needs: pnpm, npx; update-svelte-project on PATH.
+# If a needed command is missing, the script does nothing and succeeds.
+#
+# Help: -h or --help prints this text.
+#
+# Hidden directories are skipped.
+
+if [ "$#" -eq 1 ]; then
+    case "$1" in
+        -h|--help)
+            cat <<'HELP_EOF'
+Find every Svelte project under a directory and update each.
+
+Syntax:
+
+    update-svelte-projects [DIRECTORY] [ARGS...]
+
+Example:
+
+    update-svelte-projects ~/git
+
+Needs: pnpm, npx; update-svelte-project on PATH.
+If a needed command is missing, the script does nothing and succeeds.
+
+Help: -h or --help prints this text.
+
+Hidden directories are skipped.
+HELP_EOF
+            exit 0
+            ;;
+    esac
+fi
+
 find "${1:-$HOME}" -path '*/.*' -prune -o -type f -name 'svelte.config.js' -exec dirname {} \; | 
 while read -r x; do 
     cd "$x" &&

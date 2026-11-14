@@ -1,6 +1,51 @@
 #!/bin/sh
 set -euf
 
+# Update one Rust cargo project: upgrade, sweep, udeps, update, check, build, test.
+#
+# Run directly or sourced by `update`. Details below; `-h` prints them too.
+#
+# Syntax:
+#
+#     update-cargo-project
+#
+# Example:
+#
+#     cd ~/my-project && update-cargo-project
+#
+# Needs: cargo; run inside a directory that has Cargo.toml; optional cargo-edit, cargo-sweep, cargo-udeps.
+# If a needed command is missing, the script does nothing and succeeds.
+#
+# Help: -h or --help prints this text.
+#
+# Extra arguments are passed to "cargo update", for example: update-cargo-project -p axa --precise 0.12.1
+
+if [ "$#" -eq 1 ]; then
+    case "$1" in
+        -h|--help)
+            cat <<'HELP_EOF'
+Update one Rust cargo project: upgrade, sweep, udeps, update, check, build, test.
+
+Syntax:
+
+    update-cargo-project
+
+Example:
+
+    cd ~/my-project && update-cargo-project
+
+Needs: cargo; run inside a directory that has Cargo.toml; optional cargo-edit, cargo-sweep, cargo-udeps.
+If a needed command is missing, the script does nothing and succeeds.
+
+Help: -h or --help prints this text.
+
+Extra arguments are passed to "cargo update", for example: update-cargo-project -p axa --precise 0.12.1
+HELP_EOF
+            exit 0
+            ;;
+    esac
+fi
+
 # Update a cargo project.
 #
 # Syntax:

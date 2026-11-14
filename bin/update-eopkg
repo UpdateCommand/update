@@ -1,6 +1,47 @@
 #!/bin/sh
 set -euf
 
+# Upgrade eopkg packages on Solus Linux.
+#
+# Run directly or sourced by `update`. Details below; `-h` prints them too.
+#
+# Syntax:
+#
+#     update-eopkg
+#
+# Example:
+#
+#     sudo update-eopkg
+#
+# Needs: eopkg; root.
+# If a needed command is missing, the script does nothing and succeeds.
+#
+# Help: -h or --help prints this text.
+
+if [ "$#" -eq 1 ]; then
+    case "$1" in
+        -h|--help)
+            cat <<'HELP_EOF'
+Upgrade eopkg packages on Solus Linux.
+
+Syntax:
+
+    update-eopkg
+
+Example:
+
+    sudo update-eopkg
+
+Needs: eopkg; root.
+If a needed command is missing, the script does nothing and succeeds.
+
+Help: -h or --help prints this text.
+HELP_EOF
+            exit 0
+            ;;
+    esac
+fi
+
 # eopkg is for software packages on Solus Linux.
 if command -v eopkg >/dev/null 2>&1; then
    eopkg upgrade

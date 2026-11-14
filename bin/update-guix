@@ -1,6 +1,47 @@
 #!/bin/sh
 set -euf
 
+# Upgrade packages with guix on Guix System.
+#
+# Run directly or sourced by `update`. Details below; `-h` prints them too.
+#
+# Syntax:
+#
+#     update-guix
+#
+# Example:
+#
+#     update-guix
+#
+# Needs: guix.
+# If a needed command is missing, the script does nothing and succeeds.
+#
+# Help: -h or --help prints this text.
+
+if [ "$#" -eq 1 ]; then
+    case "$1" in
+        -h|--help)
+            cat <<'HELP_EOF'
+Upgrade packages with guix on Guix System.
+
+Syntax:
+
+    update-guix
+
+Example:
+
+    update-guix
+
+Needs: guix.
+If a needed command is missing, the script does nothing and succeeds.
+
+Help: -h or --help prints this text.
+HELP_EOF
+            exit 0
+            ;;
+    esac
+fi
+
 # Guix is for software packages on Guix System Linux.
 if command -v guix >/dev/null 2>&1; then
    guix upgrade

@@ -3,6 +3,47 @@ set -euf
 
 # Update Pipenv project dependencies.
 #
+# Run directly or sourced by `update`. Details below; `-h` prints them too.
+#
+# Syntax:
+#
+#     update-pipenv
+#
+# Example:
+#
+#     cd ~/my-project && update-pipenv
+#
+# Needs: pipenv; run inside a directory that has a Pipfile.
+# If a needed command is missing, the script does nothing and succeeds.
+#
+# Help: -h or --help prints this text.
+
+if [ "$#" -eq 1 ]; then
+    case "$1" in
+        -h|--help)
+            cat <<'HELP_EOF'
+Update Pipenv project dependencies.
+
+Syntax:
+
+    update-pipenv
+
+Example:
+
+    cd ~/my-project && update-pipenv
+
+Needs: pipenv; run inside a directory that has a Pipfile.
+If a needed command is missing, the script does nothing and succeeds.
+
+Help: -h or --help prints this text.
+HELP_EOF
+            exit 0
+            ;;
+    esac
+fi
+
+# Update Pipenv project dependencies.
+#
 # Pipenv is a Python dependency management tool.
 # This script will check if Pipenv is available and
 # if a Pipfile exists in the current directory.

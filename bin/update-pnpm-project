@@ -1,6 +1,46 @@
-
 #!/bin/sh
 set -euf
+
+# Run "pnpm update" in a directory that has pnpm-lock.yaml.
+#
+# Run directly or sourced by `update`. Details below; `-h` prints them too.
+#
+# Syntax:
+#
+#     update-pnpm-project
+#
+# Example:
+#
+#     cd ~/my-project && update-pnpm-project
+#
+# Needs: pnpm; run inside a directory that has pnpm-lock.yaml.
+# If a needed command is missing, the script does nothing and succeeds.
+#
+# Help: -h or --help prints this text.
+
+if [ "$#" -eq 1 ]; then
+    case "$1" in
+        -h|--help)
+            cat <<'HELP_EOF'
+Run "pnpm update" in a directory that has pnpm-lock.yaml.
+
+Syntax:
+
+    update-pnpm-project
+
+Example:
+
+    cd ~/my-project && update-pnpm-project
+
+Needs: pnpm; run inside a directory that has pnpm-lock.yaml.
+If a needed command is missing, the script does nothing and succeeds.
+
+Help: -h or --help prints this text.
+HELP_EOF
+            exit 0
+            ;;
+    esac
+fi
 
 # Update a PNPM project.
 #
@@ -16,7 +56,7 @@ set -euf
 # Feedback appreciated.
 
 update_pnpm_project() {
-    # Rust cargo package manager
+    # PNPM package manager
     if command -v pnpm >/dev/null 2>&1; then
         # Is this command running inside a relevant project?
         if [ -e pnpm-lock.yaml ]; then 

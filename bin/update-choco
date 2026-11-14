@@ -1,6 +1,47 @@
 #!/bin/sh
 set -euf
 
+# Upgrade all Chocolatey packages on Windows.
+#
+# Run directly or sourced by `update`. Details below; `-h` prints them too.
+#
+# Syntax:
+#
+#     update-choco
+#
+# Example:
+#
+#     update-choco
+#
+# Needs: choco; Administrator.
+# If a needed command is missing, the script does nothing and succeeds.
+#
+# Help: -h or --help prints this text.
+
+if [ "$#" -eq 1 ]; then
+    case "$1" in
+        -h|--help)
+            cat <<'HELP_EOF'
+Upgrade all Chocolatey packages on Windows.
+
+Syntax:
+
+    update-choco
+
+Example:
+
+    update-choco
+
+Needs: choco; Administrator.
+If a needed command is missing, the script does nothing and succeeds.
+
+Help: -h or --help prints this text.
+HELP_EOF
+            exit 0
+            ;;
+    esac
+fi
+
 # Choco package manager for Windows
 if command -v choco >/dev/null 2>&1; then
    choco upgrade all

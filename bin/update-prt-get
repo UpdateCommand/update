@@ -1,6 +1,47 @@
 #!/bin/sh
 set -euf
 
+# System upgrade with prt-get on CRUX Linux.
+#
+# Run directly or sourced by `update`. Details below; `-h` prints them too.
+#
+# Syntax:
+#
+#     update-prt-get
+#
+# Example:
+#
+#     sudo update-prt-get
+#
+# Needs: prt-get; root.
+# If a needed command is missing, the script does nothing and succeeds.
+#
+# Help: -h or --help prints this text.
+
+if [ "$#" -eq 1 ]; then
+    case "$1" in
+        -h|--help)
+            cat <<'HELP_EOF'
+System upgrade with prt-get on CRUX Linux.
+
+Syntax:
+
+    update-prt-get
+
+Example:
+
+    sudo update-prt-get
+
+Needs: prt-get; root.
+If a needed command is missing, the script does nothing and succeeds.
+
+Help: -h or --help prints this text.
+HELP_EOF
+            exit 0
+            ;;
+    esac
+fi
+
 # prt-get package management tool for CRUX Linux. 
 if command -v prt-get >/dev/null 2>&1; then
    prt-get sysup

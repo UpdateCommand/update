@@ -1,6 +1,47 @@
 #!/bin/sh
 set -euf
 
+# Upgrade Atom Package Manager (apm) packages for the Atom editor.
+#
+# Run directly or sourced by `update`. Details below; `-h` prints them too.
+#
+# Syntax:
+#
+#     update-apm
+#
+# Example:
+#
+#     update-apm
+#
+# Needs: apm.
+# If a needed command is missing, the script does nothing and succeeds.
+#
+# Help: -h or --help prints this text.
+
+if [ "$#" -eq 1 ]; then
+    case "$1" in
+        -h|--help)
+            cat <<'HELP_EOF'
+Upgrade Atom Package Manager (apm) packages for the Atom editor.
+
+Syntax:
+
+    update-apm
+
+Example:
+
+    update-apm
+
+Needs: apm.
+If a needed command is missing, the script does nothing and succeeds.
+
+Help: -h or --help prints this text.
+HELP_EOF
+            exit 0
+            ;;
+    esac
+fi
+
 # APM: Atom Package Manager
 if command -v apm >/dev/null 2>&1; then
     apm upgrade --no-confirm

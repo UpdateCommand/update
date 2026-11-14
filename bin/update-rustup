@@ -1,6 +1,47 @@
 #!/bin/sh
 set -euf
 
+# Update rustup and the installed Rust toolchains.
+#
+# Run directly or sourced by `update`. Details below; `-h` prints them too.
+#
+# Syntax:
+#
+#     update-rustup
+#
+# Example:
+#
+#     update-rustup
+#
+# Needs: rustup.
+# If a needed command is missing, the script does nothing and succeeds.
+#
+# Help: -h or --help prints this text.
+
+if [ "$#" -eq 1 ]; then
+    case "$1" in
+        -h|--help)
+            cat <<'HELP_EOF'
+Update rustup and the installed Rust toolchains.
+
+Syntax:
+
+    update-rustup
+
+Example:
+
+    update-rustup
+
+Needs: rustup.
+If a needed command is missing, the script does nothing and succeeds.
+
+Help: -h or --help prints this text.
+HELP_EOF
+            exit 0
+            ;;
+    esac
+fi
+
 # Rust programming language update tool
 if command -v rustup >/dev/null 2>&1; then
     rustup self update
