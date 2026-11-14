@@ -13,7 +13,7 @@ set -euf
 #     $ update-cargo-project
 #
 # The script does various updates and upgrades.
-# The capabilties depend on what you have installed.
+# The capabilities depend on what you have installed.
 # The goal is to have the project fully built and testable.
 #
 # Example code to find each project and update it:
@@ -35,7 +35,7 @@ update_cargo_project() {
             update_cargo_project_with_upgrade
             update_cargo_project_with_sweep
             update_cargo_project_with_udeps
-            update_cargo_project_with_targets
+            update_cargo_project_with_targets "$@"
         fi
     fi
 }
@@ -89,7 +89,7 @@ update_cargo_project_with_udeps() {
 update_cargo_project_with_targets() {
     # Update dependencies as recorded in the local lock file.
     # Force updating all dependencies of [SPEC]... as well.
-    cargo update
+    cargo update "$@"
     # Check the current package and all of its dependencies for errors.
     cargo check --all-targets
     # Compile the current package and all of its dependencies.
@@ -98,4 +98,4 @@ update_cargo_project_with_targets() {
     cargo test --all-targets --no-run
 }
 
-update_cargo_project
+update_cargo_project "$@"

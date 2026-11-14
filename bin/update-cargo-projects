@@ -1,6 +1,22 @@
 #!/bin/sh
 set -euf
 
+# Update cargo projects recursively
+#
+# ## Cooldown
+#
+# Suppose you want to update a specific crate that's newer than the 
+# cool-down period for published crates:
+#
+# ```
+# CARGO_RESOLVER_INCOMPATIBLE_PUBLISH_AGE=allow update-cargo-projects -p axa --precise 0.12.1
+# ```
+#
+# ## Feedback
+#
+# Feedback appreciated via GitHub issues or pull requests or email.
+
+
 # Find projects then sort by datetime ascending.
 find \
     "${1:-$HOME}" \
@@ -11,7 +27,7 @@ find \
     awk -F'\t' '{ sub(/\/Cargo\.toml$/, "", $2); print $2}' |
 while read -r x; do 
     cd "$x" &&
-    update-cargo-project || 
+    update-cargo-project "$@" || 
     true
     touch "$x/Cargo.toml"
 done
